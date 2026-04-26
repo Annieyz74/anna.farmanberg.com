@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,300&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-navy:     #0B2A5B;
+      --signature:     #2E63B6;
+      --light-blue:    #B6C3D5;
+      --calm-grey:     #D9DEE5;
+      --soft-white:    #F2F4F7;
+      --soft-black:    #1A1A1A;
+      --warm-sand:     #E8E3DA;
+      --glow:          rgba(255,255,255,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--soft-black);
+      background: #fff;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(11,42,91,0.92);
+      backdrop-filter: blur(8px);
+    }
+
+    nav .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+
+    nav ul a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: #fff; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--deep-navy) 0%, var(--signature) 55%, var(--light-blue) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 140px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 60px; right: 60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-line {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-line svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: var(--light-blue);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    .hero-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 14px 32px;
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.25s, border-color 0.25s;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 1s;
+    }
+
+    .hero-cta:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: #fff;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 96px 60px; }
+    section:nth-child(even) { background: var(--soft-white); }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--signature);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 48px;
+      max-width: 600px;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1100px;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #3a3a3a;
+      margin-bottom: 20px;
+    }
+
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--deep-navy);
+      line-height: 1.6;
+      border-left: 3px solid var(--light-blue);
+      padding-left: 28px;
+      margin-top: 8px;
+    }
+
+    /* ── WHAT I BRING ── */
+    #bring .bring-intro {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #3a3a3a;
+      max-width: 600px;
+      margin-bottom: 56px;
+    }
+
+    .bring-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      max-width: 1100px;
+    }
+
+    .bring-card {
+      padding: 32px 28px;
+      background: #fff;
+      border: 1px solid var(--calm-grey);
+      border-radius: 8px;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .bring-card:hover {
+      box-shadow: 0 8px 32px rgba(11,42,91,0.1);
+      transform: translateY(-4px);
+    }
+
+    .bring-card .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .bring-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 10px;
+    }
+
+    .bring-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: #555;
+    }
+
+    /* ── WHO I AM ── */
+    #who { background: var(--deep-navy); }
+    #who .section-label { color: var(--light-blue); }
+    #who .section-title { color: #fff; }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+    }
+
+    @media (max-width: 768px) {
+      .who-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .who-card {
+      padding: 28px 24px;
+      border: 1px solid rgba(182,195,213,0.25);
+      border-radius: 8px;
+      transition: background 0.25s;
+    }
+
+    .who-card:hover { background: rgba(255,255,255,0.06); }
+
+    .who-card .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+    }
+
+    .who-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--light-blue);
+      margin-bottom: 8px;
+    }
+
+    .who-card p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience .exp-company {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 4px;
+    }
+
+    #experience .exp-period {
+      font-size: 0.85rem;
+      color: var(--signature);
+      font-weight: 600;
+      margin-bottom: 28px;
+      letter-spacing: 0.05em;
+    }
+
+    .exp-roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin-bottom: 48px;
+    }
+
+    .exp-role {
+      padding: 28px;
+      background: #fff;
+      border-left: 3px solid var(--signature);
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 12px rgba(11,42,91,0.06);
+    }
+
+    .exp-role h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 6px;
+    }
+
+    .exp-role .role-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--signature);
+      margin-bottom: 12px;
+    }
+
+    .exp-role p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #555;
+    }
+
+    /* ── ADVISORY ── */
+    #advisory {
+      background: linear-gradient(135deg, var(--deep-navy) 0%, var(--signature) 100%);
+      text-align: center;
+    }
+
+    #advisory .section-label { color: var(--light-blue); }
+    #advisory .section-title { color: #fff; margin: 0 auto 20px; }
+
+    #advisory .advisory-text {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ── BLOG ── */
+    #blog {
+      text-align: center;
+      background: var(--soft-white);
+    }
+
+    #blog .section-title { margin: 0 auto 20px; }
+
+    #blog .blog-text {
+      font-size: 1rem;
+      color: #555;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.75;
+    }
+
+    #blog .blog-link {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--signature);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.25s;
+    }
+
+    #blog .blog-link:hover { background: var(--deep-navy); }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    #contact .section-title { margin: 0 auto 16px; }
+
+    #contact .contact-sub {
+      font-size: 1rem;
+      color: #555;
+      max-width: 440px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--signature);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--deep-navy); }
+
+    .btn-secondary {
+      border: 2px solid var(--signature);
+      color: var(--signature);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: var(--signature);
+      color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep-navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 28px 60px;
+      font-size: 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav ul { gap: 20px; }
+      #hero { padding: 120px 24px 60px; }
+      section { padding: 72px 24px; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      footer { padding: 24px; }
+    }
+
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--deep-navy);
+        flex-direction: column;
+        gap: 0;
+        padding: 16px 0;
+      }
+
+      nav ul.open { display: flex; }
+
+      nav ul li a {
+        display: block;
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+
+      nav { position: fixed; flex-wrap: wrap; }
+
+      /* Beyond the resume — foto under text på mobil */
+      #beyond .about-grid,
+      #beyond > div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      #beyond img {
+        width: 60% !important;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo">Anna Farman Berg</a>
+  <button class="hamburger" onclick="this.parentElement.querySelector('ul').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#bring">What I bring</a></li>
+    <li><a href="#beyond">Beyond the resume</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#advisory">Advisory</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Anna Farman Berg</p>
+  <h1 class="hero-name">Lead with curiosity.</h1>
+  <p class="hero-tagline">Curious by nature. Relationship-driven. Focused on value realization.</p>
+  <p class="hero-sub">Senior Customer Success professional with a passion for people, technology and meaningful change. I help organisations turn complexity into momentum — and adoption into lasting impact.</p>
+  <a href="#about" class="hero-cta">Get to know me</a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Who I am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a senior Customer Success and commercial professional with roots in the travel industry and a deep curiosity for people, technology, and how organisations really work.</p>
+      <p>I believe the most meaningful work happens when strategy, people and data work together — making sense of information and turning insights into action.</p>
+      <p>I'm a lifelong learner. I practise micro-learning every day as a mindset. Self-leadership and curiosity drive everything I do.</p>
+    </div>
+    <div>
+      <p class="about-quote">"You already have a personal brand. Everyone does. The question is — are you building it intentionally?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I BRING -->
+<section id="bring">
+  <p class="section-label">What I bring</p>
+  <h2 class="section-title">Professional strengths</h2>
+  <p class="bring-intro">A grounded blend of behavioural insight, commercial thinking and strategic relationship management. Built over 20+ years in complex and global environments.</p>
+  <div class="bring-grid">
+    <div class="bring-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="12" r="6" stroke="#2E63B6" stroke-width="1.8"/>
+          <path d="M4 36c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#2E63B6" stroke-width="1.8" stroke-linecap="round"/>
+          <polygon points="32,6 33.5,10.5 38,10.5 34.5,13.5 36,18 32,15 28,18 29.5,13.5 26,10.5 30.5,10.5" stroke="#2E63B6" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Customer Success & Value Realization</h3>
+      <p>Turning adoption into measurable business impact. From onboarding to long-term strategic partnership.</p>
+    </div>
+    <div class="bring-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="10" r="5" stroke="#2E63B6" stroke-width="1.8"/>
+          <path d="M6 34c0-5.523 4.477-10 10-10" stroke="#2E63B6" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="30" cy="20" r="3" stroke="#2E63B6" stroke-width="1.5"/>
+          <circle cx="30" cy="30" r="3" stroke="#2E63B6" stroke-width="1.5"/>
+          <line x1="26" y1="24" x2="26" y2="27" stroke="#2E63B6" stroke-width="1.5"/>
+          <line x1="26" y1="20" x2="22" y2="20" stroke="#2E63B6" stroke-width="1.5"/>
+          <line x1="26" y1="30" x2="22" y2="30" stroke="#2E63B6" stroke-width="1.5"/>
+          <line x1="22" y1="20" x2="22" y2="30" stroke="#2E63B6" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3>AI & Adoption</h3>
+      <p>Human and AI working together - that's where real value emerges. I use AI as an amplifier and thinking partner. I bring practical experience with AI tools and a deep understanding of the behavioural shift that makes technology stick.</p>
+    </div>
+    <div class="bring-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="8" r="4" stroke="#2E63B6" stroke-width="1.8"/>
+          <circle cx="8" cy="30" r="4" stroke="#2E63B6" stroke-width="1.8"/>
+          <circle cx="32" cy="30" r="4" stroke="#2E63B6" stroke-width="1.8"/>
+          <line x1="20" y1="12" x2="8" y2="26" stroke="#2E63B6" stroke-width="1.5"/>
+          <line x1="20" y1="12" x2="32" y2="26" stroke="#2E63B6" stroke-width="1.5"/>
+          <line x1="12" y1="30" x2="28" y2="30" stroke="#2E63B6" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3>Strategic Relationships</h3>
+      <p>Building trust with senior stakeholders. Leading executive conversations that connect capabilities to real business outcomes.</p>
+    </div>
+    <div class="bring-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6,30 14,20 22,24 34,10" stroke="#2E63B6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="28,10 34,10 34,16" stroke="#2E63B6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Commercial Growth</h3>
+      <p>Retention, renewal and expansion - with a customer-first mindset. Understanding what success looks like for each customer is where it all starts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I AM -->
+<section id="who">
+  <p class="section-label">Who I am</p>
+  <h2 class="section-title">Values & ways of working</h2>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="card-icon">
+        <svg width="40" height="36" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="16" rx="4" stroke="#B6C3D5" stroke-width="1.8"/>
+          <polygon points="5,17 5,22 11,17" fill="#B6C3D5"/>
+          <text x="12" y="13" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#B6C3D5">?</text>
+          <rect x="16" y="13" width="22" height="16" rx="4" stroke="#B6C3D5" stroke-width="1.8"/>
+          <polygon points="34,29 34,34 28,29" fill="#B6C3D5"/>
+          <text x="25" y="25" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#B6C3D5">!</text>
+        </svg>
+      </div>
+      <h3>Communication</h3>
+      <p>Clear, warm and intentional - verbally and in writing. Always professional and respectful.</p>
+    </div>
+    <div class="who-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="5" stroke="#B6C3D5" stroke-width="1.8"/>
+          <circle cx="8" cy="16" r="4" stroke="#B6C3D5" stroke-width="1.6"/>
+          <circle cx="32" cy="16" r="4" stroke="#B6C3D5" stroke-width="1.6"/>
+          <path d="M12 34c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#B6C3D5" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M2 34c0-3.314 2.686-6 6-6" stroke="#B6C3D5" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M38 34c0-3.314-2.686-6-6-6" stroke="#B6C3D5" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Collaboration & teamwork</h3>
+      <p>Connecting people and dots. Keeping goals in mind while fostering collaboration across teams and markets.</p>
+    </div>
+    <div class="who-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 34L8 22c-3-3-3-8 0-11a7.778 7.778 0 0111 0l1 1 1-1a7.778 7.778 0 0111 0c3 3 3 8 0 11L20 34z" stroke="#B6C3D5" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Relationship building</h3>
+      <p>Accountability, commitment and active listening. Trust is the foundation for everything.</p>
+    </div>
+    <div class="who-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 8C13.373 8 8 13.373 8 20s5.373 12 12 12 12-5.373 12-12" stroke="#B6C3D5" stroke-width="1.8" stroke-linecap="round"/>
+          <polyline points="26,6 32,8 30,14" stroke="#B6C3D5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Embrace change</h3>
+      <p>Curiosity and adaptability and keeping an eye on the goals keep me on course. A change mindset makes the complex manageable.</p>
+    </div>
+    <div class="who-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 32l6-8 6 4 8-14" stroke="#B6C3D5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="30" cy="12" r="4" stroke="#B6C3D5" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3>Growth mindset</h3>
+      <p>Learning agility, resilience and openness to constructive feedback. I believe effort and grit take you further than talent alone.</p>
+    </div>
+    <div class="who-card">
+      <div class="card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="14" width="24" height="16" rx="3" stroke="#B6C3D5" stroke-width="1.8"/>
+          <path d="M14 14v-3a6 6 0 0112 0v3" stroke="#B6C3D5" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="20" cy="22" r="2.5" fill="#B6C3D5"/>
+          <line x1="20" y1="24.5" x2="20" y2="27" stroke="#B6C3D5" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Technology</h3>
+      <p>A genuine passion for tech and AI. I learn by doing - early adopter and constantly exploring what's next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND THE RESUME -->
+<section id="beyond">
+  <p class="section-label">Beyond the resume</p>
+  <h2 class="section-title">A bit about me</h2>
+  <div style="display:grid; grid-template-columns: 1fr 260px; gap:48px; align-items:start; max-width:1100px;">
+    <div class="about-text">
+      <p>Hi, I'm Anna, based in the Stockholm area. My career has always been rooted in commercial teams - building a customer-first mindset and a genuine passion for technology as an enabler for people and organisations.</p>
+      <p>I believe in growth mindset, grit and collaboration. I live by my values, commitment, curiosity and accountability. And I do my best to practise what I preach.</p>
+      <p>One of my favourite sayings is: "If you want to go fast, go alone. If you want to go far, go together." For me, it captures the power of teamwork and shared success.</p>
+      <p>Outside of work, I'm happiest when I spend time with people I care about and stay active. You'll often find me in group training sessions, on the golf course, or riding my motorcycle in the warmer months — and in winter, I'm usually out skiing and enjoying the outdoors.</p>
+      <p><em>I have two mottos guiding me how I work and live: Crea Diem - create the day. And Acta non Verba - actions, not words.</em></p>
+    </div>
+    <div>
+      <img src="anna-photo.jpeg" alt="Anna Farman Berg" style="width:100%; border-radius:12px; box-shadow:0 8px 32px rgba(11,42,91,0.15);"/>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I've worked</h2>
+  <p class="exp-company">Amadeus — Global Tech & SaaS</p>
+  <p class="exp-period">2003 – 2026</p>
+  <div class="exp-roles">
+    <div class="exp-role">
+      <h3>Customer Success Manager</h3>
+      <p class="role-sub">Building long-term customer value across EMEA</p>
+      <p>Translating complex capabilities into clear value and actionable guidance - that's where I feel most at home.</p>
+    </div>
+    <div class="exp-role">
+      <h3>Account Manager</h3>
+      <p class="role-sub">Building relationships and driving adoption and growth.</p>
+      <p>Managed a broad customer portfolio across Scandinavia — from acquisition and negotiation to retention and long-term growth.</p>
+    </div>
+    <div class="exp-role">
+      <h3>IT Account Manager</h3>
+      <p class="role-sub">Supporting a major partner network with stability and built trust.</p>
+      <p>Acted as a bridge between partners and internal teams - ensuring stability, continuity and growth across the partner agencies.</p>
+    </div>
+  </div>
+
+  <p class="exp-company" style="margin-top:48px;">Various Travel Agencies</p>
+  <p class="exp-period">1994 – 2003</p>
+  <div class="exp-roles">
+    <div class="exp-role">
+      <h3>Travel Consultant</h3>
+      <p class="role-sub">Where it all started.</p>
+      <p>My roots in the travel industry. Customer service, advisory and problem-solving in fast-paced environments - and the foundation for lasting industry relationships.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORY -->
+<section id="advisory">
+  <p class="section-label">Advisory</p>
+  <h2 class="section-title">Working together</h2>
+  <p class="advisory-text">Open to conversations about strategy, sales, customer success and AI adoption. Let's talk.</p>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <p class="section-label">Blog</p>
+  <h2 class="section-title">Thoughts & reflections</h2>
+  <p class="blog-text">I write about the things I care deeply about. Three themes that shape how I think, work and grow:</p>
+  <div style="display:flex; flex-direction:column; gap:20px; max-width:480px; margin:0 auto 32px; text-align:left;">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="10" r="5" stroke="#2E63B6" stroke-width="1.8"/>
+        <path d="M8 26c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#2E63B6" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M22 8l4-4m0 0h-3m3 0v3" stroke="#2E63B6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-family:'Lato',sans-serif; font-size:1rem; color:#3a3a3a;">Leadership and transformation</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="5" width="20" height="24" rx="2" stroke="#2E63B6" stroke-width="1.8"/>
+        <path d="M6 9h20" stroke="#2E63B6" stroke-width="1.5"/>
+        <path d="M10 14h12M10 18h12M10 22h8" stroke="#2E63B6" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span style="font-family:'Lato',sans-serif; font-size:1rem; color:#3a3a3a;">Career and lifelong learning</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="5" stroke="#2E63B6" stroke-width="1.8"/>
+        <circle cx="6" cy="10" r="2.5" stroke="#2E63B6" stroke-width="1.5"/>
+        <circle cx="26" cy="10" r="2.5" stroke="#2E63B6" stroke-width="1.5"/>
+        <circle cx="6" cy="22" r="2.5" stroke="#2E63B6" stroke-width="1.5"/>
+        <circle cx="26" cy="22" r="2.5" stroke="#2E63B6" stroke-width="1.5"/>
+        <line x1="8.2" y1="11.2" x2="13" y2="13" stroke="#2E63B6" stroke-width="1.5"/>
+        <line x1="23.8" y1="11.2" x2="19" y2="13" stroke="#2E63B6" stroke-width="1.5"/>
+        <line x1="8.2" y1="20.8" x2="13" y2="19" stroke="#2E63B6" stroke-width="1.5"/>
+        <line x1="23.8" y1="20.8" x2="19" y2="19" stroke="#2E63B6" stroke-width="1.5"/>
+      </svg>
+      <span style="font-family:'Lato',sans-serif; font-size:1rem; color:#3a3a3a;">The human side of technology and AI</span>
+    </div>
+  </div>
+  <p class="blog-text">Right now you'll find me on LinkedIn - the blog opens later.</p>
+  <a href="https://www.linkedin.com/in/anna-farman-berg/" target="_blank" class="blog-link">Read on LinkedIn →</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Let's connect</h2>
+  <p class="contact-sub">Always happy to connect - professionally or just for a good conversation. I'd love to hear from you.</p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/anna-farman-berg/" target="_blank" class="btn-primary">LinkedIn</a>
+    <a href="mailto:anna.farmanberg@icloud.com" class="btn-secondary">Send an email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Anna Farman Berg · Lead with curiosity.
+</footer>
+
+</body>
+</html>
