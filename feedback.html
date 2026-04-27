@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback — Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-navy:   #0A3A66;
+      --signature:   #1F6FA5;
+      --light-blue:  #6EC7E6;
+      --bg:          #FFFFFF;
+      --soft-bg:     #F2F6FA;
+      --text:        #0A3A66;
+      --border:      #C8DFF0;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--soft-bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .site-header .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--signature);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .site-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--bg);
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(10,58,102,0.10);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3a5a7a;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro strong {
+      color: var(--deep-navy);
+      font-weight: 600;
+    }
+
+    /* ── FORM ── */
+    .form-group {
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--signature);
+      margin-bottom: 10px;
+    }
+
+    .optional {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #90aec4;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 6px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: vertical;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: var(--signature);
+      box-shadow: 0 0 0 3px rgba(31,111,165,0.12);
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 16px;
+      background: var(--signature);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.15s;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      background: var(--deep-navy);
+      transform: translateY(-1px);
+    }
+
+    .btn:active { transform: translateY(0); }
+
+    /* ── SUCCESS ── */
+    .success {
+      display: none;
+      text-align: center;
+      padding: 32px 0 8px;
+    }
+
+    .success .checkmark {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .success h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 10px;
+    }
+
+    .success p {
+      font-size: 0.95rem;
+      color: #3a5a7a;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    .form-footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.78rem;
+      color: #90aec4;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    .form-footer a {
+      color: var(--signature);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="https://annafarmanberg.com" class="logo">Anna Farman Berg</a>
+    <h1>Din feedback</h1>
+  </header>
+
+  <div class="card">
+    <p class="intro">
+      Hej, jag arbetar på min hemsida som nästan är klar och skulle verkligen uppskatta din ärliga åsikt och konstruktiva återkoppling på den. Jag är särskilt nyfiken på hur den landar hos dig. You know me — jag bygger den från scratch och är inte begränsad av mallar, så det mesta går att justera både i design och utformning. <strong>Tack på förhand, Anna</strong>
+    </p>
+
+    <form id="feedbackForm" action="https://formspree.io/f/mojyzpnj" method="POST">
+
+      <div class="form-group">
+        <label for="name">Ditt namn <span class="optional">(valfritt)</span></label>
+        <input type="text" id="name" name="name" placeholder="Skriv ditt namn här..." />
+      </div>
+
+      <div class="form-group">
+        <label for="q1">Vad är din spontana upplevelse av mig när du läser sidan?</label>
+        <textarea id="q1" name="spontan_upplevelse" placeholder="Din tanke..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q2">Finns det något du tycker bör förstärkas, förenklas eller tonas ner?</label>
+        <textarea id="q2" name="forbattringar" placeholder="Din tanke..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q3">Hur upplever du balansen mellan professionellt och personligt?</label>
+        <textarea id="q3" name="balans" placeholder="Din tanke..."></textarea>
+      </div>
+
+      <button type="submit" class="btn">Skicka feedback</button>
+    </form>
+
+    <div class="success" id="successMsg">
+      <div class="checkmark">🙏</div>
+      <h2>Tack så mycket!</h2>
+      <p>Din feedback betyder mycket. Jag läser allt och tar det med mig i det fortsatta arbetet.</p>
+    </div>
+  </div>
+
+  <p class="form-footer">
+    <a href="https://annafarmanberg.com">← Tillbaka till annafarmanberg.com</a>
+  </p>
+
+  <script>
+    const form = document.getElementById('feedbackForm');
+    const success = document.getElementById('successMsg');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
