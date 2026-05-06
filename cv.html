@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna Farman Berg - CV</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%232E63B6'/><text x='50%25' y='54%25' font-family='Montserrat,sans-serif' font-size='22' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'>AFB</text></svg>"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,300&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --deep-navy:  #0B2A5B;
+      --signature:  #2E63B6;
+      --light-blue: #B6C3D5;
+      --calm-grey:  #D9DEE5;
+      --soft-white: #F2F4F7;
+      --soft-black: #1A1A1A;
+      --glow:       rgba(255,255,255,0.25);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--soft-black); background: #fff; }
+
+    /* NAV */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 60px;
+      background: rgba(11,42,91,0.95); backdrop-filter: blur(8px);
+    }
+    .topbar .logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; letter-spacing: 0.05em; text-decoration: none; }
+    .topbar-right { display: flex; align-items: center; gap: 24px; }
+    .back-link { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light-blue); text-decoration: none; transition: color 0.2s; }
+    .back-link:hover { color: #fff; }
+    .print-btn { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: transparent; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 5px; padding: 8px 16px; cursor: pointer; transition: background 0.2s; }
+    .print-btn:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+    /* HEADER */
+    #cv-header {
+      background: linear-gradient(135deg, var(--deep-navy) 0%, var(--signature) 60%, var(--light-blue) 100%);
+      padding: 120px 60px 72px; position: relative; overflow: hidden;
+    }
+    #cv-header::before { content: ''; position: absolute; bottom: -60px; left: -60px; width: 400px; height: 400px; background: radial-gradient(circle, var(--glow) 0%, transparent 70%); pointer-events: none; }
+    .cv-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 14px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s; }
+    .cv-name { font-family: 'Montserrat', sans-serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 12px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.35s; }
+    .cv-title { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 300; font-size: clamp(1rem, 2vw, 1.4rem); color: var(--light-blue); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.5s; }
+    .cv-contacts { display: flex; flex-wrap: wrap; gap: 20px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.65s; }
+    .cv-contacts a { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.85); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cv-contacts a:hover { color: #fff; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* METRICS */
+    .metrics-wrap { background: #fff; padding: 0 60px; }
+    .metrics-inner { max-width: 1100px; margin: 0 auto; padding: 48px 0; }
+    .metrics-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .metric { background: var(--deep-navy); padding: 32px 28px; text-align: center; }
+    .metric:first-child { border-radius: 8px 0 0 8px; }
+    .metric:last-child { border-radius: 0 8px 8px 0; }
+    .metric-number { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: #fff; margin-bottom: 8px; display: block; }
+    .metric-label { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: var(--light-blue); line-height: 1.4; }
+
+    /* SECTIONS */
+    .cv-section { padding: 72px 60px; }
+    .cv-section-inner { max-width: 1100px; margin: 0 auto; }
+    .alt { background: var(--soft-white); }
+    .dark { background: var(--deep-navy); }
+
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--signature); margin-bottom: 10px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: var(--deep-navy); margin-bottom: 40px; }
+    .dark .section-label { color: var(--light-blue); }
+    .dark .section-title { color: #fff; }
+
+    /* SUMMARY */
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+    .summary-text p { font-size: 1rem; line-height: 1.85; color: #3a3a3a; margin-bottom: 16px; }
+    .summary-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--deep-navy); line-height: 1.7; border-left: 3px solid var(--light-blue); padding-left: 24px; }
+
+    /* STRENGTHS */
+    .strengths-list { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .strength-item { display: flex; gap: 14px; align-items: flex-start; padding: 22px 24px; background: #fff; border: 1px solid var(--calm-grey); border-radius: 8px; transition: box-shadow 0.25s, transform 0.25s; }
+    .strength-item:hover { box-shadow: 0 6px 24px rgba(11,42,91,0.08); transform: translateY(-2px); }
+    .strength-dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--signature); margin-top: 6px; }
+    .strength-item h3 { font-family: 'Montserrat', sans-serif; font-size: 0.87rem; font-weight: 700; color: var(--deep-navy); margin-bottom: 5px; }
+    .strength-item p { font-size: 0.84rem; line-height: 1.65; color: #555; }
+
+    /* EXPERIENCE */
+    .exp-block { margin-bottom: 48px; }
+    .exp-company { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--deep-navy); margin-bottom: 3px; }
+    .exp-period { font-family: 'Montserrat', sans-serif; font-size: 0.82rem; color: var(--signature); font-weight: 600; margin-bottom: 20px; letter-spacing: 0.05em; }
+    .exp-roles { display: flex; flex-direction: column; gap: 14px; max-width: 900px; }
+    .exp-role { padding: 22px 26px; background: #fff; border-left: 3px solid var(--signature); border-radius: 0 8px 8px 0; box-shadow: 0 2px 12px rgba(11,42,91,0.06); }
+    .exp-role h3 { font-family: 'Montserrat', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--deep-navy); margin-bottom: 3px; }
+    .role-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.84rem; color: var(--signature); margin-bottom: 12px; }
+    .exp-role ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+    .exp-role ul li { font-size: 0.86rem; line-height: 1.65; color: #444; padding-left: 14px; position: relative; }
+    .exp-role ul li::before { content: ''; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--light-blue); }
+    .hl { font-weight: 700; color: var(--deep-navy); }
+
+    /* VALUES */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 14px; }
+    .value-pill { padding: 18px 20px; border: 1px solid rgba(182,195,213,0.25); border-radius: 8px; transition: background 0.2s; }
+    .value-pill:hover { background: rgba(255,255,255,0.06); }
+    .value-pill h4 { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--light-blue); margin-bottom: 5px; }
+    .value-pill p { font-size: 0.78rem; line-height: 1.55; color: rgba(255,255,255,0.65); }
+
+    /* BOTTOM GRID */
+    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+    .subsection-title { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--signature); margin-bottom: 14px; margin-top: 28px; }
+    .subsection-title:first-child { margin-top: 0; }
+
+    .edu-list { display: flex; flex-direction: column; gap: 10px; }
+    .edu-item strong { font-family: 'Montserrat', sans-serif; font-size: 0.84rem; font-weight: 700; color: var(--deep-navy); display: block; margin-bottom: 1px; }
+    .edu-item span { font-size: 0.8rem; color: #666; }
+
+    .cert-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; background: var(--soft-white); border: 1px solid var(--calm-grey); border-radius: 6px; margin-bottom: 8px; }
+    .cert-badge { width: 7px; min-width: 7px; height: 7px; border-radius: 50%; background: var(--signature); margin-top: 5px; }
+    .cert-item strong { font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--deep-navy); display: block; margin-bottom: 1px; }
+    .cert-item span { font-size: 0.78rem; color: #777; }
+
+    .tools-wrap { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
+    .tool-tag { font-family: 'Montserrat', sans-serif; font-size: 0.73rem; font-weight: 600; letter-spacing: 0.04em; color: var(--signature); background: var(--soft-white); border: 1px solid var(--calm-grey); border-radius: 4px; padding: 5px 11px; }
+
+    .lang-list { display: flex; flex-direction: column; gap: 8px; }
+    .lang-item { display: flex; justify-content: space-between; align-items: center; }
+    .lang-name { font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--deep-navy); }
+    .lang-level { font-size: 0.8rem; color: #777; }
+
+    .vol-item { margin-bottom: 10px; }
+    .vol-item strong { font-family: 'Montserrat', sans-serif; font-size: 0.83rem; font-weight: 700; color: var(--deep-navy); display: block; margin-bottom: 1px; }
+    .vol-item span { font-size: 0.8rem; color: #666; }
+
+    /* CTA */
+    .cta-bar { background: var(--soft-white); padding: 64px 60px; text-align: center; }
+    .cta-bar p { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.2rem, 2.2vw, 1.6rem); color: var(--deep-navy); margin-bottom: 28px; }
+    .cta-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; background: var(--signature); color: #fff; transition: background 0.25s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--deep-navy); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; border: 2px solid var(--signature); color: var(--signature); background: transparent; transition: background 0.25s, color 0.25s; }
+    .btn-secondary:hover { background: var(--signature); color: #fff; }
+
+    footer { background: var(--deep-navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px 60px; font-size: 0.78rem; font-family: 'Montserrat', sans-serif; letter-spacing: 0.05em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .topbar { padding: 16px 20px; }
+      #cv-header { padding: 100px 24px 56px; }
+      .cv-section { padding: 56px 24px; }
+      .metrics-wrap { padding: 0 24px; }
+      .metrics-bar { grid-template-columns: 1fr; gap: 2px; }
+      .metric:first-child { border-radius: 8px 8px 0 0; }
+      .metric:last-child { border-radius: 0 0 8px 8px; }
+      .summary-grid, .strengths-list, .bottom-grid { grid-template-columns: 1fr; gap: 24px; }
+      .cta-bar { padding: 48px 24px; }
+      footer { padding: 20px 24px; }
+    }
+
+    /* PRINT */
+    @media print {
+      .topbar, .print-btn, .cta-bar { display: none !important; }
+      #cv-header { padding: 40px 40px 32px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cv-section { padding: 28px 40px; }
+      .metrics-wrap { padding: 0 40px; }
+      .metrics-inner { padding: 28px 0; }
+      .dark, .metric { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .strength-item, .exp-role, .cert-item { break-inside: avoid; }
+      footer { display: block !important; padding: 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="https://annafarmanberg.com" class="logo">Anna Farman Berg</a>
+  <div class="topbar-right">
+    <a href="https://annafarmanberg.com" class="back-link">← Website</a>
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div id="cv-header">
+  <p class="cv-eyebrow">Curriculum Vitae</p>
+  <h1 class="cv-name">Anna Farman Berg</h1>
+  <p class="cv-title">Customer Success & Enablement Leader · Turning Complex Products into Real Customer Value · AI-Driven Efficiency</p>
+  <div class="cv-contacts">
+    <a href="https://www.linkedin.com/in/anna-farman-berg/" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      linkedin.com/in/anna-farman-berg
+    </a>
+    <a href="mailto:anna.farmanberg@icloud.com">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      anna.farmanberg@icloud.com
+    </a>
+    <a href="https://annafarmanberg.com" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      annafarmanberg.com
+    </a>
+  </div>
+</div>
+
+<!-- METRICS -->
+<div class="metrics-wrap">
+  <div class="metrics-inner">
+    <div class="metrics-bar">
+      <div class="metric">
+        <span class="metric-number">30+</span>
+        <span class="metric-label">Years across travel, tech & SaaS</span>
+      </div>
+      <div class="metric">
+        <span class="metric-number">+33%</span>
+        <span class="metric-label">Above commercial targets in 2025</span>
+      </div>
+      <div class="metric">
+        <span class="metric-number">103.5%</span>
+        <span class="metric-label">Net retention - 3.5 pts above target</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="cv-section alt">
+  <div class="cv-section-inner">
+    <p class="section-label">Profile</p>
+    <h2 class="section-title">Professional Summary</h2>
+    <div class="summary-grid">
+      <div class="summary-text">
+        <p><strong>Customer success leader with a calm, collaborative style and a strong ability to build long-term partnerships in complex B2B environments - and to translate advanced technical products into clear customer value.</strong></p>
+        <p>I lead teams with direction, trust and hands-on leadership, ensuring customers realise value in production and continue to grow with the product. I bring structure, simplicity and practical frameworks to organisations in expansion, and use AI as a natural part of creating smarter, more scalable ways of working.</p>
+        <p>Curiosity is my inner drive. I'm always exploring how ideas, behaviours and systems connect to create real impact - for customers, teams and organisations.</p>
+      </div>
+      <div>
+        <p class="summary-quote">"I help organisations turn complexity into momentum - and adoption into lasting impact."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STRENGTHS -->
+<div class="cv-section">
+  <div class="cv-section-inner">
+    <p class="section-label">Core Strengths</p>
+    <h2 class="section-title">What I bring</h2>
+    <div class="strengths-list">
+      <div class="strength-item">
+        <div class="strength-dot"></div>
+        <div>
+          <h3>Leadership through direction and collaboration</h3>
+          <p>Known for creating structure in complexity, setting a clear path forward and enabling teams and customers to move with confidence.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-dot"></div>
+        <div>
+          <h3>Trusted relationship builder</h3>
+          <p>Known for creating strong long-term partnerships through calm presence, deep listening and an ability to navigate complex stakeholder environments with ease.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-dot"></div>
+        <div>
+          <h3>Advisory communicator</h3>
+          <p>Translates technical and commercial perspectives into actionable decisions that reduce friction and accelerate alignment.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-dot"></div>
+        <div>
+          <h3>Collaborative force multiplier</h3>
+          <p>Strengthens culture, elevates others and creates momentum by fostering openness, shared ownership and psychological safety.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-dot"></div>
+        <div>
+          <h3>Fast learner with high adaptability</h3>
+          <p>Comfortable in evolving environments, learns new domains quickly and continuously improves ways of working. Uses AI as an amplifier and thinking partner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="cv-section alt">
+  <div class="cv-section-inner">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Career History</h2>
+
+    <div class="exp-block">
+      <p class="exp-company">Amadeus - Global Tech & SaaS</p>
+      <p class="exp-period">2003 – 2026</p>
+      <div class="exp-roles">
+        <div class="exp-role">
+          <h3>Customer Success Manager</h3>
+          <p class="role-sub">Building long-term customer value across EMEA · 2023 – 2026</p>
+          <ul>
+            <li>Managed and grew relationships with EMEA customers - focus on commercial value, long-term retention and senior stakeholder alignment.</li>
+            <li>Identified and executed upsell and cross-sell opportunities by matching customer needs with high-value product capabilities - <span class="hl">exceeding commercial targets by 33% in 2025</span> and achieving <span class="hl">103.5% net retention</span>, 3.5 points above target.</li>
+            <li>Initiated and led a 1.5-year evaluation and procurement of an AI-powered translation platform - closing language gaps across EMEA and improving engagement in customer sessions and webinars.</li>
+            <li>Partnered with Product, Marketing and Operations to drive improvements that <span class="hl">reduced Time to First Value from ~8 weeks to ~5 weeks</span>.</li>
+            <li>Analysed customer performance data to identify risks, forecast revenue and guide account growth - insights shared with Account Managers across multiple markets.</li>
+          </ul>
+        </div>
+        <div class="exp-role">
+          <h3>Account Manager <span style="font-weight:400; color:#888;">(various roles)</span></h3>
+          <p class="role-sub">Building relationships and driving adoption and growth · 2003 – 2022</p>
+          <ul>
+            <li>Managed a broad portfolio of SME and enterprise customers across Scandinavia - renewals, commercial alignment and long-term value across diverse business models.</li>
+            <li>Led training outsourcing for Travel Schools with Learning Services - <span class="hl">creating a scalable model later adopted in additional markets</span>.</li>
+            <li>Drove adoption and growth across multiple product areas by deeply understanding customer needs, usage patterns and operational workflows.</li>
+            <li>Collaborated with Amadeus Payments and cross-functional teams on commercial discussions, issue resolution and process improvement.</li>
+            <li>Managed a major partner network - ensuring uptime, stability and seamless delivery across offices, including new setups, mergers and system configuration.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-block">
+      <p class="exp-company">Various Travel Agencies</p>
+      <p class="exp-period">1994 – 2003 · 9 years</p>
+      <div class="exp-roles">
+        <div class="exp-role">
+          <h3>Travel Consultant</h3>
+          <p class="role-sub">Where it all started</p>
+          <ul>
+            <li>Built the foundation for relationship-driven and operational strengths through customer service, sales, advisory and issue resolution in fast-paced environments.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW I WORK IN PRACTICE -->
+<div class="cv-section">
+  <div class="cv-section-inner">
+    <p class="section-label">In practice</p>
+    <h2 class="section-title">How I work</h2>
+    <div style="max-width: 760px; background: var(--soft-white); border: 1px solid var(--calm-grey); border-radius: 12px; padding: 36px 40px;">
+      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--deep-navy); margin-bottom: 16px;">Building this website - a real example</h3>
+      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+        <li style="font-size: 0.88rem; line-height: 1.7; color: #444; padding-left: 16px; position: relative;"><span style="position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--signature); display:block;"></span><strong style="color:var(--deep-navy);">Challenge -</strong> Needed a professional online presence that reflected my personal brand - without a template, without an agency.</li>
+        <li style="font-size: 0.88rem; line-height: 1.7; color: #444; padding-left: 16px; position: relative;"><span style="position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--signature); display:block;"></span><strong style="color:var(--deep-navy);">Approach -</strong> Treated it as a design challenge. Started with a "less is more" MVP in HTML, iterated on layout and content, and gathered feedback from a few trusted people.</li>
+        <li style="font-size: 0.88rem; line-height: 1.7; color: #444; padding-left: 16px; position: relative;"><span style="position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--signature); display:block;"></span><strong style="color:var(--deep-navy);">Result -</strong> A live, clean and functional site at <a href="https://annafarmanberg.com" target="_blank" style="color:var(--signature); font-weight:600;">annafarmanberg.com</a> - built from scratch, continuously improved.</li>
+        <li style="font-size: 0.88rem; line-height: 1.7; color: #444; padding-left: 16px; position: relative;"><span style="position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--signature); display:block;"></span><strong style="color:var(--deep-navy);">Impact -</strong> Reflects exactly how I approach any project - start small, learn fast, improve continuously, and ask for constructive feedback.</li>
+      </ul>
+      <p style="font-size: 0.82rem; color: #888; margin-top: 20px; font-style: italic;">More examples available on request - reach out via the links below.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<div class="cv-section dark">
+  <div class="cv-section-inner">
+    <p class="section-label">What I stand for</p>
+    <h2 class="section-title">Core Values</h2>
+
+    <!-- THREE CORE VALUES -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 56px;">
+
+      <div style="padding: 32px 28px; border: 1px solid rgba(182,195,213,0.35); border-radius: 10px; background: rgba(255,255,255,0.04);">
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: #fff; margin-bottom: 12px;">Curiosity</div>
+        <p style="font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.72);">My inner drive. I explore how ideas, behaviours and systems connect - and I never stop asking why. It's how I learn, lead and create real impact.</p>
+      </div>
+
+      <div style="padding: 32px 28px; border: 1px solid rgba(182,195,213,0.35); border-radius: 10px; background: rgba(255,255,255,0.04);">
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: #fff; margin-bottom: 12px;">Accountability</div>
+        <p style="font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.72);">I own my results - the good and the challenging. No excuses, no shortcuts. People know they can rely on me to follow through.</p>
+      </div>
+
+      <div style="padding: 32px 28px; border: 1px solid rgba(182,195,213,0.35); border-radius: 10px; background: rgba(255,255,255,0.04);">
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: #fff; margin-bottom: 12px;">Honesty & Integrity</div>
+        <p style="font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.72);">I stick to the truth - always. I don't oversell or overpromise. What you see is what you get, and that's the foundation of every relationship I build.</p>
+      </div>
+
+    </div>
+
+    <!-- WAYS OF WORKING -->
+    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 16px;">Ways of working</p>
+    <div class="values-grid">
+      <div class="value-pill"><h4>Communication</h4><p>Clear, warm and intentional - always professional and respectful.</p></div>
+      <div class="value-pill"><h4>Collaboration</h4><p>Connecting people and dots. Keeping goals in focus across teams.</p></div>
+      <div class="value-pill"><h4>Design Thinking</h4><p>Iterative. From idea to prototype to refinement. Simplifying complexity.</p></div>
+      <div class="value-pill"><h4>Embrace Change</h4><p>Adaptability keeps me on course when things shift.</p></div>
+      <div class="value-pill"><h4>Growth Mindset</h4><p>Learning agility and resilience. Effort and grit take you further than talent alone.</p></div>
+      <div class="value-pill"><h4>Technology & AI</h4><p>Genuine passion. Early adopter. I learn by doing.</p></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EDU / TOOLS / LANGUAGES / VOLUNTEERING -->
+<div class="cv-section">
+  <div class="cv-section-inner">
+    <div class="bottom-grid">
+
+      <div>
+        <p class="section-label">Education & Learning</p>
+        <h2 class="section-title" style="margin-bottom: 24px;">Continuous development</h2>
+
+        <p class="subsection-title">Certifications</p>
+        <div class="cert-item">
+          <div class="cert-badge"></div>
+          <div><strong>Customer Success Advanced</strong><span>McKinsey & Company · 2024</span></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge"></div>
+          <div><strong>Customer Success Foundation</strong><span>McKinsey & Company · 2023</span></div>
+        </div>
+
+        <p class="subsection-title">Courses</p>
+        <div class="edu-list">
+          <div class="edu-item"><strong>AI Crash Course</strong><span>Women in AI & AI Sweden · 2021</span></div>
+          <div class="edu-item"><strong>CS50: Introduction to Computer Science</strong><span>Harvard / edX · 2020–2021</span></div>
+          <div class="edu-item"><strong>Content Marketing</strong><span>IHM Business School · 2020</span></div>
+          <div class="edu-item"><strong>Innovation with Design Thinking</strong><span>Folkuniversitetet · 2018</span></div>
+          <div class="edu-item"><strong>DIHM Marketing</strong><span>IHM Business School · 2002–2004</span></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Tools, Languages & Volunteering</p>
+        <h2 class="section-title" style="margin-bottom: 24px;">Beyond the role</h2>
+
+        <p class="subsection-title">Tools</p>
+        <div class="tools-wrap">
+          <span class="tool-tag">Salesforce</span>
+          <span class="tool-tag">Seismic</span>
+          <span class="tool-tag">Qlik</span>
+          <span class="tool-tag">Medallia</span>
+          <span class="tool-tag">Notion</span>
+          <span class="tool-tag">Generative AI (Copilot, Claude, ChatGPT, Gemini, NotebookLM, Perplexity)</span>
+        </div>
+
+        <p class="subsection-title">Languages</p>
+        <div class="lang-list">
+          <div class="lang-item"><span class="lang-name">Swedish</span><span class="lang-level">Native</span></div>
+          <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+          <div class="lang-item"><span class="lang-name">Norwegian</span><span class="lang-level">Good understanding</span></div>
+          <div class="lang-item"><span class="lang-name">Danish</span><span class="lang-level">Basic</span></div>
+        </div>
+
+        <p class="subsection-title">Volunteering</p>
+        <div class="vol-item">
+          <strong>Mentor - Amadeus Rethink Travel Mentorship Program</strong>
+          <span>Jan – Mar 2021</span>
+        </div>
+        <div class="vol-item">
+          <strong>Board Member, Vice Chairman & Webmaster</strong>
+          <span>Save the Children Täby · 10+ years</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-bar">
+  <p>Curious to explore further? Let's talk.</p>
+  <div class="cta-links">
+    <a href="https://www.linkedin.com/in/anna-farman-berg/" target="_blank" class="btn-primary">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      Connect on LinkedIn
+    </a>
+    <a href="mailto:anna.farmanberg@icloud.com" class="btn-secondary">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Send an email
+    </a>
+    <a href="https://annafarmanberg.com" class="btn-secondary">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      Full website
+    </a>
+  </div>
+</div>
+
+<footer>© 2026 Anna Farman Berg · Lead with curiosity. · annafarmanberg.com/cv</footer>
+
+</body>
+</html>
