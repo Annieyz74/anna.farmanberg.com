@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>The Road &mdash; Thoughts &amp; Reflections &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#07111F; color:rgba(255,255,255,0.8); font-family:'Montserrat',sans-serif; min-height:100vh; }
+
+    /* BREADCRUMB */
+    .world-nav { padding:1.75rem 2rem 0; max-width:860px; margin:0 auto; display:flex; align-items:center; gap:10px; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); flex-wrap:wrap; }
+    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .world-nav a:hover { color:rgba(255,255,255,0.65); }
+    .world-nav .sep { color:rgba(255,255,255,0.12); }
+    .world-nav .current { color:#3888F0; }
+
+    /* WORLD HEADER */
+    .world-header { max-width:860px; margin:0 auto; padding:2.5rem 2rem 0; }
+    .world-icon { width:54px; height:54px; border-radius:50%; background:rgba(56,136,240,0.1); border:1.5px solid rgba(56,136,240,0.35); display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; }
+    .world-name { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,5vw,2.8rem); font-weight:400; color:#3888F0; line-height:1.1; margin-bottom:0.75rem; }
+    .world-tagline { font-size:0.875rem; color:rgba(255,255,255,0.45); font-style:italic; line-height:1.65; }
+
+    /* DIVIDER */
+    .world-divider { max-width:860px; margin:2rem auto 0; padding:0 2rem; }
+    .world-divider hr { border:none; border-top:0.5px solid rgba(255,255,255,0.06); }
+
+    /* POST LISTING */
+    .post-listing { max-width:860px; margin:0 auto; padding:2.5rem 2rem; }
+
+    /* POST CARD */
+    .post-card { border:0.5px solid rgba(255,255,255,0.07); border-radius:8px; padding:1.75rem; margin-bottom:1.25rem; transition:border-color 0.2s, background 0.2s; cursor:pointer; }
+    .post-card:hover { border-color:rgba(56,136,240,0.3); background:rgba(56,136,240,0.04); }
+    .post-title { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:500; color:#3888F0; margin-bottom:0.6rem; line-height:1.35; }
+    .post-excerpt { font-size:0.82rem; color:rgba(255,255,255,0.48); line-height:1.75; margin-bottom:1rem; }
+    .post-meta { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .post-pillar { font-size:8px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:0.5px solid; }
+    .pillar-leadership { color:#7B4DB8; border-color:rgba(90,42,131,0.4); }
+    .pillar-career { color:#007F6F; border-color:rgba(0,127,111,0.4); }
+    .pillar-ai { color:#1A6A8A; border-color:rgba(26,106,138,0.4); }
+    .post-readmore { font-size:0.72rem; text-decoration:none; display:inline-block; letter-spacing:0.07em; color:rgba(56,136,240,0.75); text-decoration:none; text-transform:uppercase; background:none; border:none; padding:0; cursor:pointer; transition:color 0.2s; font-family:'Montserrat',sans-serif; }
+    .post-readmore:hover { color:#3888F0; }
+
+    /* EMPTY STATE */
+    .empty-state { text-align:center; padding:4rem 2rem; }
+    .empty-icon { width:60px; height:60px; border-radius:50%; background:rgba(56,136,240,0.08); border:1px solid rgba(56,136,240,0.22); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; }
+    .empty-heading { font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:rgba(255,255,255,0.55); margin-bottom:1rem; }
+    .empty-body { font-size:0.8rem; color:rgba(255,255,255,0.32); line-height:1.85; max-width:360px; margin:0 auto; }
+    .empty-body strong { color:rgba(255,255,255,0.52); font-weight:500; }
+
+    /* ARTICLE VIEW */
+    #view-article { max-width:700px; margin:0 auto; padding:2.5rem 2rem 4rem; }
+    .article-pillar-bar { padding:0; margin-bottom:1.25rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; color:#3888F0; line-height:1.2; margin-bottom:0.75rem; }
+    .article-date { font-size:0.7rem; letter-spacing:0.1em; color:rgba(255,255,255,0.28); text-transform:uppercase; margin-bottom:2rem; }
+    .article-divider { border:none; border-top:0.5px solid rgba(255,255,255,0.06); margin:1.5rem 0; }
+    .article-body { font-size:0.9rem; line-height:1.95; color:rgba(255,255,255,0.68); }
+    .article-body p { margin-bottom:1.3rem; }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.15rem; color:#3888F0; margin:2rem 0 0.75rem; }
+    .article-nav { display:flex; gap:1.5rem; margin-top:3rem; padding-top:1.5rem; border-top:0.5px solid rgba(255,255,255,0.06); flex-wrap:wrap; }
+    .article-nav a { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.2s; }
+    .article-nav a:hover { color:rgba(255,255,255,0.65); }
+    .article-nav a.primary { color:rgba(56,136,240,0.75); }
+    .article-nav a.primary:hover { color:#3888F0; }
+
+    /* BACK LINK */
+    .back-link { display:block; max-width:860px; margin:0 auto; padding:0 2rem 3rem; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .back-link:hover { color:rgba(255,255,255,0.6); }
+
+    /* FOOTER */
+    footer { border-top:0.5px solid rgba(255,255,255,0.05); padding:1.5rem 2rem; text-align:center; font-size:0.65rem; color:rgba(255,255,255,0.18); letter-spacing:0.05em; }
+    footer a { color:inherit; text-decoration:none; }
+
+    /* RESPONSIVE */
+    @media (max-width:600px) {
+      .world-header { padding:2rem 1.25rem 0; }
+      .post-listing { padding:2rem 1.25rem; }
+      #view-article { padding:2rem 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LISTING VIEW -->
+<div id="view-listing">
+
+  <nav class="world-nav" aria-label="Breadcrumb">
+    <a href="index.html">Anna Farman Berg</a>
+    <span class="sep">&#8250;</span>
+    <a href="index.html#thoughts">Thoughts &amp; Reflections</a>
+    <span class="sep">&#8250;</span>
+    <span class="current">The Road</span>
+  </nav>
+
+  <header class="world-header">
+    <div class="world-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#3888F0" stroke-width="1.2" stroke-linecap="round"><path d="M3 15 Q10 6 19 12"/><polyline points="16.5,9.5 19,12 16.5,14.5"/></svg></div>
+    <h1 class="world-name">The Road</h1>
+    <p class="world-tagline">Insights on direction, momentum, and courage.</p>
+  </header>
+
+  <div class="world-divider"><hr /></div>
+
+  <main class="post-listing" id="postListing" aria-live="polite"></main>
+
+  <a href="index.html#thoughts" class="back-link">&#8592; Thoughts &amp; Reflections</a>
+
+</div>
+
+<!-- ARTICLE VIEW -->
+<div id="view-article" style="display:none;" aria-live="polite">
+  <nav class="world-nav" aria-label="Breadcrumb" id="articleBreadcrumb">
+    <a href="index.html">Anna Farman Berg</a>
+    <span class="sep">&#8250;</span>
+    <a href="index.html#thoughts">Thoughts &amp; Reflections</a>
+    <span class="sep">&#8250;</span>
+    <a href="the-road.html">The Road</a>
+    <span class="sep">&#8250;</span>
+    <span class="current" id="articleBreadcrumbTitle"></span>
+  </nav>
+  <div id="articleContent"></div>
+  <a href="index.html#thoughts" class="back-link">&#8592; Thoughts &amp; Reflections</a>
+</div>
+
+<footer>
+  &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+  <a href="index.html">annafarmanberg.com</a>
+</footer>
+
+<script>
+const WORLD = {
+  name: "The Road",
+  color: "#3888F0",
+  emptyTheme: "direction, momentum, and courage",
+  emptyQuestion: "What journey or move would you like to read about here?"
+};
+
+const PILLARS = {
+  leadership: { label: "Leadership & Transformation", cls: "pillar-leadership" },
+  career:     { label: "Career & Learning",           cls: "pillar-career"     },
+  ai:         { label: "AI & Tech",                   cls: "pillar-ai"         }
+};
+
+/* ── ADD POSTS HERE ──────────────────────────────────────
+   {
+     slug:    "my-post-slug",
+     title:   "Post Title",
+     date:    "2026-05-01",
+     pillar:  "career",
+     excerpt: "A short excerpt of 1-3 lines...",
+     body:    "<p>Full article in HTML...</p>"
+   }
+   ─────────────────────────────────────────────────────── */
+const POSTS = [
+  /* posts go here */
+];
+
+function buildEmptyState() {
+  return (
+    '<div class="empty-state">' +
+    '  <div class="empty-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#3888F0" stroke-width="1.2" stroke-linecap="round"><path d="M3 15 Q10 6 19 12"/><polyline points="16.5,9.5 19,12 16.5,14.5"/></svg></div>' +
+    '  <p class="empty-heading">No articles here yet &mdash; but they&#39;re on the way.</p>' +
+    '  <p class="empty-body">This world focuses on <strong>' + WORLD.emptyTheme + '</strong>.<br><br>' +
+           WORLD.emptyQuestion + '<br><br>Feel free to suggest a topic.</p>' +
+    '</div>'
+  );
+}
+
+function renderListing() {
+  var el = document.getElementById("postListing");
+  if (!POSTS.length) {
+    el.innerHTML = buildEmptyState();
+    return;
+  }
+  var html = "";
+  POSTS.forEach(function(p) {
+    var pillar = PILLARS[p.pillar] || PILLARS.career;
+    var href = p.file;
+    html +=
+      '<article class="post-card" onclick="location.href=\'' + href + '\'">' +
+      '  <h2 class="post-title">' + p.title + '</h2>' +
+      '  <p class="post-excerpt">' + p.excerpt + '</p>' +
+      '  <div class="post-meta">' +
+      '    <span class="post-pillar ' + pillar.cls + '">' + pillar.label + '</span>' +
+      '    <a class="post-readmore" href="' + href + '">Read more &rarr;</a>' +
+      '  </div>' +
+      '</article>';
+  });
+  el.innerHTML = html;
+}
+
+
+renderListing();
+
+</script>
+</body>
+</html>
