@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit Section — Thoughts & Reflections</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a1628; font-family: 'Montserrat', sans-serif; }
+
+    /* ── ORBIT SECTION ──────────────────────────────────── */
+    .orbit-section {
+      background: #07111F;
+      padding: 4rem 1.5rem 3rem;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .orbit-label {
+      display: block;
+      text-align: center;
+      font-size: 0.625rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 0.5rem;
+    }
+    .orbit-subtitle {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0;
+    }
+
+    /* ── ORBIT VIEWPORT (desktop) ───────────────────────── */
+    .orbit-viewport {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      height: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── SVG RINGS ──────────────────────────────────────── */
+    .orbit-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    /* ── CENTER HUB ─────────────────────────────────────── */
+    .orbit-hub {
+      position: absolute;
+      left: 50%; top: 250px;
+      transform: translate(-50%, -50%);
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 10;
+    }
+    .orbit-hub-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .orbit-hub-text {
+      font-size: 7.5px;
+      color: rgba(255,255,255,0.32);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    /* ── SATELLITES (desktop) ───────────────────────────── */
+    .satellite {
+      position: absolute;
+      text-decoration: none;
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      transform: translate(-50%, -50%);
+      transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
+                  background 0.28s ease,
+                  border-color 0.28s ease;
+    }
+    .satellite:hover,
+    .satellite:focus {
+      transform: translate(-50%, -50%) scale(1.13);
+      outline: none;
+    }
+    .satellite-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .satellite-name {
+      font-size: 7px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-top: 5px;
+      text-align: center;
+      line-height: 1.35;
+      padding: 0 4px;
+    }
+
+    /* ── DESCRIPTION (desktop hover state) ─────────────── */
+    .orbit-desc {
+      text-align: center;
+      padding: 0 3rem;
+      min-height: 46px;
+      margin-top: -0.25rem;
+    }
+    .orbit-desc p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.38);
+      font-style: italic;
+      line-height: 1.65;
+      transition: color 0.25s ease;
+    }
+
+    /* ── PILLAR TAGS ────────────────────────────────────── */
+    .orbit-tags {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      padding: 0 1.5rem;
+    }
+    /* ── PILLAR TAGS ────────────────────────────────────── */
+    .orbit-tag {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.26);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: default;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      transition: color 150ms ease, border-color 150ms ease;
+    }
+
+    /* Underline drawn via ::after pseudo-element */
+    .orbit-tag::after {
+      content: '';
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 4px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .orbit-tag:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+    .orbit-tag:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* Per-pillar underline colors */
+    .pillar-leadership { --pillar-color: #5A2A83; }
+    .pillar-career     { --pillar-color: #007F6F; }
+    .pillar-ai         { --pillar-color: #0A4C5A; }
+
+    .pillar-leadership::after { background: #5A2A83; }
+    .pillar-career::after     { background: #007F6F; }
+    .pillar-ai::after         { background: #0A4C5A; }
+
+    /* ── MOBILE LAYOUT (<640px) ─────────────────────────── */
+    @media (max-width: 639px) {
+
+      /* Switch viewport to a 2-column card grid */
+      .orbit-viewport {
+        height: auto !important;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        padding: 2rem 0;
+        max-width: 400px;
+      }
+
+      /* Hide desktop-only elements */
+      .orbit-svg,
+      .orbit-hub,
+      .orbit-desc { display: none !important; }
+
+      /* Reflow satellites as cards */
+      .satellite {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 12px !important;
+        padding: 1.25rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        cursor: default;
+      }
+      .satellite:hover,
+      .satellite:focus {
+        transform: none !important;
+      }
+
+      /* Last satellite spans full width if it's the 5th (odd) */
+      .satellite:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 180px;
+        justify-self: center;
+        align-items: center;
+      }
+
+      .satellite-name {
+        font-size: 8px;
+        margin-top: 10px;
+        text-align: left;
+        padding: 0;
+      }
+      .satellite:last-child:nth-child(odd) .satellite-name {
+        text-align: center;
+      }
+
+      /* Show description on mobile (always visible since no hover) */
+      .satellite-mobile-desc {
+        display: block !important;
+        font-size: 10.5px;
+        color: rgba(255,255,255,0.45);
+        font-style: italic;
+        line-height: 1.55;
+        margin-top: 8px;
+      }
+    }
+
+    /* ── Hide mobile descriptions on desktop ────────────── */
+    .satellite-mobile-desc { display: none; }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     ORBIT SECTION — Thoughts & Reflections
+     Five thematic satellites around a central hub.
+     Desktop: interactive orbit layout with hover states.
+     Mobile: 2-column card grid with visible descriptions.
+     ══════════════════════════════════════════════════════ -->
+
+<section id="thoughts" class="orbit-section" aria-label="Thoughts and Reflections blog categories">
+
+  <!-- Section header -->
+  <span class="orbit-label">Thoughts &amp; Reflections</span>
+  <p class="orbit-subtitle">Five worlds. One orbit.</p>
+
+  <!-- ── ORBIT VIEWPORT ──────────────────────────────────
+       Desktop: position:relative, fixed height, absolute children
+       Mobile: CSS grid of cards (see media query above)
+       ────────────────────────────────────────────────── -->
+  <div class="orbit-viewport" id="orbitViewport">
+
+    <!-- SVG: rings and dashed connector lines (desktop only) -->
+    <svg class="orbit-svg" viewBox="0 0 680 500" aria-hidden="true">
+
+      <!-- Outer decorative ring — slow clockwise rotation -->
+      <circle cx="340" cy="250" r="200"
+        fill="none"
+        stroke="rgba(255,255,255,0.025)"
+        stroke-width="0.5"
+        stroke-dasharray="2 9">
+        <animateTransform attributeName="transform" type="rotate"
+          from="0 340 250" to="360 340 250"
+          dur="90s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Main orbit ring -->
+      <circle cx="340" cy="250" r="155"
+        fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+
+      <!-- Inner ring around center hub -->
+      <circle cx="340" cy="250" r="52"
+        fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+      <!-- Dashed connector lines: center → each satellite -->
+      <!-- Practice Range (Ice Silver) -->
+      <line x1="340" y1="250" x2="340" y2="95"
+        stroke="#B8C4CC" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
+      <!-- Mountain View (Dark Amethyst) -->
+      <line x1="340" y1="250" x2="487" y2="202"
+        stroke="#9B6ED8" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
+      <!-- The Road (Electric Blue) -->
+      <line x1="340" y1="250" x2="431" y2="375"
+        stroke="#3888F0" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
+      <!-- Creative Lab (True Winter Pink) -->
+      <line x1="340" y1="250" x2="249" y2="375"
+        stroke="#D8307A" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
+      <!-- Growth House (Sapphire) -->
+      <line x1="340" y1="250" x2="193" y2="202"
+        stroke="#2C62D0" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
+
+    </svg>
+
+    <!-- Center hub (desktop only) -->
+    <div class="orbit-hub" aria-hidden="true">
+      <div class="orbit-hub-dot"></div>
+      <span class="orbit-hub-text">Thoughts<br>&amp; Reflections</span>
+    </div>
+
+    <!-- ── SATELLITE 1: Practice Range ──────────────────
+         Color: Ice Silver (#B8C4CC)
+         Icon: Precision Circle — thin circle + centered dot
+         Position: top center (0° / 12 o'clock)
+         ────────────────────────────────────────────── -->
+    <a class="satellite" href="practice-range.html"
+         style="left:340px; top:95px;
+                background:rgba(184,196,204,0.08);
+                border:1.5px solid rgba(184,196,204,0.55);"
+         data-color="#B8C4CC" data-r="184" data-g="196" data-b="204"
+         data-hover="Reflections on learning, repetition, and mastery."
+         tabindex="0"
+         aria-label="Practice Range — Reflections on learning, repetition, and mastery.">
+      <div class="satellite-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+             stroke="#B8C4CC" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8.5"/>
+          <circle cx="11" cy="11" r="2" fill="#B8C4CC" stroke="none"/>
+        </svg>
+      </div>
+      <span class="satellite-name" style="color:rgba(184,196,204,0.65);">Practice<br>Range</span>
+      <span class="satellite-mobile-desc">Reflections on learning, repetition, and mastery.</span>
+    </a>
+
+    <!-- ── SATELLITE 2: Mountain View ───────────────────
+         Color: Dark Amethyst (#9B6ED8)
+         Icon: Strategic Peak — stylized triangle
+         Position: top right (72°)
+         ────────────────────────────────────────────── -->
+    <a class="satellite" href="mountain-view.html"
+         style="left:487px; top:202px;
+                background:rgba(155,110,216,0.08);
+                border:1.5px solid rgba(155,110,216,0.55);"
+         data-color="#9B6ED8" data-r="155" data-g="110" data-b="216"
+         data-hover="Reflections on perspective, strategy and the vantage point."
+         tabindex="0"
+         aria-label="Mountain View — Thoughts on perspective, strategy, and vantage point.">
+      <div class="satellite-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+             stroke="#9B6ED8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="3,18.5 11,5 19,18.5"/>
+          <line x1="6.5" y1="14" x2="15.5" y2="14" stroke-opacity="0.45" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <span class="satellite-name" style="color:rgba(155,110,216,0.65);">Mountain<br>View</span>
+      <span class="satellite-mobile-desc">Thoughts on perspective, strategy, and vantage point.</span>
+    </a>
+
+    <!-- ── SATELLITE 3: The Road ─────────────────────────
+         Color: Electric Blue (#3888F0)
+         Icon: Flow Line — thin curved forward line + arrow
+         Position: bottom right (144°)
+         ────────────────────────────────────────────── -->
+    <a class="satellite" href="the-road.html"
+         style="left:431px; top:375px;
+                background:rgba(56,136,240,0.08);
+                border:1.5px solid rgba(56,136,240,0.55);"
+         data-color="#3888F0" data-r="56" data-g="136" data-b="240"
+         data-hover="Insights on direction, momentum, and courage."
+         tabindex="0"
+         aria-label="The Road — Insights on direction, momentum, and courage.">
+      <div class="satellite-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+             stroke="#3888F0" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 15 Q10 6 19 12"/>
+          <polyline points="16.5,9.5 19,12 16.5,14.5"/>
+        </svg>
+      </div>
+      <span class="satellite-name" style="color:rgba(56,136,240,0.65);">The<br>Road</span>
+      <span class="satellite-mobile-desc">Insights on direction, momentum, and courage.</span>
+    </a>
+
+    <!-- ── SATELLITE 4: Creative Lab ─────────────────────
+         Color: True Winter Pink (#D8307A)
+         Icon: Spark — 8-ray star flare + center circle
+         Position: bottom left (216°)
+         ────────────────────────────────────────────── -->
+    <a class="satellite" href="creative-lab.html"
+         style="left:249px; top:375px;
+                background:rgba(216,48,122,0.08);
+                border:1.5px solid rgba(216,48,122,0.55);"
+         data-color="#D8307A" data-r="216" data-g="48" data-b="122"
+         data-hover="Ideas, concepts, and creative thinking."
+         tabindex="0"
+         aria-label="Creative Lab — Ideas, concepts, and creative thinking.">
+      <div class="satellite-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+             stroke="#D8307A" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+          <line x1="11" y1="2.5" x2="11" y2="5.5"/>
+          <line x1="11" y1="16.5" x2="11" y2="19.5"/>
+          <line x1="2.5" y1="11" x2="5.5" y2="11"/>
+          <line x1="16.5" y1="11" x2="19.5" y2="11"/>
+          <line x1="5.2" y1="5.2" x2="7.1" y2="7.1"/>
+          <line x1="14.9" y1="14.9" x2="16.8" y2="16.8"/>
+          <line x1="16.8" y1="5.2" x2="14.9" y2="7.1"/>
+          <line x1="7.1" y1="14.9" x2="5.2" y2="16.8"/>
+          <circle cx="11" cy="11" r="2.8"/>
+        </svg>
+      </div>
+      <span class="satellite-name" style="color:rgba(216,48,122,0.65);">Creative<br>Lab</span>
+      <span class="satellite-mobile-desc">Ideas, concepts, and creative thinking.</span>
+    </a>
+
+    <!-- ── SATELLITE 5: Growth House ─────────────────────
+         Color: Sapphire (#2C62D0)
+         Icon: Structure Home — square body + triangular roof
+         Position: top left (288°)
+         ────────────────────────────────────────────── -->
+    <a class="satellite" href="growth-house.html"
+         style="left:193px; top:202px;
+                background:rgba(44,98,208,0.08);
+                border:1.5px solid rgba(44,98,208,0.55);"
+         data-color="#2C62D0" data-r="44" data-g="98" data-b="208"
+         data-hover="Perspectives on structure, systems, and sustainable development."
+         tabindex="0"
+         aria-label="Growth House — Perspectives on structure, systems, and sustainable development.">
+      <div class="satellite-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+             stroke="#2C62D0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="5" y="11" width="12" height="9"/>
+          <polyline points="2,12 11,3.5 20,12"/>
+        </svg>
+      </div>
+      <span class="satellite-name" style="color:rgba(44,98,208,0.65);">Growth<br>House</span>
+      <span class="satellite-mobile-desc">Perspectives on structure, systems, and sustainable development.</span>
+    </a>
+
+  </div><!-- /orbit-viewport -->
+
+  <!-- Hover description (desktop only — updated by JS) -->
+  <div class="orbit-desc" aria-live="polite">
+    <p id="orbitDescText">Hover over a satellite to explore.</p>
+  </div>
+
+  <!-- Pillar tags -->
+  <div class="orbit-tags">
+    <span class="orbit-tag pillar-leadership">Leadership &amp; Transformation</span>
+    <span class="orbit-tag pillar-career">Career &amp; Learning</span>
+    <span class="orbit-tag pillar-ai">AI &amp; Tech</span>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT — Satellite hover + keyboard interaction
+     ══════════════════════════════════════════════════════ -->
+<script>
+(function () {
+
+  var satellites = document.querySelectorAll('.satellite');
+  var descEl = document.getElementById('orbitDescText');
+  var defaultDesc = 'Hover over a satellite to explore.';
+  var defaultColor = 'rgba(255,255,255,0.38)';
+
+  satellites.forEach(function (sat) {
+    var r = sat.dataset.r;
+    var g = sat.dataset.g;
+    var b = sat.dataset.b;
+    var color = sat.dataset.color;
+    var hoverText = sat.dataset.hover;
+
+    function activate() {
+      sat.style.borderColor = color;
+      sat.style.background = 'rgba(' + r + ',' + g + ',' + b + ',0.22)';
+      if (descEl) {
+        descEl.textContent = hoverText;
+        descEl.style.color = color;
+      }
+    }
+
+    function deactivate() {
+      sat.style.borderColor = 'rgba(' + r + ',' + g + ',' + b + ',0.55)';
+      sat.style.background = 'rgba(' + r + ',' + g + ',' + b + ',0.08)';
+      if (descEl) {
+        descEl.textContent = defaultDesc;
+        descEl.style.color = defaultColor;
+      }
+    }
+
+    /* Mouse events */
+    sat.addEventListener('mouseenter', activate);
+    sat.addEventListener('mouseleave', deactivate);
+
+    /* Keyboard accessibility */
+    sat.addEventListener('focus', activate);
+    sat.addEventListener('blur', deactivate);
+    sat.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
+
+  });
+
+}());
+</script>
+
+</body>
+</html>
