@@ -41,7 +41,7 @@
       --glow:          rgba(255,255,255,0.25);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
 
     body {
       font-family: 'Lato', sans-serif;
@@ -915,7 +915,7 @@
   <p class="hero-eyebrow"><span translate="no">Anna Farman Berg</span></p>
   <h1 class="hero-name">Lead with curiosity.</h1>
   <p class="hero-tagline">Curious by nature. Relationship-driven. Focused on value realization.</p>
-  <p class="hero-sub">Senior customer-driven commercial professional with a passion for people, technology and meaningful change. I help organisations turn complexity into momentum — and adoption into lasting impact.</p>
+  <p class="hero-sub"><span translate="no">Senior Commercial &amp; Customer Success</span> professional with a passion for people, technology and meaningful change. I help organisations turn complexity into momentum — and adoption into lasting impact.</p>
   <a href="#about" class="hero-cta">Get to know me</a>
 </section>
 
@@ -924,10 +924,10 @@
   <p class="section-label">About</p>
   <h2 class="section-title">Who I am</h2>
   <div class="about-grid">
-                              <div class="about-text">
-        <p>I'm a senior <span translate="no">Customer Success</span> and commercial professional with roots in the travel industry and a deep curiosity for people, technology, and how organisations really work.</p>
+                                        <div class="about-text">
+        <p>I'm a <span translate="no">Senior Commercial &amp; Customer Success</span> professional shaped by years in the travel industry and by a deep curiosity for people, technology, and the way organizations move, adapt and grow.</p>
         <p>I believe the most meaningful work happens when strategy, people and data work together — making sense of information and turning insights into action.</p>
-        <p>I'm a lifelong learner. Micro&#8209;learning, self&#8209;leadership and curiosity shape how I grow and how I work.</p>
+        <p>I'm a lifelong learner. Self&#8209;leadership, curiosity and micro&#8209;learning shape how I grow and how I work.</p>
       </div>
     <div>
       <p class="about-quote">"You already have a personal brand. Everyone does. The question is — are you building it intentionally?"</p>
@@ -940,7 +940,7 @@
   <p class="section-label">What I bring</p>
   <h2 class="section-title">Professional strengths</h2>
   <p class="bring-intro" style="font-style: italic; color: var(--deep-navy); font-size: 1.1rem; margin-bottom: 16px;">Customers stay. Teams move forward. That's what I'm here for.</p>
-  <p class="bring-intro">A grounded blend of behavioural insight, commercial thinking and strategic relationship management. Built over 20+ years in complex and global environments.</p>
+  <p class="bring-intro">A grounded blend of behavioral insight, commercial thinking and strategic relationship management. Built over 20+ years in complex and global environments.</p>
   <div class="bring-grid">
     <div class="bring-card">
       <div class="card-icon">
@@ -950,7 +950,7 @@
           <polygon points="32,6 33.5,10.5 38,10.5 34.5,13.5 36,18 32,15 28,18 29.5,13.5 26,10.5 30.5,10.5" stroke="#2E63B6" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h3><span translate="no">Customer Success</span> & Value Realization</h3>
+      <h3><span translate="no">Customer Success</span> & Impact</h3>
       <p>Turning adoption into measurable business impact. From onboarding to long-term strategic partnership.</p>
     </div>
     <div class="bring-card">
@@ -967,7 +967,7 @@
         </svg>
       </div>
       <h3>AI & Adoption</h3>
-      <p>Human and AI working together - that's where real value emerges. I use AI as an amplifier and thinking partner. I bring practical experience with AI tools and a deep understanding of the behavioural shift that makes technology stick.</p>
+      <p>Human and AI working together - that's where real value emerges. I use AI as an amplifier and thinking partner. I bring practical experience with AI tools and a deep understanding of the behavioral shift that makes technology stick.</p>
     </div>
     <div class="bring-card">
       <div class="card-icon">
@@ -1516,6 +1516,39 @@ window.addEventListener('load', function() {
 
   });
 
+}());
+</script>
+
+<script>
+/* ── SMOOTH SCROLL — Get to know me ─────────────────────── */
+(function () {
+  var btn = document.querySelector('a.hero-cta[href="#about"]');
+  if (!btn) return;
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var target = document.getElementById('about');
+    if (!target) return;
+
+    var startY   = window.scrollY;
+    var endY     = target.getBoundingClientRect().top + startY;
+    var duration = 260;
+    var startTime = null;
+
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var elapsed  = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY + (endY - startY) * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  });
 }());
 </script>
 </body>
