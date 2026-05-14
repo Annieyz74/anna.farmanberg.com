@@ -884,6 +884,52 @@
 
     /* ── Hide mobile descriptions on desktop ────────────── */
     .satellite-mobile-desc { display: none; }
+
+    /* ── CORE VALUES ── */
+    .core-values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin-bottom: 56px;
+    }
+    .core-value-card {
+      padding: 32px 28px;
+      border: 1px solid rgba(182,195,213,0.3);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      transition: background 0.2s;
+    }
+    .core-value-card:hover { background: rgba(255,255,255,0.07); }
+    .core-value-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .core-value-card p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.7);
+    }
+    .who-sublabel {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 20px;
+      max-width: 1100px;
+    }
+    @media (max-width: 600px) {
+      .core-values-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .practice-grid { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
@@ -897,6 +943,7 @@
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#bring">What I bring</a></li>
+    <li><a href="#who">Who I am</a></li>
     <li><a href="#beyond">Beyond the resume</a></li>
     <li><a href="#experience">Experience</a></li>
     <!-- <li><a href="#advisory">Advisory</a></li> -->
@@ -1000,6 +1047,29 @@
 <section id="who">
   <p class="section-label">Who I am</p>
   <h2 class="section-title">Values & ways of working</h2>
+  <!-- CORE VALUES -->
+  <p class="who-sublabel">Core Values</p>
+  <div class="core-values-grid">
+
+    <div class="core-value-card">
+      <div class="core-value-title">Curiosity</div>
+      <p>Curiosity is my inner drive. I explore how ideas, behaviours and systems connect, and turn that insight into real impact for customers, teams and organisations.</p>
+    </div>
+
+    <div class="core-value-card">
+      <div class="core-value-title">Accountability</div>
+      <p>I own my results, the good and the challenging. I take responsibility, stay committed and follow through. People know they can rely on me.</p>
+    </div>
+
+    <div class="core-value-card">
+      <div class="core-value-title">Honesty &amp; Integrity</div>
+      <p>I stick to the truth, always. I set realistic expectations and follow through. What you see is what you get — that is the foundation of every relationship I build.</p>
+    </div>
+
+  </div>
+
+  <!-- WAYS OF WORKING -->
+  <p class="who-sublabel">Ways of working</p>
   <div class="who-grid">
     <div class="who-card">
       <div class="card-icon">
@@ -1050,7 +1120,7 @@
         </svg>
       </div>
       <h3>Design Thinking</h3>
-      <p>I work iteratively, moving from idea to prototype, test, and refinement. Design Thinking helps me simplify complexity, focus on user value, and create solutions that are both clear and practical.</p>
+      <p>Working iteratively to turn ideas into prototypes and practical solutions — simplifying complexity with a user&#8209;first mindset.</p>
     </div>
     <div class="who-card">
       <div class="card-icon">
@@ -1095,17 +1165,24 @@
         </svg>
       </div>
       <h3>AI & Tools</h3>
-      <p>I learn by building small, personal tools with the help of AI. These experiments strengthen my understanding of workflows, user needs, and problem solving, and the insights translate naturally into the workplace where solutions must align with existing systems, processes, and requirements.</p>
+      <p>I explore by building small AI&#8209;powered tools. These experiments sharpen my understanding of workflows, user needs and practical problem&#8209;solving — insights I bring into real&#8209;world systems and processes.</p>
     </div>
   </div>
 
-  <!-- FEATURED CARD — How I Work in Practice -->
-  <div style="max-width: 1100px; margin: 48px 0 0 0;">
-  <div style="max-width: 760px; margin: 0 auto; background: rgba(255,255,255,0.06); border: 1px solid rgba(182,195,213,0.2); border-radius: 12px; padding: 40px 48px;">
-    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 16px; letter-spacing: 0.02em;">How I Work in Practice</h3>
-    <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 16px;">When I needed a personal website, I approached it as a design challenge. I started with the idea of a clean, "less is more" approach. I wanted to learn how to build it from scratch using HTML, so I began with a simple MVP. I tested different layouts and iterated until the structure felt clean and purposeful. I focused on what mattered most: usability, personal brand, and a professional tone. And I removed anything that did not add value.</p>
-    <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.75);">I also reached out to a few people for feedback, and the result is a personal, clean, functional site that reflects how I think and work. The experience reinforced my belief in starting small, learning fast, improving continuously, and asking for constructive feedback. I apply these principles in every project.</p>
-  </div>
+  <!-- HOW I WORK IN PRACTICE -->
+  <p class="who-sublabel" style="margin-top: 72px; font-size: 0.62rem;">How I work in practice</p>
+  <div class="practice-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1100px;">
+
+    <div style="padding: 32px 28px; border: 1px solid rgba(182,195,213,0.18); border-radius: 10px; background: rgba(255,255,255,0.04); box-shadow: 0 2px 16px rgba(0,0,0,0.18);">
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: #fff; margin-bottom: 16px;">Website Design Project</div>
+      <p style="font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.72);">I approached my personal website as a design challenge. I started with a simple MVP, tested layouts and iterated until the structure felt clean and purposeful. I focused on usability, personal brand and a professional tone — and removed anything that didn't add value.</p><p style="font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.72); margin-top: 12px;">I also asked a few people for constructive feedback and used it to refine the site further. The result is a functional, minimal site that reflects how I think and work.</p>
+    </div>
+
+    <div style="padding: 32px 28px; border: 1px solid rgba(182,195,213,0.18); border-radius: 10px; background: rgba(255,255,255,0.04); box-shadow: 0 2px 16px rgba(0,0,0,0.18);">
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: #fff; margin-bottom: 16px;">Startup Experience — Working in Sync to Move Forward</div>
+      <p style="font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.72);">At an early&#8209;stage startup, I worked with founders who wanted to enter the corporate travel space — a far more complex industry than they expected. I started with a structured assessment, looking at their potential, risks and readiness with an investor&#8209;like lens. From there, I brought in the right teams, created alignment and supported them through the steep learning curve.</p><p style="font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.72); margin-top: 12px;">We moved forward together, step by step, and they eventually grew into a well&#8209;known agency. The experience reinforced how I work: understand the reality, meet people where they are, and help new players succeed in demanding environments.</p>
+    </div>
+
   </div>
 
 </section>
@@ -1118,7 +1195,6 @@
       <p>I'm at my best in environments where relationships, collaboration and movement matter. I read situations quickly, understand where people are in their journey, and help them move forward - whether it's a customer, a colleague or a team navigating complexity.</p>
       <p>I recharge through movement and presence - on a motorcycle, on skis, or on the golf course. These are moments that require focus, awareness and reading the situation as it unfolds. That ability follows me into my work: I stay calm when things shift, move quickly when needed, and bring direction when others need it.</p>
       <p>I've spent many years in commercial and customer&#8209;facing roles, often in situations where things aren't fully defined, and I enjoy that space. It requires judgment, structure, empathy and the ability to translate between perspectives. It also requires the willingness to stay with something even when it's difficult.</p>
-      <p>One experience that shaped how I work was my collaboration with two founders during the years when I worked most intensively with startups as part of my Account Manager role. They wanted to enter corporate travel - a far more complex industry than they expected. I assessed their potential, brought in the right teams, and stayed with them through the steep learning curve. They faced real challenges, but we kept moving, and they grew into a well&#8209;known agency. The experience reinforced something important for me: I evaluate potential carefully, stay committed through complexity, and help new players succeed in demanding environments.</p>
       <p>Across all my roles, I've learned that progress comes from understanding people, creating a shared direction and building trust. That's the space where I naturally operate. It's also where I create the most value.</p>
     </div>
     
@@ -1149,12 +1225,12 @@
     </div>
     <div class="exp-role">
       <h3><span translate="no">Account Manager</span></h3>
-      <p class="role-sub">Building relationships and driving adoption and growth.</p>
+      <p class="role-sub">Strengthening customer relationships and driving growth</p>
       <p>Managed a broad customer portfolio across Scandinavia — from acquisition and negotiation to retention and long-term growth.</p>
     </div>
     <div class="exp-role">
       <h3><span translate="no">IT Account Manager</span></h3>
-      <p class="role-sub">Supporting a major partner network with stability and built trust.</p>
+      <p class="role-sub">Ensuring stability and building trust across a major partner network</p>
       <p>Acted as a bridge between partners and internal teams - ensuring stability, continuity and growth across the partner agencies.</p>
     </div>
   </div>
