@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>Thoughts &amp; Reflections &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ── CSS VARIABLES ─────────────────────────────── */
+    :root {
+      --bg-night:         #0A0D1F;
+      --bg-night-center:  #1C234A;
+      --bg-night-mid:     #12183A;
+      --bg-footer:        rgba(2, 4, 12, 0.5);
+
+      --card-bg:          #F4F5F8;
+      --card-shadow:      0 2px 16px rgba(0, 0, 0, 0.25);
+      --card-shadow-hover:0 4px 24px rgba(0, 0, 0, 0.38);
+      --card-radius:      8px;
+
+      --pillar-leadership:#5A2A83;
+      --pillar-ai:        #1A6A8A;
+      --pillar-career:    #007F6F;
+
+      --text-white:       #ffffff;
+      --text-dim-60:      rgba(255, 255, 255, 0.60);
+      --text-dim-45:      rgba(255, 255, 255, 0.45);
+      --text-dim-28:      rgba(255, 255, 255, 0.28);
+      --text-card-title:  #1a1a2e;
+      --text-card-body:   #555555;
+      --text-card-meta:   #999999;
+
+      --divider:          rgba(255, 255, 255, 0.07);
+
+      --font-serif:       'Playfair Display', serif;
+      --font-sans:        'Montserrat', sans-serif;
+
+      --max-width:        860px;
+      --max-width-intro:  660px;
+    }
+
+    /* ── RESET ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── BODY / NIGHT SKY ──────────────────────────── */
+    body {
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      color: var(--text-dim-60);
+      background-color: var(--bg-night);
+      background-image:
+        radial-gradient(ellipse at 50% 50%,
+          var(--bg-night-center)  0%,
+          var(--bg-night-mid)    25%,
+          var(--bg-night)        60%,
+          var(--bg-night)       100%);
+      position: relative;
+    }
+
+    /* Grain layer */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Vignette layer */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2, 4, 10, 0.55) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* All direct children above pseudo-elements */
+    body > * { position: relative; z-index: 1; }
+
+    /* ── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.75rem 2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim-28);
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--text-dim-28); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text-dim-60); }
+    .breadcrumb__sep { color: rgba(255, 255, 255, 0.12); }
+    .breadcrumb__current { color: rgba(255, 255, 255, 0.45); }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+    }
+    .hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero__subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: var(--text-dim-45);
+      line-height: 1.85;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── DIVIDER ────────────────────────────────────── */
+    .divider {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .divider hr {
+      border: none;
+      border-top: 0.5px solid var(--divider);
+    }
+
+    /* ── CURATED INTRO ──────────────────────────────── */
+    .curated-intro {
+      max-width: var(--max-width-intro);
+      margin: 0 auto;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+    .curated-intro__text {
+      font-size: 0.85rem;
+      color: var(--text-dim-45);
+      line-height: 1.95;
+    }
+
+    /* ── CURATED PICKS ──────────────────────────────── */
+    .curated-picks {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem 1rem;
+    }
+    .curated-picks__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim-28);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .curated-picks__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── POST CARD (shared) ─────────────────────────── */
+    .post-card {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      border-left: 3px solid transparent;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      cursor: pointer;
+    }
+    .post-card:hover { box-shadow: var(--card-shadow-hover); }
+
+    .post-card--leadership { border-left-color: var(--pillar-leadership); }
+    .post-card--ai         { border-left-color: var(--pillar-ai); }
+    .post-card--career     { border-left-color: var(--pillar-career); }
+
+    .post-card__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .post-card__pillar {
+      font-size: 7px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 0.5px solid;
+    }
+    .post-card__pillar--leadership { color: var(--pillar-leadership); border-color: rgba(90,42,131,0.4); }
+    .post-card__pillar--ai         { color: var(--pillar-ai);         border-color: rgba(26,106,138,0.4); }
+    .post-card__pillar--career     { color: var(--pillar-career);     border-color: rgba(0,127,111,0.4); }
+
+    .post-card__world {
+      font-size: 7px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-card-meta);
+    }
+    .post-card__title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-card-title);
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+    }
+    .post-card__excerpt {
+      font-size: 0.78rem;
+      color: var(--text-card-body);
+      line-height: 1.75;
+      margin-bottom: 0.85rem;
+    }
+    .post-card__date {
+      font-size: 0.68rem;
+      color: var(--text-card-meta);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ARCHIVE LINK ───────────────────────────────── */
+    .archive-link {
+      text-align: center;
+      padding: 2.5rem 2rem 3rem;
+    }
+    .archive-link__text {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim-28);
+      text-decoration: none;
+      border-bottom: 0.5px solid rgba(255,255,255,0.15);
+      padding-bottom: 2px;
+    }
+    .archive-link__text:hover {
+      color: var(--text-dim-60);
+      border-bottom-color: rgba(255,255,255,0.4);
+    }
+
+    /* ── FILTER ARCHIVE ─────────────────────────────── */
+    .filter-archive {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 2rem 0;
+    }
+    .filter-archive__title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--text-white);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .filter-bar__row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-bar__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim-28);
+      min-width: 52px;
+    }
+    .filter-bar__btn {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 0.5px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: var(--text-dim-45);
+      cursor: pointer;
+    }
+    .filter-bar__btn--leadership { color: rgba(90,42,131,0.7);  border-color: rgba(90,42,131,0.35); }
+    .filter-bar__btn--ai         { color: rgba(26,106,138,0.7); border-color: rgba(26,106,138,0.35); }
+    .filter-bar__btn--career     { color: rgba(0,127,111,0.7);  border-color: rgba(0,127,111,0.35); }
+
+    .filter-bar__search {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      background: transparent;
+      border: none;
+      border-bottom: 0.5px solid rgba(255,255,255,0.2);
+      color: var(--text-dim-60);
+      padding: 4px 0;
+      min-width: 180px;
+      outline: none;
+    }
+    .filter-bar__search::placeholder { color: var(--text-dim-28); }
+
+    /* Sort + clear row */
+    .sort-clear-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .sort-clear-row__select {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      background: transparent;
+      border: 0.5px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      color: var(--text-dim-45);
+      padding: 5px 10px;
+      cursor: pointer;
+      outline: none;
+    }
+    .sort-clear-row__clear {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim-28);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+
+    /* Post grid */
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      padding-bottom: 3.5rem;
+    }
+    .post-grid__empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 0;
+      font-size: 0.82rem;
+      color: var(--text-dim-28);
+      font-style: italic;
+    }
+
+    /* ── THINKING FOOTER ────────────────────────────── */
+    .thinking-footer {
+      border-top: 0.5px solid var(--divider);
+      background: var(--bg-footer);
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+    .thinking-footer__heading {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-dim-45);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .thinking-footer__text {
+      font-size: 0.78rem;
+      color: var(--text-dim-28);
+      line-height: 1.9;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── SITE FOOTER ────────────────────────────────── */
+    .site-footer {
+      border-top: 0.5px solid rgba(255,255,255,0.05);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.65rem;
+      color: var(--text-dim-28);
+      letter-spacing: 0.05em;
+    }
+    .site-footer a { color: inherit; text-decoration: none; }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 1.25rem 2rem; }
+      .curated-intro { padding: 2rem 1.25rem 1.5rem; }
+      .curated-picks,
+      .filter-archive { padding-left: 1.25rem; padding-right: 1.25rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Anna Farman Berg</a>
+    <span class="breadcrumb__sep">&#8250;</span>
+    <span class="breadcrumb__current">Thoughts &amp; Reflections</span>
+  </nav>
+
+  <main>
+
+    <!-- ① HERO -->
+    <section class="hero">
+      <h1 class="hero__title">Thoughts &amp; Reflections</h1>
+      <p class="hero__subtitle">Selected pieces that capture how I think, learn and explore — a curated entry point into my thinking landscape.</p>
+    </section>
+
+    <div class="divider"><hr /></div>
+
+    <!-- ② CURATED INTRO -->
+    <div class="curated-intro">
+      <p class="curated-intro__text">These reflections represent the core of my thinking — the pieces I return to, build on, and use to explore new perspectives. They're just a curated selection that offers a clear entry point into my thinking landscape. For access to the full archive, you can explore the complete collection below.</p>
+    </div>
+
+    <!-- ③ CURATED PICKS -->
+    <section class="curated-picks">
+      <p class="curated-picks__label">Curated picks</p>
+      <!-- Curated picks — rendered by JS -->
+      <div class="curated-picks__grid" id="curated-grid"></div>
+    </section>
+
+    <!-- ④ ARCHIVE LINK -->
+    <div class="archive-link">
+      <a href="#filter-archive" class="archive-link__text">Browse all posts &rarr;</a>
+    </div>
+
+    <div class="divider"><hr /></div>
+
+    <!-- ⑤ FILTER ARCHIVE -->
+    <section class="filter-archive" id="filter-archive">
+      <h2 class="filter-archive__title">Full Archive</h2>
+
+      <!-- Filter bar -->
+      <div class="filter-bar">
+
+        <div class="filter-bar__row">
+          <span class="filter-bar__label">Pillar</span>
+          <button class="filter-bar__btn filter-bar__btn--leadership" data-filter-pillar="leadership">Leadership &amp; Transformation</button>
+          <button class="filter-bar__btn filter-bar__btn--career" data-filter-pillar="career">Career &amp; Learning</button>
+          <button class="filter-bar__btn filter-bar__btn--ai" data-filter-pillar="ai">AI &amp; Tech</button>
+        </div>
+
+        <div class="filter-bar__row">
+          <span class="filter-bar__label">World</span>
+          <button class="filter-bar__btn filter-bar__btn--world" data-filter-world="creative-lab">Creative Lab</button>
+          <button class="filter-bar__btn filter-bar__btn--world" data-filter-world="practice-range">Practice Range</button>
+          <button class="filter-bar__btn filter-bar__btn--world" data-filter-world="mountain-view">Mountain View</button>
+          <button class="filter-bar__btn filter-bar__btn--world" data-filter-world="the-road">The Road</button>
+          <button class="filter-bar__btn filter-bar__btn--world" data-filter-world="growth-house">Growth House</button>
+        </div>
+
+        <div class="filter-bar__row">
+          <span class="filter-bar__label">Search</span>
+          <input class="filter-bar__search" id="search-input" type="text" placeholder="Search posts..." />
+        </div>
+
+      </div>
+
+      <!-- Sort + clear -->
+      <div class="sort-clear-row">
+        <select class="sort-clear-row__select" id="sort-select">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="az">A &ndash; Z</option>
+        </select>
+        <button class="sort-clear-row__clear" id="clear-btn" style="display:none">&#x2715; Clear filters</button>
+      </div>
+
+      <!-- Post grid — rendered by JS -->
+      <div class="post-grid" id="post-grid"></div>
+
+    </section>
+
+    <!-- ⑥ THINKING FOOTER -->
+    <div class="thinking-footer">
+      <h2 class="thinking-footer__heading">How this space works</h2>
+      <p class="thinking-footer__text">My writing lives across five worlds and three pillars. Each post carries a color and a set of tags to help you navigate themes, ideas and connections throughout the landscape. You can explore everything through the full archive, or start with the curated pieces above.</p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+    <a href="index.html">annafarmanberg.com</a>
+  </footer>
+
+
+  <script>
+  /* ════════════════════════════════════════════════
+     DATA
+  ════════════════════════════════════════════════ */
+  var POSTS = [
+    {
+      title:   "AI as a Thinking Partner",
+      excerpt: "What is AI to you? No matter where you are on the hype curve, you can always start by asking AI a question — as a partner that helps you think, reflect and move forward.",
+      date:    "26 May 2026",
+      dateVal: 20260526,
+      pillar:  "ai",
+      world:   "creative-lab",
+      tags:    ["ai", "thinking", "hype-cycle"],
+      file:    "creative-lab/ai-as-a-thinking-partner.html",
+      curated: true
+    },
+    {
+      title:   "Finding Your Sweet Spot",
+      excerpt: "That I'm invincible feeling when everything flows and goes our way. How do we actually train and prepare to give ourselves the best possible chance of finding our sweet spot at work?",
+      date:    "21 May 2026",
+      dateVal: 20260521,
+      pillar:  "leadership",
+      world:   "creative-lab",
+      tags:    ["mindset", "performance", "golf", "customer-success"],
+      file:    "creative-lab/finding-your-sweet-spot.html",
+      curated: true
+    },
+    {
+      title:   "We Are All Influencers",
+      excerpt: "We make thousands of decisions every day. Some matter more — and that's where we all become influencers. Not the TikTok kind, but the everyday kind that shapes conversations, alignment and outcomes.",
+      date:    "19 May 2026",
+      dateVal: 20260519,
+      pillar:  "leadership",
+      world:   "creative-lab",
+      tags:    ["communication", "influence", "behavioural-science"],
+      file:    "creative-lab/we-are-all-influencers.html",
+      curated: false
+    },
+    {
+      title:   "Adoption Happens in Behaviors, Not Dashboards",
+      excerpt: "Adoption isn't about the switch from 'not using' to 'using.' It's about how people learn, adapt — and the support they need to take the next step. Adoption always starts with people.",
+      date:    "5 May 2026",
+      dateVal: 20260505,
+      pillar:  "leadership",
+      world:   "creative-lab",
+      tags:    ["adoption", "change-management", "customer-success"],
+      file:    "creative-lab/adoption-happens-in-behaviors.html",
+      curated: true
+    },
+    {
+      title:   "AI Isn't Changing Your Workflows — It's Changing Your Role",
+      excerpt: "AI isn't just changing how we work in Customer Success — it's changing what the role actually is. Most teams feel the shift. Very few understand what it truly means.",
+      date:    "28 April 2026",
+      dateVal: 20260428,
+      pillar:  "ai",
+      world:   "creative-lab",
+      tags:    ["ai", "customer-success", "roles"],
+      file:    "creative-lab/ai-isnt-changing-your-workflows.html",
+      curated: false
+    },
+    {
+      title:   "Make AI Relevant to Me — The Real Ask Behind the Hype",
+      excerpt: "People aren't asking for more AI — they're asking for more relevance. And that's a knowledge problem, not a technology problem.",
+      date:    "8 April 2026",
+      dateVal: 20260408,
+      pillar:  "ai",
+      world:   "creative-lab",
+      tags:    ["ai", "relevance", "knowledge"],
+      file:    "creative-lab/make-ai-relevant-to-me.html",
+      curated: false
+    }
+  ];
+
+  /* ════════════════════════════════════════════════
+     LOOKUP TABLES
+  ════════════════════════════════════════════════ */
+  var PILLAR_LABELS = {
+    leadership: "Leadership & Transformation",
+    career:     "Career & Learning",
+    ai:         "AI & Tech"
+  };
+
+  var WORLD_LABELS = {
+    "creative-lab":   "Creative Lab",
+    "practice-range": "Practice Range",
+    "mountain-view":  "Mountain View",
+    "the-road":       "The Road",
+    "growth-house":   "Growth House"
+  };
+
+  /* ════════════════════════════════════════════════
+     CARD BUILDER
+  ════════════════════════════════════════════════ */
+  function buildCard(post) {
+    var pillarLabel = PILLAR_LABELS[post.pillar] || post.pillar;
+    var worldLabel  = WORLD_LABELS[post.world]   || post.world;
+    return [
+      '<a href="' + post.file + '" class="post-card post-card--' + post.pillar + '">',
+      '  <div class="post-card__meta">',
+      '    <span class="post-card__pillar post-card__pillar--' + post.pillar + '">' + pillarLabel + '</span>',
+      '    <span class="post-card__world">' + worldLabel + '</span>',
+      '  </div>',
+      '  <h3 class="post-card__title">' + post.title + '</h3>',
+      '  <p class="post-card__excerpt">' + post.excerpt + '</p>',
+      '  <span class="post-card__date">' + post.date + '</span>',
+      '</a>'
+    ].join('\n');
+  }
+
+  /* ════════════════════════════════════════════════
+     CURATED PICKS
+  ════════════════════════════════════════════════ */
+  function renderCurated() {
+    var curated = POSTS.filter(function(p) { return p.curated; });
+    document.getElementById('curated-grid').innerHTML = curated.map(buildCard).join('');
+  }
+
+  /* ════════════════════════════════════════════════
+     FILTER STATE
+  ════════════════════════════════════════════════ */
+  var state = {
+    pillar:     null,
+    world:      null,
+    tags:       [],
+    search:     '',
+    sort:       'newest'
+  };
+
+  /* ════════════════════════════════════════════════
+     FILTER LOGIC
+  ════════════════════════════════════════════════ */
+  function getFiltered() {
+    var result = POSTS.slice();
+
+    if (state.pillar) {
+      result = result.filter(function(p) { return p.pillar === state.pillar; });
+    }
+    if (state.world) {
+      result = result.filter(function(p) { return p.world === state.world; });
+    }
+    if (state.tags.length > 0) {
+      result = result.filter(function(p) {
+        return state.tags.every(function(tag) { return p.tags.indexOf(tag) !== -1; });
+      });
+    }
+    if (state.search) {
+      var q = state.search.toLowerCase();
+      result = result.filter(function(p) {
+        return (
+          p.title.toLowerCase().indexOf(q)   !== -1 ||
+          p.excerpt.toLowerCase().indexOf(q) !== -1 ||
+          p.tags.join(' ').toLowerCase().indexOf(q) !== -1
+        );
+      });
+    }
+
+    if (state.sort === 'newest') result.sort(function(a,b) { return b.dateVal - a.dateVal; });
+    if (state.sort === 'oldest') result.sort(function(a,b) { return a.dateVal - b.dateVal; });
+    if (state.sort === 'az')     result.sort(function(a,b) { return a.title.localeCompare(b.title); });
+
+    return result;
+  }
+
+  /* ════════════════════════════════════════════════
+     RENDER ARCHIVE GRID
+  ════════════════════════════════════════════════ */
+  function renderGrid() {
+    var posts  = getFiltered();
+    var grid   = document.getElementById('post-grid');
+    var hasFilter = state.pillar || state.world || state.tags.length || state.search;
+
+    grid.innerHTML = posts.length
+      ? posts.map(buildCard).join('')
+      : '<p class="post-grid__empty">No posts match your filters.</p>';
+
+    document.getElementById('clear-btn').style.display = hasFilter ? 'block' : 'none';
+  }
+
+  /* ════════════════════════════════════════════════
+     PILLAR FILTER BUTTONS
+  ════════════════════════════════════════════════ */
+  document.querySelectorAll('[data-filter-pillar]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var val = btn.dataset.filterPillar;
+      if (state.pillar === val) {
+        state.pillar = null;
+        btn.classList.remove('filter-bar__btn--active');
+      } else {
+        document.querySelectorAll('[data-filter-pillar]').forEach(function(b) {
+          b.classList.remove('filter-bar__btn--active');
+        });
+        state.pillar = val;
+        btn.classList.add('filter-bar__btn--active');
+      }
+      renderGrid();
+    });
+  });
+
+  /* ════════════════════════════════════════════════
+     WORLD FILTER BUTTONS
+  ════════════════════════════════════════════════ */
+  document.querySelectorAll('[data-filter-world]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var val = btn.dataset.filterWorld;
+      if (state.world === val) {
+        state.world = null;
+        btn.classList.remove('filter-bar__btn--active');
+      } else {
+        document.querySelectorAll('[data-filter-world]').forEach(function(b) {
+          b.classList.remove('filter-bar__btn--active');
+        });
+        state.world = val;
+        btn.classList.add('filter-bar__btn--active');
+      }
+      renderGrid();
+    });
+  });
+
+  /* ════════════════════════════════════════════════
+     SEARCH
+  ════════════════════════════════════════════════ */
+  document.getElementById('search-input').addEventListener('input', function(e) {
+    state.search = e.target.value.trim();
+    renderGrid();
+  });
+
+  /* ════════════════════════════════════════════════
+     SORT
+  ════════════════════════════════════════════════ */
+  document.getElementById('sort-select').addEventListener('change', function(e) {
+    state.sort = e.target.value;
+    renderGrid();
+  });
+
+  /* ════════════════════════════════════════════════
+     CLEAR FILTERS
+  ════════════════════════════════════════════════ */
+  document.getElementById('clear-btn').addEventListener('click', function() {
+    state = { pillar: null, world: null, tags: [], search: '', sort: 'newest' };
+    document.querySelectorAll('[data-filter-pillar], [data-filter-world]').forEach(function(b) {
+      b.classList.remove('filter-bar__btn--active');
+    });
+    document.getElementById('search-input').value = '';
+    document.getElementById('sort-select').value  = 'newest';
+    renderGrid();
+  });
+
+  /* ════════════════════════════════════════════════
+     ACTIVE BUTTON STYLE
+  ════════════════════════════════════════════════ */
+  // Add active state CSS dynamically
+  var styleEl = document.createElement('style');
+  styleEl.textContent = [
+    '.filter-bar__btn--active { color: #fff; }',
+    '.filter-bar__btn--leadership.filter-bar__btn--active { background: rgba(90,42,131,0.35); border-color: #5A2A83; }',
+    '.filter-bar__btn--ai.filter-bar__btn--active         { background: rgba(26,106,138,0.35); border-color: #1A6A8A; }',
+    '.filter-bar__btn--career.filter-bar__btn--active     { background: rgba(0,127,111,0.35);  border-color: #007F6F; }',
+    '.filter-bar__btn--world.filter-bar__btn--active      { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.5); }'
+  ].join('\n');
+  document.head.appendChild(styleEl);
+
+  /* ════════════════════════════════════════════════
+     INIT
+  ════════════════════════════════════════════════ */
+  renderCurated();
+  renderGrid();
+
+  </script>
+</body>
+</html>
