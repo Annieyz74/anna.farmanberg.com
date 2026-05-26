@@ -691,6 +691,13 @@
       justify-content: center;
       text-align: center;
       z-index: 10;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .orbit-hub:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.38);
     }
     .orbit-hub-dot {
       width: 5px; height: 5px;
@@ -1362,10 +1369,10 @@
     </svg>
 
     <!-- Center hub (desktop only) -->
-    <div class="orbit-hub" aria-hidden="true">
+    <a class="orbit-hub" href="thoughts-reflections.html" aria-label="Thoughts and Reflections">
       <div class="orbit-hub-dot"></div>
       <span class="orbit-hub-text">Thoughts<br>&amp; Reflections</span>
-    </div>
+    </a>
 
     <!-- ── SATELLITE 1: Practice Range ──────────────────
          Color: Ice Silver (#B8C4CC)
