@@ -823,6 +823,27 @@
     .pillar-career::after     { background: #00C4A0; }
     .pillar-ai::after         { background: #50AAD2; }
 
+
+    /* ── THOUGHTS & REFLECTIONS MOBILE LINK ── */
+    .orbit-thoughts-mobile {
+      display: none;
+      text-align: center;
+      padding: 1rem 0 0.5rem;
+    }
+    .orbit-thoughts-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      text-decoration: none;
+      border-bottom: 0.5px solid rgba(255,255,255,0.15);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .orbit-thoughts-link:hover { color: rgba(255,255,255,0.7); }
+    @media (max-width: 639px) {
+      .orbit-thoughts-mobile { display: block; }
+    }
     /* ── MOBILE LAYOUT (<640px) ─────────────────────────── */
     @media (max-width: 639px) {
 
@@ -1513,6 +1534,11 @@
     <span class="orbit-tag pillar-leadership">Leadership &amp; Transformation</span>
     <span class="orbit-tag pillar-career">Career &amp; Learning</span>
     <span class="orbit-tag pillar-ai">AI &amp; Tech</span>
+  </div>
+
+  <!-- Mobile: Thoughts & Reflections link -->
+  <div class="orbit-thoughts-mobile">
+    <a href="thoughts-reflections/" class="orbit-thoughts-link">Thoughts &amp; Reflections &rarr;</a>
   </div>
 
 </section>
