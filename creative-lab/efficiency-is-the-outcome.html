@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>Efficiency Is the Outcome, Not the Starting Point &mdash; Creative Lab &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+    /* ── DEEP NIGHT-SKY BACKGROUND ───────────────────── */
+    body {
+      font-family:'Montserrat',sans-serif;
+      min-height:100vh;
+      color:rgba(255,255,255,0.8);
+      background: #050911;
+      background-image:
+        radial-gradient(ellipse at 50% 0%,   #0D1425 0%, #060810 45%, #050911 100%),
+        radial-gradient(ellipse at 80% 80%,  rgba(216,48,122,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 60%,  rgba(26,106,138,0.04) 0%, transparent 55%);
+    }
+
+    body::before {
+      content:'';
+      position:fixed;
+      inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+      background-size:200px 200px;
+      opacity:0.07;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    body::after {
+      content:'';
+      position:fixed;
+      inset:0;
+      background:radial-gradient(ellipse at 50% 30%, transparent 35%, rgba(2,4,12,0.7) 100%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    nav, main, footer { position:relative; z-index:1; }
+
+    /* BREADCRUMB */
+    .world-nav {
+      padding:1.75rem 2rem 0;
+      max-width:700px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:0.68rem;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.28);
+      flex-wrap:wrap;
+    }
+    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .world-nav a:hover { color:rgba(255,255,255,0.65); }
+    .world-nav .sep { color:rgba(255,255,255,0.12); }
+    .world-nav .current { color:#D8307A; }
+
+    /* ARTICLE */
+    .article-wrap {
+      max-width:700px;
+      margin:0 auto;
+      padding:2.5rem 2rem 5rem;
+    }
+
+    .article-pillar {
+      display:inline-block;
+      font-size:8px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      padding:4px 13px;
+      border-radius:20px;
+      border:0.5px solid rgba(26,106,138,0.45);
+      color:#1A6A8A;
+      margin-bottom:1.25rem;
+    }
+
+    .article-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.6rem,4vw,2.2rem);
+      font-weight:400;
+      color:#D8307A;
+      line-height:1.2;
+      margin-bottom:0.75rem;
+    }
+
+    .article-date {
+      font-size:0.7rem;
+      letter-spacing:0.1em;
+      color:rgba(255,255,255,0.28);
+      text-transform:uppercase;
+      margin-bottom:2rem;
+    }
+
+    .article-divider {
+      border:none;
+      border-top:0.5px solid rgba(255,255,255,0.07);
+      margin:1.5rem 0 2rem;
+    }
+
+    .article-body {
+      font-size:0.9rem;
+      line-height:2;
+      color:rgba(255,255,255,0.7);
+    }
+    .article-body p { margin-bottom:1.4rem; }
+    .article-body h2 {
+      font-family:'Playfair Display',serif;
+      font-size:1.15rem;
+      color:#D8307A;
+      margin:2.25rem 0 0.85rem;
+      font-weight:400;
+    }
+
+    /* NUMBERED LIST */
+    .numbered-list {
+      list-style:none;
+      padding:0;
+      margin:0.5rem 0 1.75rem;
+      counter-reset:item;
+    }
+    .numbered-list li {
+      display:flex;
+      gap:1rem;
+      padding:0.7rem 0;
+      color:rgba(255,255,255,0.7);
+      font-size:0.88rem;
+      line-height:1.7;
+      border-bottom:0.5px solid rgba(255,255,255,0.05);
+    }
+    .numbered-list li:last-child { border-bottom:none; }
+    .numbered-list li::before {
+      counter-increment:item;
+      content:counter(item);
+      color:#1A6A8A;
+      font-weight:600;
+      font-size:0.78rem;
+      min-width:20px;
+      padding-top:2px;
+    }
+    .numbered-list li strong { color:rgba(255,255,255,0.92); font-weight:600; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left:2px solid #D8307A;
+      padding:0.75rem 0 0.75rem 1.25rem;
+      margin:2rem 0;
+      font-family:'Playfair Display',serif;
+      font-style:italic;
+      font-size:1.05rem;
+      color:rgba(255,255,255,0.78);
+      line-height:1.7;
+    }
+
+    /* CLOSING */
+    .closing-line {
+      font-family:'Playfair Display',serif;
+      font-size:1rem;
+      font-style:italic;
+      color:rgba(255,255,255,0.6);
+      line-height:1.65;
+      margin-top:2rem;
+    }
+
+    /* NAV */
+    .article-nav {
+      display:flex;
+      gap:1.5rem;
+      margin-top:3rem;
+      padding-top:1.5rem;
+      border-top:0.5px solid rgba(255,255,255,0.06);
+      flex-wrap:wrap;
+    }
+    .article-nav a {
+      font-size:0.72rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.3);
+      text-decoration:none;
+      transition:color 0.2s;
+    }
+    .article-nav a:hover { color:rgba(255,255,255,0.65); }
+    .article-nav a.primary { color:rgba(216,48,122,0.75); }
+    .article-nav a.primary:hover { color:#D8307A; }
+
+    /* FOOTER */
+    footer {
+      border-top:0.5px solid rgba(255,255,255,0.05);
+      padding:1.5rem 2rem;
+      text-align:center;
+      font-size:0.65rem;
+      color:rgba(255,255,255,0.18);
+      letter-spacing:0.05em;
+    }
+    footer a { color:inherit; text-decoration:none; }
+
+    @media (max-width:600px) {
+      .article-wrap { padding:2rem 1.25rem 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="world-nav" aria-label="Breadcrumb">
+  <a href="../index.html">Anna Farman Berg</a>
+  <span class="sep">&#8250;</span>
+  <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+  <span class="sep">&#8250;</span>
+  <a href="../creative-lab.html">Creative Lab</a>
+  <span class="sep">&#8250;</span>
+  <span class="current">Efficiency Is the Outcome</span>
+</nav>
+
+<main class="article-wrap">
+
+  <span class="article-pillar">AI &amp; Tech</span>
+  <h1 class="article-title">Efficiency Is the Outcome, Not the Starting Point</h1>
+  <p class="article-date">11 June 2026</p>
+  <hr class="article-divider" />
+
+  <div class="article-body">
+
+    <p>AI agents are often presented as the next step in automation. They might be, but I believe we still talk too little about the other side. Agents create more work before they create less, and costs can escalate quickly if the fundamentals aren't in place.</p>
+
+    <p>I had this conversation recently with someone researching the topic. My advice was simple: start with the outcome. Then take an honest look at the investment required, and whether the efficiency gains will outweigh the cost.</p>
+
+    <p>AI isn't a magic wand. And this is something all major players, from Anthropic to OpenAI, have already highlighted. It takes thinking, preparation and real work to create the environment agents need to operate with quality. But in the day&#8209;to&#8209;day push for better automation, it's easy to forget.</p>
+
+    <h2>The real cost structure behind AI agents</h2>
+
+    <p>Here's a short checklist that helps outline the real cost structure behind AI agents. Of course, the details depend on each organization's starting point:</p>
+
+    <ol class="numbered-list">
+      <li><span><strong>Data quality and data capacity.</strong> Clean, structured, accessible, up to date data. It's an investment, not a side effect.</span></li>
+      <li><span><strong>Infrastructure and system capacity.</strong> Compute, API calls, storage, integrations. Agents are not "free power".</span></li>
+      <li><span><strong>Licensing and usage costs.</strong> Model licenses, agent licenses, user seats, API usage, token consumption. This is where CFOs start raising eyebrows.</span></li>
+      <li><span><strong>Governance and security.</strong> Agents need to be guided, monitored, logged and controlled. That's an organizational cost.</span></li>
+      <li><span><strong>Operations and maintenance.</strong> Agents are not "set and forget". They are systems, processes and workflows that require ongoing care and maintenance.</span></li>
+    </ol>
+
+    <div class="pull-quote">
+      Efficiency is the outcome, not the starting point.
+    </div>
+
+    <p>And AI agents are an investment, sometimes a significant one depending on mission and purpose. The value appears when the cost is lower than the efficiency gained.</p>
+
+    <p class="closing-line">Something worth keeping in mind as the agent conversation accelerates: the cost increases exponentially with complexity and volume.</p>
+
+  </div>
+
+  <nav class="article-nav">
+    <a href="../creative-lab.html" class="primary">&#8592; Creative Lab</a>
+    <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    <a href="../index.html">Home</a>
+  </nav>
+
+</main>
+
+<footer>
+  &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+  <a href="../index.html">annafarmanberg.com</a>
+</footer>
+
+</body>
+</html>
