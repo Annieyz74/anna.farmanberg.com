@@ -519,252 +519,23 @@
       pillar:  "ai", world: "creative-lab",
       tags:    ["ai", "thinking", "hype-cycle"],
       file:    "../creative-lab/ai-as-a-thinking-partner.html", curated: true
-    },<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google" content="notranslate" />
-  <title>B2A: Business to Agent &mdash; Creative Lab &middot; Anna Farman Berg</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-
-    /* ── DEEP NIGHT-SKY BACKGROUND ───────────────────── */
-    body {
-      font-family:'Montserrat',sans-serif;
-      min-height:100vh;
-      color:rgba(255,255,255,0.8);
-      background: #050911;
-      background-image:
-        radial-gradient(ellipse at 50% 0%,   #0D1425 0%, #060810 45%, #050911 100%),
-        radial-gradient(ellipse at 80% 80%,  rgba(216,48,122,0.04) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 60%,  rgba(26,106,138,0.04) 0%, transparent 55%);
-    }
-
-    body::before {
-      content:'';
-      position:fixed;
-      inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      background-repeat:repeat;
-      background-size:200px 200px;
-      opacity:0.07;
-      pointer-events:none;
-      z-index:0;
-    }
-
-    body::after {
-      content:'';
-      position:fixed;
-      inset:0;
-      background:radial-gradient(ellipse at 50% 30%, transparent 35%, rgba(2,4,12,0.7) 100%);
-      pointer-events:none;
-      z-index:0;
-    }
-
-    nav, main, footer { position:relative; z-index:1; }
-
-    /* BREADCRUMB */
-    .world-nav {
-      padding:1.75rem 2rem 0;
-      max-width:700px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:0.68rem;
-      letter-spacing:0.1em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,0.28);
-      flex-wrap:wrap;
-    }
-    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
-    .world-nav a:hover { color:rgba(255,255,255,0.65); }
-    .world-nav .sep { color:rgba(255,255,255,0.12); }
-    .world-nav .current { color:#D8307A; }
-
-    /* ARTICLE */
-    .article-wrap {
-      max-width:700px;
-      margin:0 auto;
-      padding:2.5rem 2rem 5rem;
-    }
-
-    .article-pillar {
-      display:inline-block;
-      font-size:8px;
-      letter-spacing:0.12em;
-      text-transform:uppercase;
-      padding:4px 13px;
-      border-radius:20px;
-      border:0.5px solid rgba(26,106,138,0.45);
-      color:#1A6A8A;
-      margin-bottom:1.25rem;
-    }
-
-    .article-title {
-      font-family:'Playfair Display',serif;
-      font-size:clamp(1.6rem,4vw,2.2rem);
-      font-weight:400;
-      color:#D8307A;
-      line-height:1.2;
-      margin-bottom:0.75rem;
-    }
-
-    .article-date {
-      font-size:0.7rem;
-      letter-spacing:0.1em;
-      color:rgba(255,255,255,0.28);
-      text-transform:uppercase;
-      margin-bottom:2rem;
-    }
-
-    .article-divider {
-      border:none;
-      border-top:0.5px solid rgba(255,255,255,0.07);
-      margin:1.5rem 0 2rem;
-    }
-
-    .article-body {
-      font-size:0.9rem;
-      line-height:2;
-      color:rgba(255,255,255,0.7);
-    }
-    .article-body p { margin-bottom:1.4rem; }
-    .article-body h2 {
-      font-family:'Playfair Display',serif;
-      font-size:1.15rem;
-      color:#D8307A;
-      margin:2.25rem 0 0.85rem;
-      font-weight:400;
-    }
-
-    /* PULL QUOTE */
-    .pull-quote {
-      border-left:2px solid #D8307A;
-      padding:0.75rem 0 0.75rem 1.25rem;
-      margin:2rem 0;
-      font-family:'Playfair Display',serif;
-      font-style:italic;
-      font-size:1.05rem;
-      color:rgba(255,255,255,0.78);
-      line-height:1.7;
-    }
-
-    /* CLOSING */
-    .closing-line {
-      font-family:'Playfair Display',serif;
-      font-size:1rem;
-      font-style:italic;
-      color:rgba(255,255,255,0.6);
-      line-height:1.65;
-      margin-top:2rem;
-    }
-
-    /* NAV */
-    .article-nav {
-      display:flex;
-      gap:1.5rem;
-      margin-top:3rem;
-      padding-top:1.5rem;
-      border-top:0.5px solid rgba(255,255,255,0.06);
-      flex-wrap:wrap;
-    }
-    .article-nav a {
-      font-size:0.72rem;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,0.3);
-      text-decoration:none;
-      transition:color 0.2s;
-    }
-    .article-nav a:hover { color:rgba(255,255,255,0.65); }
-    .article-nav a.primary { color:rgba(216,48,122,0.75); }
-    .article-nav a.primary:hover { color:#D8307A; }
-
-    /* FOOTER */
-    footer {
-      border-top:0.5px solid rgba(255,255,255,0.05);
-      padding:1.5rem 2rem;
-      text-align:center;
-      font-size:0.65rem;
-      color:rgba(255,255,255,0.18);
-      letter-spacing:0.05em;
-    }
-    footer a { color:inherit; text-decoration:none; }
-
-    @media (max-width:600px) {
-      .article-wrap { padding:2rem 1.25rem 3.5rem; }
-    }
-  </style>
-</head>
-<body>
-
-<nav class="world-nav" aria-label="Breadcrumb">
-  <a href="../index.html">Anna Farman Berg</a>
-  <span class="sep">&#8250;</span>
-  <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
-  <span class="sep">&#8250;</span>
-  <a href="../creative-lab.html">Creative Lab</a>
-  <span class="sep">&#8250;</span>
-  <span class="current">B2A: Business to Agent</span>
-</nav>
-
-<main class="article-wrap">
-
-  <span class="article-pillar">AI &amp; Tech</span>
-  <h1 class="article-title">B2A: Business to Agent</h1>
-  <p class="article-date">9 June 2026</p>
-  <hr class="article-divider" />
-
-  <div class="article-body">
-
-    <p>We've built business on human relationships for decades. But what happens when your customer is an agent?</p>
-
-    <p>B2C, B2B, B2B2C — and now also B2A: Business to Agent.</p>
-
-    <p>People browse, read reviews, talk to other people and trust their feelings when making decisions. The thing with AI agents is: they don't. They analyze, compare, decide and buy on behalf of someone else. And suddenly, a lot of what we've relied on starts to shift.</p>
-
-    <div class="pull-quote">
-      The relationships, the trust, the recommendations and the conversations we've had. How much of that still matters when the one making the decision is a machine?
-    </div>
-
-    <p>Remember, agents can't choose you if they can't find you.</p>
-
-    <p>We've spent years optimizing for human eyes: clean design, inspirational UX, storytelling and brand voice. Now there's a second audience around — one that reads data, not feelings. And honestly, that changes things.</p>
-
-    <p>That means structure, definition and consistency matter more than ever before. Because agents read what's structured and ignore what isn't.</p>
-
-    <h2>What does it mean for you?</h2>
-
-    <p>Here's where it gets trickier, because it depends on your business, your industry and your customer journey.</p>
-
-    <p>But a good starting point could be to ask yourself a simple question:</p>
-
-    <p><em>Is what you put out there clear, consistent and machine&#8209;readable?</em></p>
-
-    <p>Because visibility used to be about humans — now it's also about agents.</p>
-
-    <p class="closing-line">Are you visible to agents today? If not, when do you start?</p>
-
-  </div>
-
-  <nav class="article-nav">
-    <a href="../creative-lab.html" class="primary">&#8592; Creative Lab</a>
-    <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
-    <a href="../index.html">Home</a>
-  </nav>
-
-</main>
-
-<footer>
-  &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
-  <a href="../index.html">annafarmanberg.com</a>
-</footer>
-
-</body>
-</html>
+    },
+    {
+      title:   "Efficiency Is the Outcome, Not the Starting Point",
+      excerpt: "AI agents create more work before they create less, and costs can escalate quickly if the fundamentals aren't in place. Efficiency is the outcome, not the starting point.",
+      date:    "11 June 2026", dateVal: 20260611,
+      pillar:  "ai", world: "creative-lab",
+      tags:    ["ai", "agents", "cost", "strategy"],
+      file:    "../creative-lab/efficiency-is-the-outcome.html", curated: false
+    },
+    {
+      title:   "B2A: Business to Agent",
+      excerpt: "B2C, B2B, B2B2C — and now B2A: Business to Agent. When your customer is a machine, the rules change. Are you visible to agents today?",
+      date:    "9 June 2026", dateVal: 20260609,
+      pillar:  "ai", world: "creative-lab",
+      tags:    ["ai", "agents", "b2a", "visibility"],
+      file:    "../creative-lab/b2a-business-to-agent.html", curated: false
+    },
     {
       title:   "Finding Your Sweet Spot",
       excerpt: "That I'm invincible feeling when everything flows and goes our way. How do we actually train and prepare to give ourselves the best possible chance of finding our sweet spot at work?",
@@ -829,28 +600,31 @@
       pillar:  "leadership", world: "mountain-view",
       tags:    ["meetings", "communication", "collaboration"],
       file:    "../mountain-view/campfire-meetings.html", curated: false
-    },{
-  title:   "There Is No Bad Weather",
-  excerpt: "Same conditions, but completely different experiences. Transformation rarely starts with action — it starts earlier, in the quiet shift of how we see things.",
-  date:    "28 May 2026", dateVal: 20260528,
-  pillar:  "leadership", world: "mountain-view",
-  tags:    ["transformation", "mindset", "nordics"],
-  file:    "../mountain-view/there-is-no-bad-weather.html", curated: false
-}, {
-  title:   "We're All 19 Sometimes",
-  excerpt: "It's graduation season in Sweden. But if you think about it, we keep making the same journey throughout our lives — new roles, new beginnings, the same mix of excitement and uncertainty.",
-  date:    "2 June 2026", dateVal: 20260602,
-  pillar:  "leadership", world: "mountain-view",
-  tags:    ["transitions", "leadership", "graduation", "mindset"],
-  file:    "../mountain-view/were-all-19-sometimes.html", curated: false
-},{
-  title:   "Who Met You Then?",
-  excerpt: "During graduation weeks, we are reminded how powerful it is to be met by someone when you take a step into the unknown. In working life, those transitions often happen quietly — but the need to be seen remains.",
-  date:    "11 June 2026", dateVal: 20260611,
-  pillar:  "leadership", world: "mountain-view",
-  tags:    ["transitions", "leadership", "teams", "belonging"],
-  file:    "../mountain-view/who-met-you-then.html", curated: false
-},
+    },
+    {
+      title:   "There Is No Bad Weather",
+      excerpt: "Same conditions, but completely different experiences. Transformation rarely starts with action — it starts earlier, in the quiet shift of how we see things.",
+      date:    "28 May 2026", dateVal: 20260528,
+      pillar:  "leadership", world: "mountain-view",
+      tags:    ["transformation", "mindset", "nordics"],
+      file:    "../mountain-view/there-is-no-bad-weather.html", curated: false
+    },
+    {
+      title:   "We're All 19 Sometimes",
+      excerpt: "It's graduation season in Sweden. But if you think about it, we keep making the same journey throughout our lives — new roles, new beginnings, the same mix of excitement and uncertainty.",
+      date:    "2 June 2026", dateVal: 20260602,
+      pillar:  "leadership", world: "mountain-view",
+      tags:    ["transitions", "leadership", "graduation", "mindset"],
+      file:    "../mountain-view/were-all-19-sometimes.html", curated: false
+    },
+    {
+      title:   "Who Met You Then?",
+      excerpt: "During graduation weeks, we are reminded how powerful it is to be met by someone when you take a step into the unknown. In working life, those transitions often happen quietly — but the need to be seen remains.",
+      date:    "11 June 2026", dateVal: 20260611,
+      pillar:  "leadership", world: "mountain-view",
+      tags:    ["transitions", "leadership", "teams", "belonging"],
+      file:    "../mountain-view/who-met-you-then.html", curated: false
+    },
     // ── PRACTICE RANGE ──
     {
       title:   "One Size Fits All — And Why It Never Does",
