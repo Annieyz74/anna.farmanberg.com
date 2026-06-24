@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>Thoughts &amp; Reflections &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#070C18; color:rgba(255,255,255,0.8); font-family:'Montserrat',sans-serif; min-height:100vh; }
+
+    /* ── DEEP NIGHT-SKY BACKGROUND ───────────────────── */
+    body {
+      background-image:
+        radial-gradient(ellipse at 50% 0%, #0F1628 0%, #060810 55%, #070C18 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2,4,10,0.55) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* BREADCRUMB */
+    .world-nav { position:relative; z-index:1; padding:1.75rem 2rem 0; max-width:920px; margin:0 auto; display:flex; align-items:center; gap:10px; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); flex-wrap:wrap; }
+    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .world-nav a:hover { color:rgba(255,255,255,0.65); }
+    .world-nav .sep { color:rgba(255,255,255,0.12); }
+    .world-nav .current { color:#B6C3D5; }
+
+    /* HEADER */
+    .world-header { position:relative; z-index:1; max-width:920px; margin:0 auto; padding:2.5rem 2rem 0; text-align:center; }
+    .world-name { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3rem); font-weight:400; color:#fff; line-height:1.1; margin-bottom:0.75rem; }
+    .world-tagline { font-size:0.9rem; color:rgba(255,255,255,0.45); font-style:italic; line-height:1.65; }
+
+    /* FILTERS */
+    .filter-bar { position:relative; z-index:1; max-width:920px; margin:2rem auto 0; padding:0 2rem; display:flex; flex-direction:column; gap:14px; align-items:center; }
+    .filter-row { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+    .filter-label { font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:2px; }
+    .filter-btn {
+      font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase;
+      padding:6px 16px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.03); color:rgba(255,255,255,0.55); cursor:pointer;
+      transition:all 0.2s; font-family:'Montserrat',sans-serif;
+    }
+    .filter-btn:hover { border-color:rgba(255,255,255,0.35); color:#fff; }
+    .filter-btn.active { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.4); color:#fff; }
+
+    /* DIVIDER */
+    .world-divider { position:relative; z-index:1; max-width:920px; margin:2rem auto 0; padding:0 2rem; }
+    .world-divider hr { border:none; border-top:0.5px solid rgba(255,255,255,0.06); }
+
+    /* POST LISTING */
+    .post-listing { position:relative; z-index:1; max-width:920px; margin:0 auto; padding:2.5rem 2rem; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media (max-width:760px) { .post-listing { grid-template-columns:1fr; } }
+
+    /* POST CARD */
+    .post-card { border:0.5px solid rgba(255,255,255,0.07); border-radius:8px; padding:1.5rem; transition:border-color 0.2s, background 0.2s; cursor:pointer; display:flex; flex-direction:column; }
+    .post-card:hover { border-color:rgba(255,255,255,0.22); background:rgba(255,255,255,0.03); }
+    .post-world-tag { font-size:8px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem; font-weight:600; }
+    .post-title { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:500; margin-bottom:0.6rem; line-height:1.35; }
+    .post-excerpt { font-size:0.78rem; color:rgba(255,255,255,0.48); line-height:1.7; margin-bottom:1rem; flex-grow:1; }
+    .post-meta { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:auto; }
+    .post-pillar { font-size:8px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:0.5px solid; }
+    .pillar-leadership { color:#7B4DB8; border-color:rgba(90,42,131,0.4); }
+    .pillar-career { color:#007F6F; border-color:rgba(0,127,111,0.4); }
+    .pillar-ai { color:#1A6A8A; border-color:rgba(26,106,138,0.4); }
+    .post-readmore { font-size:0.68rem; letter-spacing:0.06em; text-decoration:none; text-transform:uppercase; background:none; border:none; padding:0; cursor:pointer; transition:color 0.2s; font-family:'Montserrat',sans-serif; }
+
+    /* EMPTY STATE */
+    .empty-state { text-align:center; padding:4rem 2rem; grid-column:1/-1; }
+    .empty-heading { font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:rgba(255,255,255,0.55); }
+
+    /* BACK LINK */
+    .back-link { position:relative; z-index:1; display:block; max-width:920px; margin:0 auto; padding:0 2rem 3rem; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; text-align:center; }
+    .back-link:hover { color:rgba(255,255,255,0.6); }
+
+    /* FOOTER */
+    footer { position:relative; z-index:1; border-top:0.5px solid rgba(255,255,255,0.05); padding:1.5rem 2rem; text-align:center; font-size:0.65rem; color:rgba(255,255,255,0.18); letter-spacing:0.05em; }
+    footer a { color:inherit; text-decoration:none; }
+
+    @media (max-width:600px) {
+      .world-header { padding:2rem 1.25rem 0; }
+      .post-listing { padding:2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="world-nav" aria-label="Breadcrumb">
+    <a href="index.html">Anna Farman Berg</a>
+    <span class="sep">&#8250;</span>
+    <span class="current">Thoughts &amp; Reflections</span>
+  </nav>
+
+  <header class="world-header">
+    <h1 class="world-name">Thoughts &amp; Reflections</h1>
+    <p class="world-tagline">Five worlds. One orbit. All in one place.</p>
+  </header>
+
+  <div class="filter-bar">
+    <div>
+      <p class="filter-label" style="text-align:center;">World</p>
+      <div class="filter-row" id="worldFilters">
+        <button class="filter-btn active" data-world="all">All worlds</button>
+        <button class="filter-btn" data-world="mountain-view">Mountain View</button>
+        <button class="filter-btn" data-world="practice-range">Practice Range</button>
+        <button class="filter-btn" data-world="the-road">The Road</button>
+        <button class="filter-btn" data-world="creative-lab">Creative Lab</button>
+        <button class="filter-btn" data-world="growth-house">Growth House</button>
+      </div>
+    </div>
+    <div>
+      <p class="filter-label" style="text-align:center;">Pillar</p>
+      <div class="filter-row" id="pillarFilters">
+        <button class="filter-btn active" data-pillar="all">All pillars</button>
+        <button class="filter-btn" data-pillar="leadership">Leadership &amp; Transformation</button>
+        <button class="filter-btn" data-pillar="career">Career &amp; Learning</button>
+        <button class="filter-btn" data-pillar="ai">AI &amp; Tech</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="world-divider"><hr /></div>
+
+  <main class="post-listing" id="postListing" aria-live="polite"></main>
+
+  <a href="index.html#thoughts" class="back-link">&#8592; Back to the orbit</a>
+
+  <footer>
+    &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+    <a href="index.html">annafarmanberg.com</a>
+  </footer>
+
+<script>
+const POSTS = 
+[
+  {
+    world:   "mountain-view",
+    worldName: "Mountain View",
+    worldColor: "#9B6ED8",
+    slug:    "three-ways-of-fishing",
+    title:   "Three Ways of Fishing — And Three Ways of Working",
+    date:    "23 June 2026",
+    pillar:  "leadership",
+    file:    "mountain-view/three-ways-of-fishing.html",
+    excerpt: "I learned three ways of fishing as a kid, and I still use all three in my work today. Float fishing, casting and nets — each requires different skills and different conditions."
+  },
+  {
+    world:   "growth-house",
+    worldName: "Growth House",
+    worldColor: "#2C62D0",
+    slug:    "sticker-on-the-lens-box",
+    title:   "The Sticker on the Lens Box — And What It Says About Customer Experience",
+    date:    "12 May 2026",
+    pillar:  "leadership",
+    file:    "growth-house/sticker-on-the-lens-box.html",
+    excerpt: "Customers love the no brainers. A simple QR code sticker on a lens box — Scan to reload. So effortless. What are the odds of buying elsewhere now? The customer journey is about walking in their shoes."
+  },
+  {
+    world:   "growth-house",
+    worldName: "Growth House",
+    worldColor: "#2C62D0",
+    slug:    "time-as-a-precious-currency",
+    title:   "Time as a Precious Currency",
+    date:    "11 May 2026",
+    pillar:  "leadership",
+    file:    "growth-house/time-as-a-precious-currency.html",
+    excerpt: "Time has quietly become one of our most precious currencies. Yet it remains the one thing we all share equally — 24 hours, 1,440 minutes, every day. The question is not where the time went. It is what we chose to do with it."
+  },
+  {
+    world:   "practice-range",
+    worldName: "Practice Range",
+    worldColor: "#B8C4CC",
+    slug:    "train-before-it-really-matters",
+    title:   "Train Before It Really Matters — What a Motorcycle Taught Me About Preparation",
+    date:    "8 May 2026",
+    pillar:  "career",
+    file:    "practice-range/train-before-it-really-matters.html",
+    excerpt: "When the unexpected happened on my motorbike, I didn't think. My body did what it had been trained to do. Deep learning is the kind of knowledge we actually remember when things get tough."
+  },
+  {
+    world:   "the-road",
+    worldName: "The Road",
+    worldColor: "#3888F0",
+    slug:    "three-questions",
+    title:   "Three Questions That Keep Me on Track",
+    date:    "7 May 2026",
+    pillar:  "career",
+    file:    "the-road/Three-questions.html",
+    excerpt: "Are you focusing on what you should be doing right now? Work life is busy and complex. Three simple questions help me stay aligned, moving forward and honest with myself."
+  },
+  {
+    world:   "creative-lab",
+    worldName: "Creative Lab",
+    worldColor: "#D8307A",
+    slug:    "adoption-happens-in-behaviors",
+    title:   "Adoption Happens in Behaviors, Not Dashboards",
+    date:    "5 May 2026",
+    pillar:  "leadership",
+    file:    "creative-lab/adoption-happens-in-behaviors.html",
+    excerpt: "Adoption isn't about the switch from 'not using' to 'using.' It's about how people learn, adapt — and the support they need to take the next step. Adoption always starts with people."
+  },
+  {
+    world:   "practice-range",
+    worldName: "Practice Range",
+    worldColor: "#B8C4CC",
+    slug:    "which-slope-are-you-on",
+    title:   "Which Slope Are You On? — The Learning Curve in a Ski Resort",
+    date:    "28 April 2026",
+    pillar:  "career",
+    file:    "practice-range/which-slope-are-you-on.html",
+    excerpt: "We all know people have different perspectives, skills and experiences. Yet we say 'In my book…' when we struggle to understand someone else. The ski slope metaphor changed how I see it."
+  },
+  {
+    world:   "creative-lab",
+    worldName: "Creative Lab",
+    worldColor: "#D8307A",
+    slug:    "ai-isnt-changing-your-workflows",
+    title:   "AI Isn't Changing Your Workflows — It's Changing Your Role",
+    date:    "28 April 2026",
+    pillar:  "ai",
+    file:    "creative-lab/ai-isnt-changing-your-workflows.html",
+    excerpt: "AI isn't just changing how we work in Customer Success — it's changing what the role actually is. Most teams feel the shift. Very few understand what it truly means."
+  },
+  {
+    world:   "the-road",
+    worldName: "The Road",
+    worldColor: "#3888F0",
+    slug:    "inner-engine",
+    title:   "Your Inner Engine — What Actually Keeps You Going",
+    date:    "23 April 2026",
+    pillar:  "leadership",
+    file:    "the-road/your-inner-engine.html",
+    excerpt: "Imagine spending hours adjusting the clutch one millimeter at a time just to go even slower. How do you motivate yourself to keep going? True motivation comes from within — and neuroscience backs this up."
+  },
+  {
+    world:   "growth-house",
+    worldName: "Growth House",
+    worldColor: "#2C62D0",
+    slug:    "folklore-day",
+    title:   "Happy Folklore Day — A Simple Idea with Big Impact",
+    date:    "21 April 2026",
+    pillar:  "leadership",
+    file:    "growth-house/folklore-day.html",
+    excerpt: "If you've ever prepared for a customer meeting, you know the first challenge is rarely the content. It's the detective work — figuring out what's true, what's outdated, and what still lives in someone's head."
+  },
+  {
+    world:   "the-road",
+    worldName: "The Road",
+    worldColor: "#3888F0",
+    slug:    "how-hard-can-it-be",
+    title:   "How Hard Can It Be? — What Riding a Motorcycle Taught Me About Self-Leadership",
+    date:    "16 April 2026",
+    pillar:  "leadership",
+    file:    "the-road/how-hard-can-it-be.html",
+    excerpt: "I was determined and enthusiastic — it was time to fulfil my teenage dream: learning how to ride a motorcycle. How hard can it be? It turns out things are rarely as easy as they look from a distance."
+  },
+  {
+    world:   "growth-house",
+    worldName: "Growth House",
+    worldColor: "#2C62D0",
+    slug:    "when-data-meets-folklore",
+    title:   "When Data Meets Folklore — The Missing Piece in Your AI Strategy",
+    date:    "14 April 2026",
+    pillar:  "ai",
+    file:    "growth-house/when-data-meets-folklore.html",
+    excerpt: "Imagine what AI could do if its real power came from combining data with organizational folklore — the quiet everyday knowledge that actually holds the work together."
+  },
+  {
+    world:   "mountain-view",
+    worldName: "Mountain View",
+    worldColor: "#9B6ED8",
+    slug:    "campfire-meetings",
+    title:   "The Campfire, Now in Our Calendar",
+    date:    "10 April 2026",
+    pillar:  "leadership",
+    file:    "mountain-view/campfire-meetings.html",
+    excerpt: "This meeting could just as well have been an email. The irony is: people have always gathered to talk. Meetings need to be reclaimed — as the place where we think together."
+  },
+  {
+    world:   "creative-lab",
+    worldName: "Creative Lab",
+    worldColor: "#D8307A",
+    slug:    "relevance-is-a-knowledge-problem",
+    title:   "Make AI Relevant to Me — The Real Ask Behind the Hype",
+    date:    "8 April 2026",
+    pillar:  "ai",
+    file:    "creative-lab/make-ai-relevant-to-me.html",
+    excerpt: "81,000 people are probably right: Make AI relevant to me. People aren't asking for more AI — they're asking for more relevance. And that's a knowledge problem, not a technology problem."
+  },
+  {
+    world:   "mountain-view",
+    worldName: "Mountain View",
+    worldColor: "#9B6ED8",
+    slug:    "some-places-stay-with-you",
+    title:   "Some Places Stay With You — And So Do Some Brands",
+    date:    "31 March 2026",
+    pillar:  "leadership",
+    file:    "mountain-view/some-places-stay-with-you.html",
+    excerpt: "What is it that makes certain places stay with you long after you have left? A visit to Krägga Herrgård by Lake Mälaren reminded me that the strongest brands — places, people or organisations — always start with authenticity."
+  },
+  {
+    world:   "growth-house",
+    worldName: "Growth House",
+    worldColor: "#2C62D0",
+    slug:    "personal-brand-aha-moment",
+    title:   "The Day I Understood What a Personal Brand Really Is",
+    date:    "26 March 2026",
+    pillar:  "leadership",
+    file:    "growth-house/personal-brand-aha-moment.html",
+    excerpt: "My father gave me a piece of advice when I was 16. I didn't fully understand it then. Years later, a stranger looked at my business card — and everything clicked."
+  },
+  {
+    world:   "practice-range",
+    worldName: "Practice Range",
+    worldColor: "#B8C4CC",
+    slug:    "one-size-fits-all",
+    title:   "One Size Fits All — And Why It Never Does",
+    date:    "24 March 2026",
+    pillar:  "career",
+    file:    "practice-range/one-size-fits-all.html",
+    excerpt: "My favourite clothing store proves it every season. One size fits all is rarely flattering — and we do the exact same thing with learning."
+  },
+  {
+    world:   "mountain-view",
+    worldName: "Mountain View",
+    worldColor: "#9B6ED8",
+    slug:    "performance-currency-vs-relationship-currency",
+    title:   "Performance Currency vs. Relationship Currency",
+    date:    "19 March 2026",
+    pillar:  "leadership",
+    file:    "mountain-view/performance-currency-vs-relationship-currency.html",
+    excerpt: "Many years ago, a manager told me to be less social and less helpful at work. I've never believed that relationships distract from performance. For me, they enable it."
+  }
+];
+
+
+const PILLARS = {
+  leadership: { label: "Leadership & Transformation", cls: "pillar-leadership" },
+  career:     { label: "Career & Learning",           cls: "pillar-career"     },
+  ai:         { label: "AI & Tech",                   cls: "pillar-ai"         }
+};
+
+var activeWorld = "all";
+var activePillar = "all";
+
+function renderListing() {
+  var el = document.getElementById("postListing");
+  var filtered = POSTS.filter(function(p) {
+    var worldMatch = activeWorld === "all" || p.world === activeWorld;
+    var pillarMatch = activePillar === "all" || p.pillar === activePillar;
+    return worldMatch && pillarMatch;
+  });
+
+  if (!filtered.length) {
+    el.innerHTML = '<div class="empty-state"><p class="empty-heading">No posts match this filter &mdash; yet.</p></div>';
+    return;
+  }
+
+  var html = "";
+  filtered.forEach(function(p) {
+    var pillar = PILLARS[p.pillar] || PILLARS.career;
+    html +=
+      '<article class="post-card" onclick="location.href=\'' + p.file + '\'">' +
+      '  <span class="post-world-tag" style="color:' + p.worldColor + ';">' + p.worldName + '</span>' +
+      '  <h2 class="post-title" style="color:' + p.worldColor + ';">' + p.title + '</h2>' +
+      '  <p class="post-excerpt">' + p.excerpt + '</p>' +
+      '  <div class="post-meta">' +
+      '    <span class="post-pillar ' + pillar.cls + '">' + pillar.label + '</span>' +
+      '    <a class="post-readmore" href="' + p.file + '" style="color:' + p.worldColor + ';" onclick="event.stopPropagation();">Read more &rarr;</a>' +
+      '  </div>' +
+      '</article>';
+  });
+  el.innerHTML = html;
+}
+
+document.getElementById("worldFilters").addEventListener("click", function(e) {
+  if (e.target.classList.contains("filter-btn")) {
+    document.querySelectorAll("#worldFilters .filter-btn").forEach(function(b){ b.classList.remove("active"); });
+    e.target.classList.add("active");
+    activeWorld = e.target.dataset.world;
+    renderListing();
+  }
+});
+
+document.getElementById("pillarFilters").addEventListener("click", function(e) {
+  if (e.target.classList.contains("filter-btn")) {
+    document.querySelectorAll("#pillarFilters .filter-btn").forEach(function(b){ b.classList.remove("active"); });
+    e.target.classList.add("active");
+    activePillar = e.target.dataset.pillar;
+    renderListing();
+  }
+});
+
+renderListing();
+</script>
+</body>
+</html>
