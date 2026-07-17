@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>The Mid-Year Check-In: A Conversation With Yourself &mdash; Practice Range &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#090E1A; color:rgba(255,255,255,0.8); font-family:'Montserrat',sans-serif; min-height:100vh; }
+
+    /* BREADCRUMB */
+    .world-nav { position:relative; z-index:1; padding:1.75rem 2rem 0; max-width:860px; margin:0 auto; display:flex; align-items:center; gap:10px; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); flex-wrap:wrap; }
+    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .world-nav a:hover { color:rgba(255,255,255,0.65); }
+    .world-nav .sep { color:rgba(255,255,255,0.12); }
+    .world-nav .current { color:#B8C4CC; }
+
+    /* ARTICLE VIEW */
+    #view-article { max-width:700px; margin:0 auto; padding:2.5rem 2rem 4rem; }
+    .article-pillar-bar { padding:0; margin-bottom:1.25rem; }
+    .article-pillar { font-size:8px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:0.5px solid; color:#007F6F; border-color:rgba(0,127,111,0.4); }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; color:#B8C4CC; line-height:1.2; margin-bottom:0.75rem; }
+    .article-date { font-size:0.7rem; letter-spacing:0.1em; color:rgba(255,255,255,0.28); text-transform:uppercase; margin-bottom:2rem; }
+    .article-divider { border:none; border-top:0.5px solid rgba(255,255,255,0.06); margin:1.5rem 0; }
+    .article-body { font-size:0.9rem; line-height:1.95; color:rgba(255,255,255,0.68); }
+    .article-body p { margin-bottom:1.3rem; }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.15rem; color:#B8C4CC; margin:2rem 0 0.75rem; }
+    .article-body ul, .article-body ol { margin:0 0 1.3rem 1.4rem; }
+    .article-body ul li, .article-body ol li { margin-bottom:0.7rem; }
+    .article-body ol li strong { color:rgba(255,255,255,0.85); }
+    .article-body .meta-block { font-size:0.82rem; color:rgba(255,255,255,0.5); margin-bottom:1.75rem; }
+    .article-body .meta-block div { margin-bottom:0.35rem; }
+    .article-nav { display:flex; gap:1.5rem; margin-top:3rem; padding-top:1.5rem; border-top:0.5px solid rgba(255,255,255,0.06); flex-wrap:wrap; }
+    .article-nav a { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.2s; }
+    .article-nav a:hover { color:rgba(255,255,255,0.65); }
+
+    /* BACK LINK */
+    .back-link { display:block; max-width:860px; margin:0 auto; padding:0 2rem 3rem; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .back-link:hover { color:rgba(255,255,255,0.6); }
+
+    /* FOOTER */
+    footer { border-top:0.5px solid rgba(255,255,255,0.05); padding:1.5rem 2rem; text-align:center; font-size:0.65rem; color:rgba(255,255,255,0.18); letter-spacing:0.05em; }
+    footer a { color:inherit; text-decoration:none; }
+
+    @media (max-width:600px) {
+      #view-article { padding:2rem 1.25rem 3rem; }
+    }
+
+    /* DEEP NIGHT-SKY BACKGROUND */
+    body {
+      background: #070C18;
+      background-image: radial-gradient(ellipse at 50% 0%, #0F1628 0%, #060810 55%, #070C18 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2,4,10,0.55) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="view-article">
+  <nav class="world-nav" aria-label="Breadcrumb">
+    <a href="../index.html">Anna Farman Berg</a>
+    <span class="sep">&#8250;</span>
+    <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    <span class="sep">&#8250;</span>
+    <a href="../practice-range.html">Practice Range</a>
+    <span class="sep">&#8250;</span>
+    <span class="current">The Mid-Year Check-In</span>
+  </nav>
+
+  <div id="articleContent">
+    <div class="article-pillar-bar">
+      <span class="article-pillar">Career &amp; Learning</span>
+    </div>
+    <h1 class="article-title">The Mid-Year Check-In: A Conversation With Yourself</h1>
+    <div class="article-date">16 July 2026</div>
+    <hr class="article-divider" />
+
+    <div class="article-body">
+      <p>When was the last time you did a check-in with yourself? I believe that the middle of the year is a natural checkpoint and summer gives us the space to actually use it. It's a great time to do a mid-year check-in and reflect on the past and coming months.</p>
+
+      <div class="meta-block">
+        <div><strong>Attendee:</strong> Me, myself &amp; I</div>
+        <div><strong>Total time:</strong> 2-3 hours: split in two sessions, each 60-90 minutes</div>
+        <div><strong>Optional:</strong> Micro&#8209;block 15&ndash;20 min</div>
+      </div>
+
+      <h2>Block 1: Reflection</h2>
+      <p>This covers the "What did I learn / What worked / What was difficult / What should I let go of" part. This is the deeper part, it takes time to remember, connect dots and see patterns.</p>
+
+      <p>You'll need:</p>
+      <ul>
+        <li>Quiet</li>
+        <li>A notebook or doc</li>
+        <li>No interruptions</li>
+        <li>A slower pace</li>
+      </ul>
+
+      <ol>
+        <li><strong>What actually happened?</strong> What really unfolded and happened (not planned). Projects, decisions, changes, challenges, wins.</li>
+        <li><strong>What worked well?</strong> Behaviours, routines, choices, collaborations, habits that created progress or momentum.</li>
+        <li><strong>What felt difficult or slow?</strong> Understand context, don't judge yourself. Energy dips, external factors, timing, workload, market conditions.</li>
+        <li><strong>What did I learn?</strong> Skills, insights, patterns, personal growth, professional development.</li>
+        <li><strong>What am I proud of?</strong> Most people skip this, but it's essential. Moments of courage, consistency, improvement, or resilience.</li>
+        <li><strong>What should I let go of?</strong> Expectations, projects, ideas, habits or goals that no longer serve you.</li>
+      </ol>
+
+      <h2>Block 2: Forward Thinking</h2>
+      <p>This covers the "What can I improve / What can I do differently / What should I learn / What do I want to prioritise" part. This block is faster because: you already have the raw material from Block 1. Shift into direction-setting decisions come more naturally once reflection is done.</p>
+
+      <ol>
+        <li><strong>What did I learn in the first half of the year?</strong> This anchors your direction. It helps you see patterns, strengths and shifts that matter going forward.</li>
+        <li><strong>What can I improve?</strong> In a practical and professional way. Think behaviours, routines, communication, focus, boundaries. NB! Avoid self&#8209;criticism.</li>
+        <li><strong>What can I do differently?</strong> This is the "small adjustments" question. Tiny changes often create the biggest movement.</li>
+        <li><strong>What should I learn next?</strong> Skills, tools, topics, methods &ndash; especially those that support your goals for autumn.</li>
+        <li><strong>What do I want to prioritise?</strong> Choose 2&ndash;3 things, prioritization creates movement.</li>
+        <li><strong>What do I need to feel energized and steady?</strong> This is the sustainability question. Rest, structure, support, rhythm.</li>
+      </ol>
+
+      <h2>Optional: Micro-block (15&ndash;20 min)</h2>
+      <p>This helps you avoid overloading the plan. A short "closing" block the next day to:</p>
+      <ul>
+        <li>Refine your priorities</li>
+        <li>Choose your top 2&ndash;3 focus areas</li>
+        <li>Write a short summary</li>
+        <li>Decide what goes into August vs September</li>
+      </ul>
+
+      <p>I like a small reset before the pace picks up again after summer. For me, one focus area for the coming months is strengthening my professional network after summer, something I want to work with more intentionally.</p>
+
+      <p>If you're doing your own mid&#8209;year review, I'd love to hear what you're focusing on for the months ahead.</p>
+    </div>
+
+    <div class="article-nav">
+      <a href="../practice-range.html">&#8592; Practice Range</a>
+      <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+  <a href="../index.html">annafarmanberg.com</a>
+</footer>
+
+</body>
+</html>
