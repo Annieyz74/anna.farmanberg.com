@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>The COIN Method: Feedback That Actually Helps &mdash; Practice Range &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+    /* ── DEEP NIGHT-SKY BACKGROUND (new standard) ───────── */
+    body {
+      font-family:'Montserrat',sans-serif;
+      min-height:100vh;
+      color:rgba(255,255,255,0.8);
+      background-color: #0A0D1F;
+      background-image:
+        radial-gradient(ellipse at 50% 50%, #1C234A 0%, #12183A 25%, #0A0D1F 60%, #0A0D1F 100%),
+        radial-gradient(ellipse at 80% 80%,  rgba(184,196,204,0.05) 0%, transparent 60%);
+    }
+
+    body::before {
+      content:'';
+      position:fixed;
+      inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+      background-size:200px 200px;
+      opacity:0.07;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    body::after {
+      content:'';
+      position:fixed;
+      inset:0;
+      background:radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2,4,10,0.55) 100%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    nav, main, footer { position:relative; z-index:1; }
+
+    /* BREADCRUMB */
+    .world-nav {
+      padding:1.75rem 2rem 0;
+      max-width:700px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:0.68rem;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.28);
+      flex-wrap:wrap;
+    }
+    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .world-nav a:hover { color:rgba(255,255,255,0.65); }
+    .world-nav .sep { color:rgba(255,255,255,0.12); }
+    .world-nav .current { color:#B8C4CC; }
+
+    /* ARTICLE */
+    .article-wrap {
+      max-width:700px;
+      margin:0 auto;
+      padding:2.5rem 2rem 5rem;
+    }
+
+    .article-pillar {
+      display:inline-block;
+      font-size:8px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      padding:4px 13px;
+      border-radius:20px;
+      border:0.5px solid rgba(0,127,111,0.45);
+      color:#3DBBA0;
+      margin-bottom:1.25rem;
+    }
+
+    .article-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.6rem,4vw,2.2rem);
+      font-weight:400;
+      color:#B8C4CC;
+      line-height:1.2;
+      margin-bottom:0.75rem;
+    }
+
+    .article-date {
+      font-size:0.7rem;
+      letter-spacing:0.1em;
+      color:rgba(255,255,255,0.28);
+      text-transform:uppercase;
+      margin-bottom:2rem;
+    }
+
+    .article-divider {
+      border:none;
+      border-top:0.5px solid rgba(255,255,255,0.07);
+      margin:1.5rem 0 2rem;
+    }
+
+    .article-body {
+      font-size:0.9rem;
+      line-height:2;
+      color:rgba(255,255,255,0.7);
+    }
+    .article-body p { margin-bottom:1.4rem; }
+    .article-body em { font-style:italic; color:rgba(255,255,255,0.82); }
+
+    /* COIN LIST */
+    .article-list {
+      list-style:none;
+      padding:0;
+      margin:0.5rem 0 1.75rem;
+      border-left:1.5px solid rgba(184,196,204,0.3);
+      padding-left:1.5rem;
+    }
+    .article-list li {
+      padding:0.55rem 0;
+      color:rgba(255,255,255,0.68);
+      font-size:0.88rem;
+      line-height:1.7;
+    }
+    .article-list li strong { color:#B8C4CC; font-weight:600; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left:2px solid #B8C4CC;
+      padding:0.75rem 0 0.75rem 1.25rem;
+      margin:2rem 0;
+      font-family:'Playfair Display',serif;
+      font-style:italic;
+      font-size:1.05rem;
+      color:rgba(255,255,255,0.78);
+      line-height:1.7;
+    }
+
+    /* CLOSING */
+    .closing-line {
+      font-family:'Playfair Display',serif;
+      font-size:1rem;
+      font-style:italic;
+      color:rgba(255,255,255,0.6);
+      line-height:1.65;
+      margin-top:2rem;
+    }
+
+    /* NAV */
+    .article-nav {
+      display:flex;
+      gap:1.5rem;
+      margin-top:3rem;
+      padding-top:1.5rem;
+      border-top:0.5px solid rgba(255,255,255,0.06);
+      flex-wrap:wrap;
+    }
+    .article-nav a {
+      font-size:0.72rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.3);
+      text-decoration:none;
+      transition:color 0.2s;
+    }
+    .article-nav a:hover { color:rgba(255,255,255,0.65); }
+    .article-nav a.primary { color:rgba(184,196,204,0.75); }
+    .article-nav a.primary:hover { color:#B8C4CC; }
+
+    /* FOOTER */
+    footer {
+      border-top:0.5px solid rgba(255,255,255,0.05);
+      padding:1.5rem 2rem;
+      text-align:center;
+      font-size:0.65rem;
+      color:rgba(255,255,255,0.18);
+      letter-spacing:0.05em;
+    }
+    footer a { color:inherit; text-decoration:none; }
+
+    @media (max-width:600px) {
+      .article-wrap { padding:2rem 1.25rem 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="world-nav" aria-label="Breadcrumb">
+  <a href="../index.html">Anna Farman Berg</a>
+  <span class="sep">&#8250;</span>
+  <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+  <span class="sep">&#8250;</span>
+  <a href="../practice-range.html">Practice Range</a>
+  <span class="sep">&#8250;</span>
+  <span class="current">The COIN Method</span>
+</nav>
+
+<main class="article-wrap">
+
+  <span class="article-pillar">Career &amp; Learning</span>
+  <h1 class="article-title">The COIN Method: Feedback That Actually Helps</h1>
+  <p class="article-date">30 August 2026</p>
+  <hr class="article-divider" />
+
+  <div class="article-body">
+
+    <p>Did you know that one of the strongest drivers for learning and growth is available to all of us? Across hundreds of studies, constructive, specific and respectful feedback consistently ranks among the top factors influencing performance and growth. Meta analyses by Hattie &amp; Timperley, updated Feedback Intervention Theory (Kluger &amp; DeNisi), and newer studies in <em>Learning &amp; Instruction</em> all point to the same thing: good feedback increases motivation, curiosity and future performance.</p>
+
+    <p>Still, constructive feedback is easy to forget in busy times. But that's exactly when it matters most, both for individuals and for the organization. Most people genuinely want to improve, learn and grow. And because true motivation comes from within, feedback becomes a very powerful catalyst for development.</p>
+
+    <p>One important note: feedback must be about the task or behaviour and not the person. That's what makes it land in a positive and useful way.</p>
+
+    <p>Constructive feedback should be quick and natural. Shared right after a meeting or event, during a walk from a customer visit to the airport or railway station, or scheduled as a short check&#8209;in. The key is to make it a habit, something that becomes a natural part of everyday work.</p>
+
+    <p><strong>How to give constructive feedback in a respectful way that actually helps, using the COIN method:</strong></p>
+
+    <ul class="article-list">
+      <li><strong>C &#8211; Context:</strong> Set the scene. Ask first: "Is it okay if I share an observation?" Or offer it lightly: "One idea that might help next time&hellip;"</li>
+      <li><strong>O &#8211; Observation:</strong> What you saw or heard. Focus on behaviour not personality. Be specific: One concrete example is worth more than ten general comments.</li>
+      <li><strong>I &#8211; Impact:</strong> Explain why it matters or what it improves.</li>
+      <li><strong>N &#8211; Next step:</strong> A suggestion or idea.</li>
+    </ul>
+
+    <p>Make it a two&#8209;way conversation by inviting the other person to share: <em>"I'd love your feedback on me as well."</em></p>
+
+    <div class="pull-quote">
+      Constructive feedback doesn't have to be complicated, but it does have to be intentional.
+    </div>
+
+    <p class="closing-line">When we make it part of everyday conversations, we create teams that learn faster, collaborate better and grow together.</p>
+
+  </div>
+
+  <nav class="article-nav">
+    <a href="../practice-range.html" class="primary">&#8592; Practice Range</a>
+    <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    <a href="../index.html">Home</a>
+  </nav>
+
+</main>
+
+<footer>
+  &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+  <a href="../index.html">annafarmanberg.com</a>
+</footer>
+
+</body>
+</html>
