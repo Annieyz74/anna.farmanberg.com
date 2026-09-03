@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>Hybrid Isn&rsquo;t a Switch — It&rsquo;s a Scale &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#090E1A; color:rgba(255,255,255,0.8); font-family:'Montserrat',sans-serif; min-height:100vh; }
+
+    /* BREADCRUMB */
+    .world-nav { position:relative; z-index:1; padding:1.75rem 2rem 0; max-width:860px; margin:0 auto; display:flex; align-items:center; gap:10px; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); flex-wrap:wrap; }
+    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .world-nav a:hover { color:rgba(255,255,255,0.65); }
+    .world-nav .sep { color:rgba(255,255,255,0.12); }
+    .world-nav .current { color:#B8C4CC; }
+
+    /* PILLAR BADGE */
+    .post-pillar { font-size:8px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:0.5px solid; display:inline-block; }
+    .pillar-leadership { color:#7B4DB8; border-color:rgba(90,42,131,0.4); }
+    .pillar-career { color:#007F6F; border-color:rgba(0,127,111,0.4); }
+    .pillar-ai { color:#1A6A8A; border-color:rgba(26,106,138,0.4); }
+
+    /* ARTICLE */
+    #view-article { position:relative; z-index:1; max-width:700px; margin:0 auto; padding:2.5rem 2rem 4rem; }
+    .article-pillar-bar { padding:0; margin:1.75rem 0 1.25rem; }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; color:#B8C4CC; line-height:1.2; margin-bottom:0.75rem; }
+    .article-date { font-size:0.7rem; letter-spacing:0.1em; color:rgba(255,255,255,0.28); text-transform:uppercase; margin-bottom:2rem; }
+    .article-divider { border:none; border-top:0.5px solid rgba(255,255,255,0.06); margin:1.5rem 0; }
+    .article-body { font-size:0.9rem; line-height:1.95; color:rgba(255,255,255,0.68); }
+    .article-body p { margin-bottom:1.3rem; }
+    .article-body ul { margin:0 0 1.3rem 0; padding-left:1.4rem; }
+    .article-body li { margin-bottom:0.55rem; }
+    .article-body li::marker { color:#B8C4CC; }
+    .article-body a { color:rgba(184,196,204,0.9); text-decoration:none; border-bottom:0.5px solid rgba(184,196,204,0.35); transition:color 0.2s, border-color 0.2s; }
+    .article-body a:hover { color:#B8C4CC; border-color:rgba(184,196,204,0.7); }
+
+    /* PULL QUOTE — framlyft mening */
+    .pull-quote {
+      font-family:'Playfair Display',serif;
+      font-style:italic;
+      font-size:1.3rem;
+      line-height:1.55;
+      color:#B8C4CC;
+      border-left:2px solid rgba(184,196,204,0.5);
+      padding:0.2rem 0 0.2rem 1.75rem;
+      margin:2.25rem 0;
+    }
+
+    .article-nav { display:flex; gap:1.5rem; margin-top:3rem; padding-top:1.5rem; border-top:0.5px solid rgba(255,255,255,0.06); flex-wrap:wrap; }
+    .article-nav a { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.2s; border-bottom:none; }
+    .article-nav a:hover { color:rgba(255,255,255,0.65); }
+    .article-nav a.primary { color:rgba(184,196,204,0.75); }
+    .article-nav a.primary:hover { color:#B8C4CC; }
+
+    /* BACK LINK */
+    .back-link { position:relative; z-index:1; display:block; max-width:860px; margin:0 auto; padding:0 2rem 3rem; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .back-link:hover { color:rgba(255,255,255,0.6); }
+
+    /* FOOTER */
+    footer { position:relative; z-index:1; border-top:0.5px solid rgba(255,255,255,0.05); padding:1.5rem 2rem; text-align:center; font-size:0.65rem; color:rgba(255,255,255,0.18); letter-spacing:0.05em; }
+    footer a { color:inherit; text-decoration:none; }
+
+    /* RESPONSIVE */
+    @media (max-width:600px) {
+      #view-article { padding:2rem 1.25rem 3rem; }
+    }
+
+    /* ── DEEP NIGHT-SKY BACKGROUND (site standard) ───────────────────── */
+    body {
+      background: #070C18;
+      background-image:
+        radial-gradient(ellipse at 50% 0%, #0F1628 0%, #060810 55%, #070C18 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2,4,10,0.55) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="world-nav" aria-label="Breadcrumb">
+    <a href="../index.html">Anna Farman Berg</a>
+    <span class="sep">&#8250;</span>
+    <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    <span class="sep">&#8250;</span>
+    <a href="../practice-range.html">Practice Range</a>
+    <span class="sep">&#8250;</span>
+    <span class="current">Hybrid Isn&rsquo;t a Switch — It&rsquo;s a Scale</span>
+  </nav>
+
+  <div id="view-article">
+    <div class="article-pillar-bar">
+      <span class="post-pillar pillar-career">Career &amp; Learning</span>
+    </div>
+    <h1 class="article-title">Hybrid Isn&rsquo;t a Switch — It&rsquo;s a Scale</h1>
+    <p class="article-date">3 September 2026</p>
+    <hr class="article-divider" />
+    <div class="article-body">
+      <p>What if hybrid meetings could be more than logistics and actually become a way of working?</p>
+
+      <p>Hybrid meetings work, but only when they&rsquo;re led and facilitated with intention. I&rsquo;ve just completed Advantum Kompetens&rsquo; facilitation course, a practical training in designing workshops and facilitating them with intention: knowing when to lead and when to facilitate.</p>
+
+      <p>My biggest takeaway was understanding hybrid in a completely new way.</p>
+
+      <blockquote class="pull-quote">Hybrid as a scale, a dynamic movement between meeting mode and workshop mode.</blockquote>
+
+      <p>You can design and shift between them, even in a 40&ndash;60-minute session and still serve the goal and purpose of the session.</p>
+
+      <p>Hybrid usually starts in meeting mode:</p>
+      <ul>
+        <li>Present a clear goal, purpose, agenda and ground rules</li>
+        <li>Co-create ground rules to increase engagement (optional)</li>
+      </ul>
+
+      <p>Then you move into facilitation and workshop mode when needed:</p>
+      <ul>
+        <li>Short discussions</li>
+        <li>Quick exercises</li>
+        <li>Breakout rooms in triads or quartets</li>
+        <li>Focused reflection or conversations</li>
+      </ul>
+
+      <p>Finally, you shift back into meeting mode to land the session:</p>
+      <ul>
+        <li>Align</li>
+        <li>Assign action points (when relevant)</li>
+        <li>Define next steps</li>
+        <li>Close</li>
+      </ul>
+
+      <p>Hybrid sessions require thorough preparation because the process design must be around the goal and purpose, this is key for success.</p>
+
+      <ul>
+        <li>If you want to make a decision &rarr; design for direction, alignment and commitment.</li>
+        <li>If you want to provide recommendations or insights to those who will make the decision &rarr; design for exploration, reflection and shared understanding.</li>
+      </ul>
+
+      <p>Remember that a hybrid session is a structured way of choosing when to lead and when to facilitate, based on what the session is meant to achieve. (There&rsquo;s more to it than just adding a few exercises.)</p>
+
+      <p>I believe this flexible format fits today&rsquo;s fast pace very well.</p>
+
+      <p>My reflections after this course is that it reinforced my strong belief in the power of meeting people where they are, inclusion, and creating a space where people feel comfortable saying what they really think.</p>
+
+      <p>We had two amazing days with Sofia Arvegård Wallin, who led by example, sharing her knowledge and experience with warmth and humor throughout the course. Thank you!</p>
+
+      <p>Also a warm thank you to Advantum Kompetens AB &mdash; everything worked very smoothly from start to finish. The whole experience made it easy to focus fully on learning and practice.</p>
+    </div>
+
+    <div class="article-nav">
+      <a href="../practice-range.html" class="primary">&#8592; Practice Range</a>
+      <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    </div>
+  </div>
+
+  <a href="../practice-range.html" class="back-link">&#8592; Practice Range</a>
+
+  <footer>
+    &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+    <a href="../index.html">annafarmanberg.com</a>
+  </footer>
+
+</body>
+</html>
