@@ -615,9 +615,9 @@
     /* ── ORBIT SECTION ──────────────────────────────────── */
 /* ── ORBIT SECTION ──────────────────────────────────── */
     .orbit-section {
-      background: #0A0D1F;
+      background: #0A0F2A;
       background-image:
-        radial-gradient(ellipse at 50% 50%, #1C234A 0%, #12183A 25%, #0A0D1F 60%, #0A0D1F 100%);
+        linear-gradient(180deg, #0A0F2A 0%, #0C1233 100%);
       position: relative;
       overflow: hidden;
     }
@@ -629,7 +629,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
       background-repeat: repeat;
       background-size: 200px 200px;
-      opacity: 0.055;
+      opacity: 0.04;
       pointer-events: none;
       z-index: 0;
     }
@@ -670,8 +670,8 @@
     .orbit-viewport {
       position: relative;
       width: 100%;
-      max-width: 680px;
-      height: 500px;
+      max-width: 816px;
+      height: 600px;
       margin: 0 auto;
     }
 
@@ -687,7 +687,7 @@
     /* ── CENTER HUB ─────────────────────────────────────── */
     .orbit-hub {
       position: absolute;
-      left: 50%; top: 250px;
+      left: 50%; top: 300px;
       transform: translate(-50%, -50%);
       width: 88px; height: 88px;
       border-radius: 50%;
@@ -725,7 +725,7 @@
     .satellite {
       position: absolute;
       text-decoration: none;
-      width: 76px; height: 76px;
+      width: 92px; height: 92px;
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -749,10 +749,10 @@
       justify-content: center;
     }
     .satellite-name {
-      font-size: 7px;
+      font-size: 9.5px;
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      margin-top: 5px;
+      margin-top: 6px;
       text-align: center;
       line-height: 1.35;
       padding: 0 4px;
@@ -1362,42 +1362,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="orbit-viewport" id="orbitViewport">
 
     <!-- SVG: rings and dashed connector lines (desktop only) -->
-    <svg class="orbit-svg" viewBox="0 0 680 500" aria-hidden="true">
+    <svg class="orbit-svg" viewBox="0 0 816 600" aria-hidden="true">
 
       <!-- Outer decorative ring — slow clockwise rotation -->
-      <circle cx="340" cy="250" r="200"
+      <circle cx="408" cy="300" r="240"
         fill="none"
         stroke="rgba(255,255,255,0.06)"
         stroke-width="0.5"
         stroke-dasharray="2 9">
         <animateTransform attributeName="transform" type="rotate"
-          from="0 340 250" to="360 340 250"
+          from="0 408 300" to="360 408 300"
           dur="90s" repeatCount="indefinite"/>
       </circle>
 
       <!-- Main orbit ring -->
-      <circle cx="340" cy="250" r="155"
+      <circle cx="408" cy="300" r="181"
         fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="0.6"/>
 
       <!-- Inner ring around center hub -->
-      <circle cx="340" cy="250" r="52"
+      <circle cx="408" cy="300" r="62"
         fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
 
       <!-- Dashed connector lines: center → each satellite -->
       <!-- Practice Range (Ice Silver) -->
-      <line x1="340" y1="250" x2="340" y2="95"
+      <line x1="408" y1="300" x2="408" y2="119"
         stroke="#B8C4CC" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
       <!-- Mountain View (Dark Amethyst) -->
-      <line x1="340" y1="250" x2="487" y2="202"
+      <line x1="408" y1="300" x2="580" y2="244"
         stroke="#9B6ED8" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
       <!-- The Road (Electric Blue) -->
-      <line x1="340" y1="250" x2="431" y2="375"
+      <line x1="408" y1="300" x2="514" y2="446"
         stroke="#3888F0" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
       <!-- Creative Lab (True Winter Pink) -->
-      <line x1="340" y1="250" x2="249" y2="375"
+      <line x1="408" y1="300" x2="302" y2="446"
         stroke="#D8307A" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
       <!-- Growth House (Sapphire) -->
-      <line x1="340" y1="250" x2="193" y2="202"
+      <line x1="408" y1="300" x2="236" y2="244"
         stroke="#2C62D0" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="3 6"/>
 
     </svg>
@@ -1414,7 +1414,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          Position: top center (0° / 12 o'clock)
          ────────────────────────────────────────────── -->
     <a class="satellite" href="practice-range.html"
-         style="left:340px; top:95px;
+         style="left:408px; top:119px;
                 background:rgba(184,196,204,0.08);
                 border:1.5px solid rgba(184,196,204,0.55);"
          data-color="#B8C4CC" data-r="184" data-g="196" data-b="204"
@@ -1422,13 +1422,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          tabindex="0"
          aria-label="Practice Range — Reflections on learning, repetition, and mastery.">
       <div class="satellite-icon">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+        <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
              stroke="#B8C4CC" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
           <circle cx="11" cy="11" r="8.5"/>
           <circle cx="11" cy="11" r="2" fill="#B8C4CC" stroke="none"/>
         </svg>
       </div>
-      <span class="satellite-name" style="color:rgba(184,196,204,0.65);">Practice<br>Range</span>
+      <span class="satellite-name" style="color:#E8EBFF;">Practice<br>Range</span>
       <span class="satellite-mobile-desc">Reflections on learning, repetition, and mastery.</span>
     </a>
 
@@ -1438,7 +1438,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          Position: top right (72°)
          ────────────────────────────────────────────── -->
     <a class="satellite" href="mountain-view.html"
-         style="left:487px; top:202px;
+         style="left:580px; top:244px;
                 background:rgba(155,110,216,0.08);
                 border:1.5px solid rgba(155,110,216,0.55);"
          data-color="#9B6ED8" data-r="155" data-g="110" data-b="216"
@@ -1446,13 +1446,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          tabindex="0"
          aria-label="Mountain View — Thoughts on perspective, strategy, and vantage point.">
       <div class="satellite-icon">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+        <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
              stroke="#9B6ED8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="3,18.5 11,5 19,18.5"/>
           <line x1="6.5" y1="14" x2="15.5" y2="14" stroke-opacity="0.45" stroke-width="0.8"/>
         </svg>
       </div>
-      <span class="satellite-name" style="color:rgba(155,110,216,0.65);">Mountain<br>View</span>
+      <span class="satellite-name" style="color:#E8EBFF;">Mountain<br>View</span>
       <span class="satellite-mobile-desc">Thoughts on perspective, strategy, and vantage point.</span>
     </a>
 
@@ -1462,7 +1462,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          Position: bottom right (144°)
          ────────────────────────────────────────────── -->
     <a class="satellite" href="the-road.html"
-         style="left:431px; top:375px;
+         style="left:514px; top:446px;
                 background:rgba(56,136,240,0.08);
                 border:1.5px solid rgba(56,136,240,0.55);"
          data-color="#3888F0" data-r="56" data-g="136" data-b="240"
@@ -1470,13 +1470,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          tabindex="0"
          aria-label="The Road — Insights on direction, momentum, and courage.">
       <div class="satellite-icon">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+        <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
              stroke="#3888F0" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
           <path d="M3 15 Q10 6 19 12"/>
           <polyline points="16.5,9.5 19,12 16.5,14.5"/>
         </svg>
       </div>
-      <span class="satellite-name" style="color:rgba(56,136,240,0.65);">The<br>Road</span>
+      <span class="satellite-name" style="color:#E8EBFF;">The<br>Road</span>
       <span class="satellite-mobile-desc">Insights on direction, momentum, and courage.</span>
     </a>
 
@@ -1486,7 +1486,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          Position: bottom left (216°)
          ────────────────────────────────────────────── -->
     <a class="satellite" href="creative-lab.html"
-         style="left:249px; top:375px;
+         style="left:302px; top:446px;
                 background:rgba(216,48,122,0.08);
                 border:1.5px solid rgba(216,48,122,0.55);"
          data-color="#D8307A" data-r="216" data-g="48" data-b="122"
@@ -1494,7 +1494,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          tabindex="0"
          aria-label="Creative Lab — Ideas, concepts, and creative thinking.">
       <div class="satellite-icon">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+        <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
              stroke="#D8307A" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
           <line x1="11" y1="2.5" x2="11" y2="5.5"/>
           <line x1="11" y1="16.5" x2="11" y2="19.5"/>
@@ -1507,7 +1507,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <circle cx="11" cy="11" r="2.8"/>
         </svg>
       </div>
-      <span class="satellite-name" style="color:rgba(216,48,122,0.65);">Creative<br>Lab</span>
+      <span class="satellite-name" style="color:#E8EBFF;">Creative<br>Lab</span>
       <span class="satellite-mobile-desc">Ideas, concepts, and creative thinking.</span>
     </a>
 
@@ -1517,7 +1517,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          Position: top left (288°)
          ────────────────────────────────────────────── -->
     <a class="satellite" href="growth-house.html"
-         style="left:193px; top:202px;
+         style="left:236px; top:244px;
                 background:rgba(44,98,208,0.08);
                 border:1.5px solid rgba(44,98,208,0.55);"
          data-color="#2C62D0" data-r="44" data-g="98" data-b="208"
@@ -1525,13 +1525,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          tabindex="0"
          aria-label="Growth House — Perspectives on structure, systems, and sustainable development.">
       <div class="satellite-icon">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+        <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
              stroke="#2C62D0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="5" y="11" width="12" height="9"/>
           <polyline points="2,12 11,3.5 20,12"/>
         </svg>
       </div>
-      <span class="satellite-name" style="color:rgba(44,98,208,0.65);">Growth<br>House</span>
+      <span class="satellite-name" style="color:#E8EBFF;">Growth<br>House</span>
       <span class="satellite-mobile-desc">Perspectives on structure, systems, and sustainable development.</span>
     </a>
 
