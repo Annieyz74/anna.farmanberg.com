@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Anna Farman Berg — Lead with curiosity." />
   <meta name="twitter:description" content="Senior customer-driven commercial professional. Curious by nature. Relationship-driven. Focused on value realization." />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,300&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -617,7 +617,7 @@
     .orbit-section {
       background: #0A0F2A;
       background-image:
-        radial-gradient(ellipse 950px 750px at 50% 45%, #232D5E 0%, #141B45 35%, #0C1233 65%, #0A0F2A 100%);
+        radial-gradient(ellipse 900px 700px at 50% 45%, #131B42 0%, #0C1233 45%, #0A0F2A 100%);
       position: relative;
       overflow: hidden;
     }
@@ -646,6 +646,20 @@
     .orbit-section > * { position: relative; z-index: 1;
       padding: 4rem 1.5rem 3rem;
     }
+
+
+    /* ── ORBIT STARS + ROTATION ─────────────────────────── */
+    .orbit-section > .orbit-stars {
+      position: absolute; inset: 0; padding: 0; z-index: 0;
+      pointer-events: none; overflow: hidden;
+    }
+    .orbit-star {
+      position: absolute; border-radius: 50%; background: #F2F4F7;
+      animation: orbitTwinkle var(--d, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    @keyframes orbitTwinkle { 0%,100% { opacity: .12; } 50% { opacity: .75; } }
+    @media (prefers-reduced-motion: reduce) { .orbit-star { animation: none; opacity: .4; } }
 
     /* ── HEADER ─────────────────────────────────────────── */
     .orbit-label {
@@ -1350,6 +1364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      ══════════════════════════════════════════════════════ -->
 
 <section id="thoughts" class="orbit-section" aria-label="Thoughts and Reflections blog categories">
+  <div class="orbit-stars" id="orbitStars" aria-hidden="true"></div>
 
   <!-- Section header -->
   <span class="orbit-label">Thoughts &amp; Reflections</span>
@@ -1716,6 +1731,67 @@ window.addEventListener('load', function() {
 
     requestAnimationFrame(step);
   });
+}());
+</script>
+<script>
+/* ── ORBIT: twinkling stars + slow rotation (desktop) ───────── */
+(function () {
+  var box = document.getElementById('orbitStars');
+  if (box) {
+    for (var i = 0; i < 90; i++) {
+      var st = document.createElement('span');
+      var size = Math.random() < 0.85 ? 1 : 2;
+      st.className = 'orbit-star';
+      st.style.width = st.style.height = size + 'px';
+      st.style.left = (Math.random() * 100) + '%';
+      st.style.top = (Math.random() * 100) + '%';
+      st.style.setProperty('--d', (3 + Math.random() * 4) + 's');
+      st.style.setProperty('--delay', (Math.random() * 5) + 's');
+      box.appendChild(st);
+    }
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var desktop = window.matchMedia('(min-width: 640px)');
+  var viewport = document.getElementById('orbitViewport');
+  if (reduce || !viewport) return;
+
+  var CX = 408, CY = 300, TURN = 140; /* seconds per full turn */
+  var lines = viewport.querySelectorAll('.orbit-svg line');
+  var sats = [];
+  viewport.querySelectorAll('.satellite').forEach(function (el) {
+    var x = parseFloat(el.style.left), y = parseFloat(el.style.top);
+    var line = null;
+    lines.forEach(function (l) {
+      if (Math.abs(parseFloat(l.getAttribute('x2')) - x) < 1 &&
+          Math.abs(parseFloat(l.getAttribute('y2')) - y) < 1) line = l;
+    });
+    sats.push({ el: el, line: line, r: Math.hypot(x - CX, y - CY), a: Math.atan2(y - CY, x - CX), x: x, y: y });
+  });
+
+  var paused = false, offset = 0, last = null;
+  viewport.addEventListener('mouseenter', function () { paused = true; });
+  viewport.addEventListener('mouseleave', function () { paused = false; });
+  viewport.addEventListener('focusin', function () { paused = true; });
+  viewport.addEventListener('focusout', function () { paused = false; });
+
+  function place(reset) {
+    sats.forEach(function (s) {
+      var x = reset ? s.x : CX + s.r * Math.cos(s.a + offset);
+      var y = reset ? s.y : CY + s.r * Math.sin(s.a + offset);
+      s.el.style.left = x.toFixed(1) + 'px';
+      s.el.style.top = y.toFixed(1) + 'px';
+      if (s.line) { s.line.setAttribute('x2', x.toFixed(1)); s.line.setAttribute('y2', y.toFixed(1)); }
+    });
+  }
+
+  function tick(t) {
+    if (last === null) last = t;
+    var dt = Math.min((t - last) / 1000, 0.1); last = t;
+    if (desktop.matches && !paused) { offset += dt * 2 * Math.PI / TURN; place(false); }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 }());
 </script>
 </body>
