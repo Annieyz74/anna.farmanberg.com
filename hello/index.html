@@ -1,1 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NVQH8B9J');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Hello - Anna Farman Berg</title>
+<meta name="description" content="A short hello, and how I help change stick.">
 
+<!-- LinkedIn preview card (to be finalised) -->
+<meta property="og:title" content="Hello - Anna Farman Berg">
+<meta property="og:description" content="A short hello, and how I help change stick.">
+<meta property="og:image" content="https://annafarmanberg.com/hello/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://annafarmanberg.com/hello">
+<meta property="og:type" content="website">
+
+<!-- Google tag (gtag.js) - same setup as the homepage; remove when GA4 runs via GTM -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KMV3MZ5VDC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KMV3MZ5VDC');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --deep-navy: #0B2A5B;
+    --signature: #2E63B6;
+    --light-blue: #B6C3D5;
+    --soft-white: #F2F4F7;
+    --night: #0A0D1F;
+    --night-glow: #1C234A;
+
+    --creative-lab: #D8307A;
+    --mountain-view: #9B6ED8;
+    --growth-house: #2C62D0;
+    --practice-range: #B8C4CC;
+    --the-road: #3888F0;
+
+    --orbit-speed: 80s;
+    --stage: min(70vw, 400px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--night);
+    background-image: radial-gradient(ellipse at 50% 30%, var(--night-glow) 0%, var(--night) 70%);
+    background-attachment: fixed;
+    color: var(--soft-white);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ---------- Stars ---------- */
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .star {
+    position: absolute; border-radius: 50%; background: var(--soft-white);
+    animation: twinkle var(--d, 4s) ease-in-out infinite; animation-delay: var(--delay, 0s);
+  }
+  @keyframes twinkle { 0%,100% { opacity: .15; } 50% { opacity: .8; } }
+
+  /* ---------- Prototype banner ---------- */
+  .proto-banner {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(46, 99, 182, .9); color: var(--soft-white);
+    font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: .08em;
+    text-align: center; padding: 6px 12px; text-transform: uppercase;
+  }
+  .ph {
+    outline: 1px dashed rgba(182, 195, 213, .55);
+    outline-offset: 3px; border-radius: 3px;
+  }
+
+  main { position: relative; z-index: 1; }
+  section { padding: 0 20px; }
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  /* ---------- Layer 1: Hero ---------- */
+  .hero {
+    min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding-top: 48px; padding-bottom: 40px;
+  }
+
+  .orbit-stage {
+    position: relative;
+    width: var(--stage); aspect-ratio: 1;
+    margin-bottom: 28px;
+  }
+  .ring {
+    position: absolute; inset: 10%; border-radius: 50%;
+    border: 1px solid rgba(182, 195, 213, .14);
+  }
+  .ring.inner { inset: 22%; border-color: rgba(46, 99, 182, .22); }
+
+  .orbit {
+    position: absolute; inset: 0;
+    animation: spin var(--orbit-speed) linear infinite;
+  }
+  .sat {
+    position: absolute; top: 50%; left: 50%;
+    width: 0; height: 0;
+    transform: rotate(var(--a)) translateX(calc(var(--stage) * 0.40)) rotate(calc(-1 * var(--a)));
+  }
+  .sat-inner {
+    position: absolute; translate: -50% -10px; transform-origin: 50% 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    animation: spin var(--orbit-speed) linear infinite reverse;
+    text-decoration: none; color: inherit;
+  }
+  .dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 1.5px solid color-mix(in srgb, var(--c) 70%, transparent);
+    background: radial-gradient(circle, var(--c) 0 3px, color-mix(in srgb, var(--c) 14%, transparent) 4px);
+    box-shadow: 0 0 14px 2px color-mix(in srgb, var(--c) 40%, transparent);
+  }
+  .sat-label {
+    font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
+    color: var(--light-blue); opacity: .85;
+  }
+  .people-dot { width: 26px; height: 26px; box-shadow: 0 0 24px 6px rgba(46,99,182,.75); }
+  .people-label { color: var(--soft-white); opacity: 1; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .center::before {
+    content: ""; position: absolute; width: 46%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle, rgba(46, 99, 182, .38) 0%, rgba(46, 99, 182, 0) 70%);
+    animation: breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.12); opacity: 1; } }
+
+  .hello {
+    position: relative;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: clamp(40px, 11vw, 60px); line-height: 1;
+    color: #fff;
+  }
+
+  .name {
+    font-family: 'Montserrat', sans-serif; font-weight: 600;
+    font-size: 13px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--light-blue); margin-bottom: 8px;
+  }
+  .role span { white-space: nowrap; }
+  .role {
+    font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 13px;
+    letter-spacing: .04em; color: var(--soft-white); opacity: .9; margin-bottom: 8px;
+  }
+  .context span { white-space: nowrap; }
+  .context {
+    font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 12px;
+    letter-spacing: .05em; color: var(--light-blue); opacity: .8; margin-bottom: 20px;
+  }
+  .one-liner {
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 300;
+    font-size: clamp(20px, 5.2vw, 26px); line-height: 1.45; color: var(--light-blue);
+    max-width: 520px; margin: 0 auto 28px;
+  }
+
+  .open-to {
+    font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 13px; line-height: 1.5;
+    letter-spacing: .03em; color: var(--light-blue); max-width: 340px; margin: -8px auto 18px;
+  }
+  .open-to .where { display: inline-block; margin-top: 4px; font-size: 12px; opacity: .8; }
+  .btn {
+    display: inline-block; text-decoration: none;
+    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .06em;
+    color: var(--soft-white); background: var(--signature);
+    padding: 14px 30px; border-radius: 6px;
+    box-shadow: 0 0 24px rgba(46, 99, 182, .45);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn { display: inline-flex; align-items: center; gap: 10px; }
+  .btn .ico { width: 18px; height: 18px; flex: 0 0 auto; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 34px rgba(46, 99, 182, .7); }
+  .btn.ghost { background: transparent; border: 1.5px solid var(--signature); box-shadow: none; color: var(--light-blue); }
+
+  .scroll-hint {
+    margin-top: 34px; font-family: 'Montserrat', sans-serif; font-size: 10px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--light-blue); opacity: .6;
+    animation: float 2.4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  /* ---------- Shared section styles ---------- */
+  .layer { padding-top: 56px; padding-bottom: 56px; }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--signature);
+    filter: brightness(1.5); margin-bottom: 14px; text-align: center;
+  }
+  .why {
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 300;
+    font-size: clamp(22px, 5.6vw, 30px); line-height: 1.4; text-align: center;
+    color: var(--soft-white); margin-bottom: 36px;
+  }
+
+  /* ---------- Layer 2: Chain ---------- */
+  .chain {
+    list-style: none; display: flex; flex-direction: column; align-items: center; gap: 0;
+    margin-bottom: 10px;
+  }
+  .chain li {
+    display: flex; flex-direction: column; align-items: center;
+    opacity: .2; transform: translateY(8px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .chain.on li { opacity: 1; transform: none; }
+  .chain li.link { padding: 2px 0; font-size: 12px; color: rgba(182, 195, 213, .5); }
+  .pill {
+    font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 15px; letter-spacing: .04em;
+    padding: 8px 16px 8px 20px; border-radius: 999px; cursor: pointer;
+    border: 1px solid rgba(182, 195, 213, .25); background: transparent;
+    color: var(--light-blue);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: color .3s, border-color .3s, background .3s, box-shadow .6s;
+  }
+  .pill:hover, .pill[aria-expanded="true"] { border-color: rgba(182, 195, 213, .6); color: var(--soft-white); }
+  .pm { font-size: 14px; opacity: .6; transition: transform .3s; }
+  .pill[aria-expanded="true"] .pm { transform: rotate(45deg); }
+  .people .pill { color: var(--soft-white); border-color: var(--signature); }
+  .chain.on .people .pill { background: rgba(46, 99, 182, .25); box-shadow: 0 0 26px rgba(46, 99, 182, .6); }
+  .step-text {
+    max-width: 320px; text-align: center; font-size: 14.5px; line-height: 1.5; color: var(--light-blue);
+    max-height: 0; overflow: hidden; opacity: 0; margin: 0;
+    transition: max-height .4s ease, opacity .4s ease, margin .4s ease;
+  }
+  .step-item.open .step-text { max-height: 120px; opacity: 1; margin: 10px 0 4px; }
+  .chain-hint {
+    text-align: center; font-family: 'Montserrat', sans-serif; font-size: 10.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--light-blue); opacity: .55;
+    margin: 14px 0 48px;
+  }
+
+  /* ---------- Receipts ---------- */
+  .receipts {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  }
+  .receipt {
+    background: rgba(11, 42, 91, .35);
+    border: 1px solid rgba(182, 195, 213, .14);
+    border-radius: 14px; padding: 18px 8px 16px; text-align: center;
+  }
+  .num {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: clamp(22px, 6.4vw, 34px); line-height: 1.1; color: #fff; white-space: nowrap;
+  }
+  .num .arrow { color: var(--signature); filter: brightness(1.5); padding: 0 3px; }
+  .num-label { font-size: 12.5px; line-height: 1.35; color: var(--light-blue); margin-top: 8px; }
+  .receipts-note {
+    text-align: center; font-size: 13px; color: var(--light-blue); opacity: .75; margin-top: 16px;
+  }
+  @media (min-width: 640px) {
+  }
+
+  .quote { margin: 44px 0 0; text-align: center; }
+  .quote blockquote {
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 300;
+    font-size: clamp(18px, 4.6vw, 21px); line-height: 1.7; color: rgba(255,255,255,.9);
+    margin-bottom: 18px;
+  }
+  .quote figcaption a {
+    font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: .08em;
+    color: var(--light-blue); text-decoration: none;
+    border-bottom: 1px solid rgba(182,195,213,.4); padding-bottom: 2px;
+  }
+
+  /* ---------- Layer 3: Story ---------- */
+  details.story {
+    background: rgba(11, 42, 91, .3);
+    border: 1px solid rgba(182, 195, 213, .16);
+    border-radius: 16px; overflow: hidden;
+  }
+  details.story summary {
+    list-style: none; cursor: pointer;
+    padding: 22px 22px; display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  }
+  details.story summary::-webkit-details-marker { display: none; }
+  .story-title {
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 300;
+    font-size: 22px; line-height: 1.3; color: #fff;
+  }
+  .story-sub { font-size: 13px; color: var(--light-blue); margin-top: 4px; }
+  .plus {
+    flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid rgba(182, 195, 213, .35);
+    display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-size: 18px;
+    transition: transform .3s;
+  }
+  details[open] .plus { transform: rotate(45deg); }
+  .pcari { padding: 0 22px 24px; display: grid; gap: 16px; }
+  .step { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+  .letter {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+    background: rgba(46, 99, 182, .25); border: 1px solid var(--signature);
+  }
+  .step h4 {
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 2px;
+  }
+  .step p { font-size: 15px; }
+
+  /* ---------- Closing ---------- */
+  .closing { text-align: center; }
+  .closing-thought {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: clamp(22px, 5.6vw, 28px); margin-bottom: 30px;
+  }
+  .closing-title {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: clamp(26px, 7vw, 38px); line-height: 1.2; margin-bottom: 18px;
+  }
+  .closing-text { max-width: 480px; margin: 0 auto 30px; color: var(--light-blue); font-size: 16px; }
+  .site-link { margin-top: 26px; }
+  .think-link { text-align: center; margin: -30px 0 48px; }
+  .site-link a {
+    font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: .06em;
+    color: var(--light-blue); text-decoration: none; border-bottom: 1px solid rgba(182,195,213,.35); padding-bottom: 2px;
+  }
+  .site-link a:hover { color: var(--soft-white); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+  footer {
+    position: relative; z-index: 1; text-align: center;
+    padding: 40px 20px 50px; font-size: 12.5px; color: var(--light-blue); opacity: .7;
+  }
+
+  /* ---------- Fade-in on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.on { opacity: 1; transform: none; }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal, .chain li { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVQH8B9J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<main>
+
+  <!-- ===== LAYER 1 - 0-10 seconds: the handshake ===== -->
+  <section class="hero">
+    <div class="orbit-stage" aria-hidden="true">
+      <div class="ring"></div>
+      <div class="ring inner"></div>
+
+      <div class="orbit">
+        <div class="sat" style="--a: -90deg;"><div class="sat-inner"><span class="dot people-dot" style="--c: var(--signature);"></span><span class="sat-label people-label">People</span></div></div>
+        <div class="sat" style="--a: -18deg;"><div class="sat-inner"><span class="dot" style="--c: var(--creative-lab);"></span><span class="sat-label">Technology</span></div></div>
+        <div class="sat" style="--a: 54deg;"><div class="sat-inner"><span class="dot" style="--c: var(--mountain-view);"></span><span class="sat-label">Adoption</span></div></div>
+        <div class="sat" style="--a: 126deg;"><div class="sat-inner"><span class="dot" style="--c: var(--growth-house);"></span><span class="sat-label">Behaviour</span></div></div>
+        <div class="sat" style="--a: 198deg;"><div class="sat-inner"><span class="dot" style="--c: var(--practice-range);"></span><span class="sat-label">Value</span></div></div>
+      </div>
+
+      <div class="center"><h1 class="hello">Hello</h1></div>
+    </div>
+
+    <p class="name">Anna Farman Berg</p>
+    <p class="role"><span>Customer Success</span> · <span>Adoption</span> · <span>Commercial Growth &amp; Change</span></p>
+    <p class="context"><span>20+ years in travel tech</span> · <span>Amadeus</span> · <span>Scandinavia &amp; EMEA</span></p>
+    <p class="one-liner">I meet people where they are, so new ways of working actually stick.</p>
+    <p class="open-to">Open to strategic roles across Customer Success and Account Management, and consulting.<br><span class="where">Based in Stockholm · on-site or hybrid</span></p>
+    <a class="btn" href="https://www.linkedin.com/in/anna-farman-berg/" target="_blank" rel="noopener" aria-label="Say hello back on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="4" fill="currentColor"/><g fill="#2E63B6"><rect x="5.2" y="9.5" width="3.1" height="9"/><circle cx="6.75" cy="6.4" r="1.8"/><path d="M10.6 9.5h3v1.3c.5-.9 1.6-1.5 3-1.5 2.6 0 3.2 1.7 3.2 4v5.2h-3.1v-4.6c0-1.1-.1-2.3-1.5-2.3s-1.6 1-1.6 2.2v4.7h-3.1z"/></g></svg>Say hello back</a>
+
+    <p class="scroll-hint">More below</p>
+  </section>
+
+  <!-- ===== LAYER 2 - 10-20 seconds: the proof ===== -->
+  <section class="layer">
+    <div class="wrap">
+      <p class="eyebrow reveal">Why it matters</p>
+      <p class="why reveal">The technology is ready. Value happens when people change how they work, in their own context.</p>
+
+      <ul class="chain" id="chain" aria-label="From people to value">
+        <li class="step-item people"><button class="pill" type="button" aria-expanded="false">People<span class="pm" aria-hidden="true">+</span></button><p class="step-text">I help people see what's in it for them and support them as they move toward shared goals.</p></li>
+        <li class="link" aria-hidden="true">↓</li>
+        <li class="step-item"><button class="pill" type="button" aria-expanded="false">Technology<span class="pm" aria-hidden="true">+</span></button><p class="step-text">People&#8209;centric tech and AI: tools that fit how people actually work.</p></li>
+        <li class="link" aria-hidden="true">↓</li>
+        <li class="step-item"><button class="pill" type="button" aria-expanded="false">Adoption<span class="pm" aria-hidden="true">+</span></button><p class="step-text">Help people get started, with guidance, small steps and early wins.</p></li>
+        <li class="link" aria-hidden="true">↓</li>
+        <li class="step-item"><button class="pill" type="button" aria-expanded="false">Changed behaviour<span class="pm" aria-hidden="true">+</span></button><p class="step-text">New habits grow quietly. One day, the new way is simply how people work.</p></li>
+        <li class="link" aria-hidden="true">↓</li>
+        <li class="step-item"><button class="pill" type="button" aria-expanded="false">Realised value<span class="pm" aria-hidden="true">+</span></button><p class="step-text">Results you can measure against the goals we set at the start.</p></li>
+      </ul>
+      <p class="chain-hint">Tap a step to see why it matters</p>
+      <p class="site-link think-link"><a href="https://annafarmanberg.com/thoughts-reflections/">See how I think &rarr;</a></p>
+
+      <p class="eyebrow reveal">The receipts</p>
+      <div class="receipts">
+        <div class="receipt reveal">
+          <div class="num"><span data-count="8">8</span><span class="arrow">→</span><span data-count="5" data-from="8">5</span></div>
+          <div class="num-label">weeks<br>Time to First Value</div>
+        </div>
+        <div class="receipt reveal">
+          <div class="num"><span data-count="103.5" data-dec="1">103.5</span>%</div>
+          <div class="num-label">net<br>retention</div>
+        </div>
+        <div class="receipt reveal">
+          <div class="num">+<span data-count="33">33</span>%</div>
+          <div class="num-label">above commercial targets</div>
+        </div>
+      </div>
+      <p class="receipts-note reveal">Shared results with my teams, 2025</p>
+      <figure class="quote reveal">
+        <blockquote>"Anna builds genuine, trust&#8209;based relationships with both clients and colleagues, and she is consistently recognized for being competent, kind, helpful, and thoroughly professional."</blockquote>
+        <figcaption><a href="https://www.linkedin.com/in/anna-farman-berg/details/recommendations/" target="_blank" rel="noopener">Annika Brune - LinkedIn recommendation</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== LAYER 3 - 20-60 seconds: for the curious ===== -->
+  <section class="layer">
+    <div class="wrap">
+      <p class="eyebrow reveal">How I work</p>
+      <details class="story reveal">
+        <summary>
+          <div>
+            <div class="story-title">From 8 languages to 60+</div>
+            <div class="story-sub">From idea to onboarding in 18 months · Tap to read</div>
+          </div>
+          <span class="plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="pcari">
+          <div class="step"><span class="letter">P</span><div><h4>Problem</h4><p>A new Customer Success EMEA function, built from scratch. Almost 120 languages in the region, 8 in the team.</p></div></div>
+          <div class="step"><span class="letter">C</span><div><h4>Constraints</h4><p>Zero budget, an undefined tech stack and a lean team. The idea had to wait.</p></div></div>
+          <div class="step"><span class="letter">A</span><div><h4>Action</h4><p>I proposed an AI translation platform and kept the idea alive through internal networking. A year later, my manager secured the budget and trusted me to run the RFP: 5-6 vendors, negotiation and onboarding.</p></div></div>
+          <div class="step"><span class="letter">R</span><div><h4>Result</h4><p>All EMEA webinars our team delivered, available in 60+ languages, on demand. Teams across the organisation wanted to use it, from Sales and Customer Success to Marketing.</p></div></div>
+          <div class="step"><span class="letter">I</span><div><h4>Impact</h4><p>Customers got content in their own language, without extra headcount. And a foundation for AI&#8209;enabled customer communication across EMEA.</p></div></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== Closing (text from the website contact section) ===== -->
+  <section class="layer closing">
+    <div class="wrap">
+      <p class="eyebrow reveal">Contact</p>
+      <h2 class="closing-title reveal">Curious to explore further?<br>Let's talk.</h2>
+      <p class="closing-text reveal">Business works best when you understand people - colleagues, customers, partners, anyone you build something with. The only real way to do that is to walk in their shoes. Let's walk together, shall we?</p>
+      <div class="cta-row reveal">
+        <a class="btn" href="https://www.linkedin.com/in/anna-farman-berg/" target="_blank" rel="noopener" aria-label="Say hello back on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="4" fill="currentColor"/><g fill="#2E63B6"><rect x="5.2" y="9.5" width="3.1" height="9"/><circle cx="6.75" cy="6.4" r="1.8"/><path d="M10.6 9.5h3v1.3c.5-.9 1.6-1.5 3-1.5 2.6 0 3.2 1.7 3.2 4v5.2h-3.1v-4.6c0-1.1-.1-2.3-1.5-2.3s-1.6 1-1.6 2.2v4.7h-3.1z"/></g></svg>Say hello back</a>
+        <a class="btn ghost" href="mailto:afb@annafarmanberg.com"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>Send an email</a>
+      </div>
+      <p class="site-link reveal"><a href="https://annafarmanberg.com">Get to know me better &rarr;</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Co&#8209;created by Anna &amp; Claude, as thinking partners.</span>
+</footer>
+
+<script>
+  // Stars
+  (function () {
+    var s = document.getElementById('stars');
+    for (var i = 0; i < 70; i++) {
+      var d = document.createElement('span');
+      var size = Math.random() < 0.85 ? 1 : 2;
+      d.className = 'star';
+      d.style.width = d.style.height = size + 'px';
+      d.style.left = (Math.random() * 100) + '%';
+      d.style.top = (Math.random() * 100) + '%';
+      d.style.setProperty('--d', (3 + Math.random() * 4) + 's');
+      d.style.setProperty('--delay', (Math.random() * 5) + 's');
+      s.appendChild(d);
+    }
+  })();
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Count-up numbers
+  function countUp(el) {
+    var to = parseFloat(el.dataset.count);
+    var from = el.dataset.from ? parseFloat(el.dataset.from) : 0;
+    var dec = parseInt(el.dataset.dec || '0', 10);
+    var t0 = null, dur = 1400;
+    function tick(t) {
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (from + (to - from) * e).toFixed(dec);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.add('on');
+        el.querySelectorAll('[data-count]').forEach(countUp);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Chain lights up step by step
+    var chain = document.getElementById('chain');
+    var cio = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      chain.querySelectorAll('li').forEach(function (li, i) {
+        li.style.transitionDelay = (i * 0.18) + 's';
+      });
+      chain.classList.add('on');
+      cio.disconnect();
+    }, { threshold: 0.4 });
+    cio.observe(chain);
+  } else {
+    document.querySelectorAll('.reveal, .chain').forEach(function (el) { el.classList.add('on'); });
+  }
+
+  // Chain steps: tap to open one at a time
+  document.querySelectorAll('#chain .pill').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.parentElement, isOpen = item.classList.contains('open');
+      document.querySelectorAll('#chain .step-item').forEach(function (it) {
+        it.classList.remove('open'); it.querySelector('.pill').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+</script>
+</body>
+</html>
