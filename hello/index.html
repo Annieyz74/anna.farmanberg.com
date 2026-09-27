@@ -53,7 +53,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --the-road: #3888F0;
 
     --orbit-speed: 80s;
-    --stage: min(70vw, 400px);
+    --stage: min(84vw, 420px);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -166,6 +166,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 14px; letter-spacing: .26em; text-transform: uppercase;
     color: var(--light-blue); margin-bottom: 8px;
   }
+  .hello.hook {
+    font-size: clamp(19px, 5.2vw, 30px); line-height: 1.22; text-align: center;
+    max-width: 56%; margin: 0 auto;
+  }
+  .name.hello-name {
+    font-size: clamp(19px, 5vw, 24px); font-weight: 700; letter-spacing: .01em;
+    text-transform: none; color: #fff; margin-bottom: 10px;
+  }
   .role span { white-space: nowrap; }
   .role {
     font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 15px;
@@ -262,6 +270,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
   }
   .receipt {
+    display: flex; flex-direction: column; justify-content: space-between;
     background: rgba(11, 42, 91, .35);
     border: 1px solid rgba(182, 195, 213, .14);
     border-radius: 14px; padding: 18px 8px 16px; text-align: center;
@@ -272,6 +281,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .num .arrow { color: var(--signature); filter: brightness(1.5); padding: 0 3px; }
   .num-label { font-size: 13.5px; line-height: 1.35; color: var(--light-blue); margin-top: 8px; }
+  .num-tag {
+    margin-top: 10px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase; line-height: 1.35; color: var(--signature); filter: brightness(1.6);
+  }
   .receipts-note {
     text-align: center; font-size: 14px; color: var(--light-blue); opacity: .8; margin-top: 16px;
   }
@@ -338,6 +351,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: clamp(26px, 7vw, 38px); line-height: 1.2; margin-bottom: 18px;
   }
   .closing-text { max-width: 480px; margin: 0 auto 30px; color: var(--light-blue); font-size: 16px; }
+  .cta-note { margin-top: 18px; font-size: 15px; color: var(--light-blue); }
   .site-link { margin-top: 26px; }
   .think-link { text-align: center; margin: -30px 0 48px; }
   .site-link a {
@@ -387,10 +401,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="sat" style="--a: 198deg;"><div class="sat-inner"><span class="dot" style="--c: var(--practice-range);"></span><span class="sat-label">Value</span></div></div>
       </div>
 
-      <div class="center"><h1 class="hello">Hello</h1></div>
+      <div class="center"><h1 class="hello hook">What if change actually stuck?</h1></div>
     </div>
 
-    <p class="name">Anna Farman Berg</p>
+    <p class="name hello-name">Hello, I'm Anna Farman Berg</p>
     <p class="role"><span>Customer Success</span> · <span>Adoption</span> · <span>Commercial Growth &amp; Change</span></p>
     <p class="context"><span>20+ years in travel tech</span> · <span>Amadeus</span> · <span>Scandinavia &amp; EMEA</span></p>
     <p class="one-liner">I meet people where they are, so new ways of working actually stick.</p>
@@ -406,10 +420,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="eyebrow reveal">Why it matters</p>
       <p class="why reveal">The technology is ready. Value happens when people change how they work, in their own context.</p>
 
+      <p class="eyebrow">What I bring</p>
       <ul class="chain" id="chain" aria-label="From people to value">
         <li class="step-item people"><button class="pill" type="button" aria-expanded="false">People<span class="pm" aria-hidden="true">+</span></button><p class="step-text">I help people see what's in it for them and support them as they move toward shared goals.</p></li>
         <li class="link" aria-hidden="true">↓</li>
-        <li class="step-item"><button class="pill" type="button" aria-expanded="false">Technology<span class="pm" aria-hidden="true">+</span></button><p class="step-text">People&#8209;centric tech and AI: tools that fit how people actually work.</p></li>
+        <li class="step-item"><button class="pill" type="button" aria-expanded="false">Technology<span class="pm" aria-hidden="true">+</span></button><p class="step-text">People&#8209;centric tech and AI: I turn customer needs into clear product requirements.</p></li>
         <li class="link" aria-hidden="true">↓</li>
         <li class="step-item"><button class="pill" type="button" aria-expanded="false">Adoption<span class="pm" aria-hidden="true">+</span></button><p class="step-text">Help people get started, with guidance, small steps and early wins.</p></li>
         <li class="link" aria-hidden="true">↓</li>
@@ -417,14 +432,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li class="link" aria-hidden="true">↓</li>
         <li class="step-item"><button class="pill" type="button" aria-expanded="false">Realised value<span class="pm" aria-hidden="true">+</span></button><p class="step-text">Results you can measure against the goals we set at the start.</p></li>
       </ul>
-      <p class="chain-hint">Tap a step to see why it matters</p>
+      <p class="chain-hint">Tap a step to see how</p>
       <p class="site-link think-link"><a href="https://annafarmanberg.com/thoughts-reflections/">See how I think &rarr;</a></p>
 
-      <p class="eyebrow reveal">The receipts</p>
+      <p class="eyebrow reveal">What changed</p>
       <div class="receipts">
         <div class="receipt reveal">
           <div class="num"><span data-count="8">8</span><span class="arrow">→</span><span data-count="5" data-from="8">5</span></div>
-          <div class="num-label">weeks<br>Time to First Value</div>
+          <div class="num-label">weeks to first value for new customers</div>
         </div>
         <div class="receipt reveal">
           <div class="num"><span data-count="103.5" data-dec="1">103.5</span>%</div>
@@ -435,7 +450,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="num-label">above commercial targets</div>
         </div>
       </div>
-      <p class="receipts-note reveal">Shared results with my teams, 2025</p>
+      <p class="receipts-note reveal">Results I contributed to, full year 2025.</p>
       <figure class="quote reveal">
         <blockquote>"Anna builds genuine, trust&#8209;based relationships with both clients and colleagues, and she is consistently recognized for being competent, kind, helpful, and thoroughly professional."</blockquote>
         <figcaption><a href="https://www.linkedin.com/in/anna-farman-berg/details/recommendations/" target="_blank" rel="noopener">Annika Brune - LinkedIn recommendation</a></figcaption>
@@ -456,8 +471,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="plus" aria-hidden="true">+</span>
         </summary>
         <div class="pcari">
-          <div class="step"><span class="letter">P</span><div><h4>Problem</h4><p>A new Customer Success EMEA function, built from scratch. Almost 120 languages in the region, 8 in the team.</p></div></div>
-          <div class="step"><span class="letter">C</span><div><h4>Constraints</h4><p>Zero budget, an undefined tech stack and a lean team. The idea had to wait.</p></div></div>
+          <div class="step"><span class="letter">P</span><div><h4>Problem</h4><p>A new Customer Success EMEA function, built from scratch. Around 100 languages in the region, 8 in the team.</p></div></div>
+          <div class="step"><span class="letter">C</span><div><h4>Constraints</h4><p>No budget yet, an undefined tech stack and a lean team. The idea had to wait.</p></div></div>
           <div class="step"><span class="letter">A</span><div><h4>Action</h4><p>I proposed an AI translation platform and kept the idea alive through internal networking. A year later, my manager secured the budget and trusted me to run the RFP: 5-6 vendors, negotiation and onboarding.</p></div></div>
           <div class="step"><span class="letter">R</span><div><h4>Result</h4><p>All EMEA webinars our team delivered, available in 60+ languages, on demand. Teams across the organisation wanted to use it, from Sales and Customer Success to Marketing.</p></div></div>
           <div class="step"><span class="letter">I</span><div><h4>Impact</h4><p>Customers got content in their own language, without extra headcount. And a foundation for AI&#8209;enabled customer communication across EMEA.</p></div></div>
@@ -476,6 +491,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="btn" href="https://www.linkedin.com/in/anna-farman-berg/" target="_blank" rel="noopener" aria-label="Say hello back on LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="4" fill="currentColor"/><g fill="#2E63B6"><rect x="5.2" y="9.5" width="3.1" height="9"/><circle cx="6.75" cy="6.4" r="1.8"/><path d="M10.6 9.5h3v1.3c.5-.9 1.6-1.5 3-1.5 2.6 0 3.2 1.7 3.2 4v5.2h-3.1v-4.6c0-1.1-.1-2.3-1.5-2.3s-1.6 1-1.6 2.2v4.7h-3.1z"/></g></svg>Say hello back</a>
         <a class="btn ghost" href="mailto:afb@annafarmanberg.com"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>Send an email</a>
       </div>
+      <p class="cta-note reveal">A short message is enough. Happy to start with a 15&#8209;minute chat.</p>
       <p class="site-link reveal"><a href="https://annafarmanberg.com">Get to know me better &rarr;</a></p>
     </div>
   </section>
@@ -519,6 +535,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (p < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+    // Safety: always land on the final value, even if animation frames are paused
+    setTimeout(function () { el.textContent = to.toFixed(dec); }, dur + 300);
   }
 
   if ('IntersectionObserver' in window && !reduce) {
