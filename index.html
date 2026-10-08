@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Exclude my own visits from analytics (per device) -->
+<script>
+(function () {
+  try {
+    var q = location.search;
+    if (q.indexOf('notrack') > -1) localStorage.setItem('afb_notrack', '1');
+    if (q.indexOf('track=on') > -1) localStorage.removeItem('afb_notrack');
+    if (localStorage.getItem('afb_notrack') === '1') {
+      window['ga-disable-G-KMV3MZ5VDC'] = true;
+    }
+  } catch (e) {}
+})();
+</script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
