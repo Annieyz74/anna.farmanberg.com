@@ -2,6 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Exclude my own visits from analytics (per device) -->
+  <script>
+  (function () {
+    try {
+      var q = location.search;
+      if (q.indexOf('notrack') > -1) localStorage.setItem('afb_notrack', '1');
+      if (q.indexOf('track=on') > -1) localStorage.removeItem('afb_notrack');
+      if (localStorage.getItem('afb_notrack') === '1') {
+        window['ga-disable-G-KMV3MZ5VDC'] = true;
+      }
+    } catch (e) {}
+  })();
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMV3MZ5VDC"></script>
   <script>
