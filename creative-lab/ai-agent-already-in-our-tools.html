@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>How Much of Tomorrow&rsquo;s AI Agent Is Already in the Tools We Use Today? &mdash; Creative Lab &middot; Anna Farman Berg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#090E1A; color:rgba(255,255,255,0.8); font-family:'Montserrat',sans-serif; min-height:100vh; }
+
+    /* BREADCRUMB */
+    .world-nav { position:relative; z-index:1; padding:1.75rem 2rem 0; max-width:860px; margin:0 auto; display:flex; align-items:center; gap:10px; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); flex-wrap:wrap; }
+    .world-nav a { color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .world-nav a:hover { color:rgba(255,255,255,0.65); }
+    .world-nav .sep { color:rgba(255,255,255,0.12); }
+    .world-nav .current { color:#D8307A; }
+
+    /* ARTICLE VIEW */
+    #view-article { max-width:700px; margin:0 auto; padding:2.5rem 2rem 4rem; }
+    .article-pillar-bar { padding:0; margin-bottom:1.25rem; }
+    .article-pillar { font-size:8px; letter-spacing:0.1em; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:0.5px solid; color:#1A6A8A; border-color:rgba(26,106,138,0.4); }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:400; color:#D8307A; line-height:1.2; margin-bottom:0.75rem; }
+    .article-date { font-size:0.7rem; letter-spacing:0.1em; color:rgba(255,255,255,0.28); text-transform:uppercase; margin-bottom:2rem; }
+    .article-divider { border:none; border-top:0.5px solid rgba(255,255,255,0.06); margin:1.5rem 0; }
+    .article-body { font-size:0.9rem; line-height:1.95; color:rgba(255,255,255,0.68); }
+    .article-body p { margin-bottom:1.3rem; }
+    .article-body h2 { font-family:'Playfair Display',serif; font-size:1.15rem; color:#D8307A; margin:2rem 0 0.75rem; }
+    .article-body ul { margin:0 0 1.5rem 0; list-style:none; }
+    .article-body ul li { margin-bottom:1rem; padding-left:1.1rem; border-left:2px solid rgba(216,48,122,0.35); }
+    .article-body ul li strong { color:#D8307A; display:block; font-size:0.88rem; margin-bottom:0.2rem; }
+    .article-body .pull-quote { font-family:'Playfair Display',serif; font-style:italic; font-size:1.1rem; color:#B6C3D5; border-left:2px solid rgba(216,48,122,0.5); padding-left:1.25rem; margin:1.75rem 0; line-height:1.7; }
+    .article-nav { display:flex; gap:1.5rem; margin-top:3rem; padding-top:1.5rem; border-top:0.5px solid rgba(255,255,255,0.06); flex-wrap:wrap; }
+    .article-nav a { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.2s; }
+    .article-nav a:hover { color:rgba(255,255,255,0.65); }
+
+    /* BACK LINK */
+    .back-link { display:block; max-width:860px; margin:0 auto; padding:0 2rem 3rem; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+    .back-link:hover { color:rgba(255,255,255,0.6); }
+
+    /* FOOTER */
+    footer { border-top:0.5px solid rgba(255,255,255,0.05); padding:1.5rem 2rem; text-align:center; font-size:0.65rem; color:rgba(255,255,255,0.18); letter-spacing:0.05em; }
+    footer a { color:inherit; text-decoration:none; }
+
+    @media (max-width:600px) {
+      #view-article { padding:2rem 1.25rem 3rem; }
+    }
+
+    /* DEEP NIGHT-SKY BACKGROUND */
+    body {
+      background-color: #0A0D1F;
+      background-image:
+        radial-gradient(ellipse at 50% 50%,
+          #1C234A 0%,
+          #12183A 25%,
+          #0A0D1F 60%,
+          #0A0D1F 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.055;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2,4,10,0.55) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="view-article">
+  <nav class="world-nav" aria-label="Breadcrumb">
+    <a href="../index.html">Anna Farman Berg</a>
+    <span class="sep">&#8250;</span>
+    <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    <span class="sep">&#8250;</span>
+    <a href="../creative-lab.html">Creative Lab</a>
+    <span class="sep">&#8250;</span>
+    <span class="current">How Much of Tomorrow&rsquo;s AI Agent Is Already in Our Tools?</span>
+  </nav>
+
+  <div id="articleContent">
+    <div class="article-pillar-bar">
+      <span class="article-pillar">AI &amp; Tech</span>
+    </div>
+    <h1 class="article-title">How Much of Tomorrow&rsquo;s AI Agent Is Already in the Tools We Use Today?</h1>
+    <div class="article-date">11 November 2026</div>
+    <hr class="article-divider" />
+
+    <div class="article-body">
+      <p>How much of tomorrow&rsquo;s AI agent is already in the tools we use today?</p>
+
+      <p>I&rsquo;ve noticed AI agents coming up more often in everyday conversations lately. I was talking to someone the other day who told me their company was starting to explore building its own AI agents.</p>
+
+      <p>AI has become a natural topic of conversation, which I think is a good thing. But the more I hear the term &ldquo;AI agents&rdquo;, the more I wonder what people mean by it. It also makes me curious about how much of what they want to achieve is possible with the tools they already use.</p>
+
+      <p>Take email, for example. Many of us manage both our own inbox and shared inboxes with colleagues. Let&rsquo;s say we want to work more efficiently with those inboxes. Before choosing a solution, we first need to understand what that means in practice:</p>
+
+      <ul>
+        <li>How should incoming emails be assigned?</li>
+        <li>Who takes responsibility?</li>
+        <li>How do colleagues know what has already been handled?</li>
+      </ul>
+
+      <p>Once we understand the needs and agree on a way of working we can explore the options:</p>
+
+      <ul>
+        <li>How far could existing features, such as Outlook rules and categories, take us?</li>
+        <li>Where might a workflow in MS Power Automate help?</li>
+        <li>What additional value would an AI agent bring?</li>
+      </ul>
+
+      <p>This is familiar ground from a Customer Success perspective: understand the desired outcome, the people and the process, then work out what needs to change.</p>
+
+      <p>And as AI capabilities develop, we need to revisit and perhaps challenge our assumptions about what our tools can do. Something we tested a few months ago may be worth another look today. As AI assistants become more capable, the additional business value of building our own agents needs to become clearer.</p>
+
+      <p>Perhaps building our own AI agent turns out to be step three.</p>
+
+      <ul>
+        <li>First, understand what we need to achieve</li>
+        <li>Then, explore how far our existing tools can take us</li>
+        <li>Build where there is a clear need for something more</li>
+      </ul>
+    </div>
+
+    <div class="article-nav">
+      <a href="../creative-lab.html">&#8592; Creative Lab</a>
+      <a href="../index.html#thoughts">Thoughts &amp; Reflections</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Anna Farman Berg &middot; Lead with curiosity. &middot;
+  <a href="../index.html">annafarmanberg.com</a>
+</footer>
+
+</body>
+</html>
